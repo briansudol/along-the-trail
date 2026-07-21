@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mushrooms of the Delaware Water Gap and Sourlands</title>
+  <meta name="description" content="A field gallery of mushrooms from the Delaware Water Gap and Sourlands — identification, habitat, tree associates, and uses. Search the collection or share your own finds." />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <!-- EXIF reader for GPS / orientation from phone photos -->
+  <script src="https://cdn.jsdelivr.net/npm/exifr@7.1.3/dist/full.umd.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="#top">
+        <span class="logo-mark" aria-hidden="true">◉</span>
+        <span class="logo-text">
+          <strong>Mushroom Atlas</strong>
+          <small>Delaware Water Gap · Sourlands</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#gallery" data-view="mushrooms">Mushrooms</a>
+        <a href="#gallery" data-view="wildlife">Wildlife</a>
+        <a href="#maps">Trail maps</a>
+        <a href="#resources">Resources</a>
+        <a href="#upload">Share a find</a>
+        <a href="#newsletter">Updates</a>
+        <a href="#about">About</a>
+        <button type="button" class="nav-admin-btn" id="admin-login-btn" hidden>Admin</button>
+      </nav>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
+        <span></span><span></span>
+      </button>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile">
+      <a href="#gallery" data-view="mushrooms">Mushrooms</a>
+      <a href="#gallery" data-view="wildlife">Wildlife</a>
+      <a href="#maps">Trail maps</a>
+      <a href="#resources">Resources</a>
+      <a href="#upload">Share a find</a>
+      <a href="#newsletter">Updates</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-inner">
+        <p class="eyebrow">A living trail guide</p>
+        <h1>Mushrooms of the Delaware Water Gap and Sourlands</h1>
+        <p class="hero-lead">
+          Field photos from local hikes — each find named, categorized, and described by habitat,
+          tree associates, and uses. Search the collection or upload your own discoveries.
+        </p>
+        <div class="hero-search">
+          <label class="sr-only" for="search-input">Search mushrooms</label>
+          <input
+            id="search-input"
+            type="search"
+            placeholder="Search by name, category, tree, habitat…"
+            autocomplete="off"
+          />
+          <button type="button" id="search-clear" class="search-clear" hidden>Clear</button>
+        </div>
+        <p class="hero-meta" id="result-count"></p>
+      </div>
+    </section>
+
+    <section class="toolbar" id="gallery" aria-label="Filters">
+      <div class="toolbar-inner">
+        <h2 id="gallery-heading" class="gallery-heading">Mushroom groups</h2>
+        <p id="wildlife-note" class="wildlife-note" hidden>
+          Trail amphibians and other non-fungi finds. Return to
+          <a href="#gallery" data-view="mushrooms">Mushrooms</a> for the main atlas.
+        </p>
+        <div id="mushroom-filters" class="filter-group" role="group" aria-label="Category filters">
+          <button type="button" class="chip is-active" data-filter="all">All groups</button>
+          <button type="button" class="chip" data-filter="polypore">Polypores &amp; crusts</button>
+          <button type="button" class="chip" data-filter="gilled">Gilled</button>
+          <button type="button" class="chip" data-filter="bolete">Boletes</button>
+          <button type="button" class="chip" data-filter="chanterelle">Chanterelles</button>
+          <button type="button" class="chip" data-filter="coral">Coral fungi</button>
+          <button type="button" class="chip" data-filter="pending">Pending ID</button>
+          <button type="button" class="chip" data-filter="community">Community uploads</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section">
+      <div class="gallery-inner">
+        <div id="gallery-grid" class="gallery-grid" aria-live="polite"></div>
+        <p id="empty-state" class="empty-state" hidden>No entries match your search. Try another name, tree, or category.</p>
+      </div>
+    </section>
+
+    <section class="maps-section" id="maps">
+      <div class="maps-inner">
+        <div class="maps-header">
+          <p class="eyebrow">Where we found them</p>
+          <h2>Trail maps</h2>
+          <p class="maps-lead">
+            Each pin marks a geotagged photo from the atlas. Switch parks, click a pin for the species,
+            and open the full gallery entry. Base maps include OpenStreetMap trails and paths.
+          </p>
+        </div>
+
+        <div class="map-tabs" role="tablist" aria-label="Park maps">
+          <button type="button" class="map-tab is-active" role="tab" aria-selected="true" data-map="sourland">
+            Sourland Mountain Preserve
+          </button>
+          <button type="button" class="map-tab" role="tab" aria-selected="false" data-map="delaware-water-gap">
+            Delaware Water Gap
+          </button>
+        </div>
+
+        <div class="map-layout">
+          <div class="map-frame">
+            <div id="trail-map" class="trail-map" role="application" aria-label="Interactive trail map"></div>
+            <p class="map-credit">
+              Map © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap</a>
+              · Terrain © <a href="https://opentopomap.org" target="_blank" rel="noopener noreferrer">OpenTopoMap</a>
+            </p>
+          </div>
+          <aside class="map-sidebar">
+            <h3 id="map-region-title">Sourland Mountain Preserve</h3>
+            <p id="map-region-sub" class="map-region-sub"></p>
+            <p id="map-find-count" class="map-find-count"></p>
+            <ul id="map-find-list" class="map-find-list"></ul>
+            <p class="map-sidebar-note">
+              Pins use GPS embedded in photos. Accuracy depends on phone signal; points may sit slightly off-trail.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="resources-section" id="resources">
+      <div class="resources-inner">
+        <div class="resources-header">
+          <p class="eyebrow">Learn more</p>
+          <h2>Mushroom resources</h2>
+          <p class="resources-lead">
+            Talks, clubs, and field references for the Delaware Water Gap, Sourlands, and beyond.
+          </p>
+        </div>
+
+        <div class="resources-grid">
+          <article class="resource-card">
+            <h3>Videos &amp; talks</h3>
+            <ul class="resource-list">
+              <li>
+                <a href="https://www.youtube.com/watch?v=pcBRfE3Q4iA" target="_blank" rel="noopener noreferrer">
+                  Merlin Sheldrake — How fungi changed my view of the world
+                </a>
+                <span>Interview / conversation on fungal networks and ecology</span>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/results?search_query=Merlin+Sheldrake+Entangled+Life" target="_blank" rel="noopener noreferrer">
+                  Merlin Sheldrake — <em>Entangled Life</em> talks
+                </a>
+                <span>YouTube search for lectures on his book and research</span>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/results?search_query=Paul+Stamets+mushrooms" target="_blank" rel="noopener noreferrer">
+                  Paul Stamets — mushroom talks
+                </a>
+                <span>Popular mycology education and cultivation perspectives</span>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/@cornellmycology" target="_blank" rel="noopener noreferrer">
+                  Cornell Mycology (YouTube)
+                </a>
+                <span>Academic fungal biology and identification content</span>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/results?search_query=Giuliana+Furci+fungi" target="_blank" rel="noopener noreferrer">
+                  Giuliana Furci &amp; fungal conservation
+                </a>
+                <span>Advocacy and education for fungi worldwide</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="resource-card">
+            <h3>New Jersey &amp; regional clubs</h3>
+            <ul class="resource-list">
+              <li>
+                <a href="https://www.njmyco.org/" target="_blank" rel="noopener noreferrer">
+                  New Jersey Mycological Association (NJMA)
+                </a>
+                <span>Statewide club — forays, education, Fungus Fest · njmyco.org</span>
+              </li>
+              <li>
+                <a href="https://www.njmyco.org/membership.html" target="_blank" rel="noopener noreferrer">
+                  NJMA membership
+                </a>
+                <span>Join members from NJ, PA, NY, and nearby</span>
+              </li>
+              <li>
+                <a href="https://www.njmyco.org/events.html" target="_blank" rel="noopener noreferrer">
+                  NJMA events calendar
+                </a>
+                <span>Walks, workshops, and virtual programs</span>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/groups/NewJerseyMycologicalAssociation/" target="_blank" rel="noopener noreferrer">
+                  NJMA Facebook discussion group
+                </a>
+                <span>Community ID help and trip reports</span>
+              </li>
+              <li>
+                <a href="https://namyco.org/" target="_blank" rel="noopener noreferrer">
+                  North American Mycological Association (NAMA)
+                </a>
+                <span>National umbrella for local clubs and education</span>
+              </li>
+            </ul>
+          </article>
+
+          <article class="resource-card">
+            <h3>Field references</h3>
+            <ul class="resource-list">
+              <li>
+                <a href="https://www.mushroomexpert.com/" target="_blank" rel="noopener noreferrer">
+                  MushroomExpert.com (Michael Kuo)
+                </a>
+                <span>Detailed keys and species pages</span>
+              </li>
+              <li>
+                <a href="https://www.inaturalist.org/" target="_blank" rel="noopener noreferrer">
+                  iNaturalist
+                </a>
+                <span>Log finds and get community identifications</span>
+              </li>
+              <li>
+                <a href="https://www.mycoportal.org/" target="_blank" rel="noopener noreferrer">
+                  MyCoPortal
+                </a>
+                <span>Herbarium records and distribution data</span>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter-section" id="newsletter">
+      <div class="newsletter-inner">
+        <div class="newsletter-copy">
+          <p class="eyebrow">Stay in the loop</p>
+          <h2>Email updates from the trail</h2>
+          <p>
+            Get occasional notes when we add new species, hikes, or field guides for the
+            Delaware Water Gap and Sourlands. No spam — unsubscribe anytime.
+          </p>
+        </div>
+        <form id="newsletter-form" class="newsletter-form">
+          <div class="newsletter-row">
+            <label class="sr-only" for="nl-email">Email address</label>
+            <input id="nl-email" name="email" type="email" required placeholder="you@example.com" autocomplete="email" />
+            <button type="submit" class="btn btn-primary btn-inline">Sign up</button>
+          </div>
+          <label class="newsletter-check">
+            <input type="checkbox" id="nl-consent" required />
+            <span>I agree to receive occasional trail and atlas updates by email.</span>
+          </label>
+          <p id="newsletter-status" class="newsletter-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="upload-section" id="upload">
+      <div class="upload-inner">
+        <div class="upload-copy">
+          <p class="eyebrow">Community</p>
+          <h2>Share a mushroom you found</h2>
+          <p>
+            Just upload a trail photo. If it has GPS, location is filled automatically.
+            Finds are added as <strong>pending identification</strong> and can be named
+            later when we review the gallery.
+          </p>
+          <ul class="upload-tips">
+            <li>Keep <strong>Location Services on</strong> so the photo is geotagged</li>
+            <li>No need to know the species — ID can wait</li>
+            <li>Optional note if you want (trail name, tree, etc.)</li>
+            <li>Never eat a wild mushroom from a photo alone</li>
+          </ul>
+        </div>
+        <form id="upload-form" class="upload-form">
+          <div class="field">
+            <label for="up-photo">Photo</label>
+            <input id="up-photo" name="photo" type="file" accept="image/*" required />
+            <p class="field-hint">JPG/PNG from your phone · max ~6&nbsp;MB · GPS is read when present</p>
+          </div>
+          <div id="upload-preview" class="upload-preview" hidden></div>
+          <div id="meta-status" class="meta-status" role="status" aria-live="polite"></div>
+          <input type="hidden" id="up-lat" name="lat" value="" />
+          <input type="hidden" id="up-lon" name="lon" value="" />
+
+          <div class="field">
+            <label for="up-location">Location</label>
+            <input id="up-location" name="location" type="text" required placeholder="Auto-filled from GPS when available" />
+          </div>
+          <div class="field">
+            <label for="up-notes">Note <span class="optional">(optional)</span></label>
+            <textarea id="up-notes" name="notes" rows="2" placeholder="e.g. Dunnfield trail, on oak…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Upload find</button>
+          <p id="upload-status" class="upload-status" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <section class="about-section" id="about">
+      <div class="about-inner">
+        <p class="eyebrow">About this atlas</p>
+        <h2>From the trail, for the curious</h2>
+        <p id="about-disclaimer" class="disclaimer"></p>
+        <p class="authors" id="about-authors"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Mushrooms of the Delaware Water Gap and Sourlands</p>
+    <p class="footer-sub">Educational use only · Not a foraging guide</p>
+    <p class="footer-sub" id="admin-server-hint" hidden>
+      Photo admin requires <code>python3 admin_server.py</code> (not plain http.server).
+    </p>
+  </footer>
+
+  <!-- Admin bar -->
+  <div id="admin-bar" class="admin-bar" hidden>
+    <span>Admin mode</span>
+    <button type="button" id="admin-open-library" class="btn btn-primary btn-inline">Edit photos</button>
+    <button type="button" id="admin-logout" class="btn btn-ghost btn-inline">Log out</button>
+  </div>
+
+  <!-- Admin login -->
+  <div id="admin-login-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-admin-close="login"></div>
+    <div class="modal-panel admin-panel-sm">
+      <button type="button" class="modal-close" data-admin-close="login" aria-label="Close">&times;</button>
+      <div class="admin-panel-body">
+        <h2>Admin login</h2>
+        <p class="admin-help">Local photo editor. Password is in <code>admin_config.json</code>.</p>
+        <form id="admin-login-form">
+          <div class="field">
+            <label for="admin-password">Password</label>
+            <input id="admin-password" type="password" required autocomplete="current-password" />
+          </div>
+          <button type="submit" class="btn btn-primary">Log in</button>
+          <p id="admin-login-error" class="admin-error" role="alert"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin photo library -->
+  <div id="admin-library-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-admin-close="library"></div>
+    <div class="modal-panel admin-panel-lg">
+      <button type="button" class="modal-close" data-admin-close="library" aria-label="Close">&times;</button>
+      <div class="admin-panel-body">
+        <div class="admin-library-head">
+          <h2>Photo library</h2>
+          <label class="admin-filter-label">
+            Group
+            <select id="admin-filter-group">
+              <option value="all">All groups</option>
+            </select>
+          </label>
+        </div>
+        <p class="admin-help">Click a photo to rotate, flip, crop, save, or set as group cover.</p>
+        <div id="admin-photo-grid" class="admin-photo-grid"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin editor -->
+  <div id="admin-editor-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-admin-close="editor"></div>
+    <div class="modal-panel admin-panel-lg">
+      <button type="button" class="modal-close" data-admin-close="editor" aria-label="Close">&times;</button>
+      <div class="admin-panel-body">
+        <h2 id="admin-editor-title">Edit photo</h2>
+        <div class="admin-canvas-wrap">
+          <canvas id="admin-canvas"></canvas>
+        </div>
+        <div class="admin-toolbar">
+          <button type="button" id="admin-rot-left" class="btn btn-ghost btn-inline">Rotate left</button>
+          <button type="button" id="admin-rot-right" class="btn btn-ghost btn-inline">Rotate right</button>
+          <button type="button" id="admin-flip-h" class="btn btn-ghost btn-inline">Flip H</button>
+          <button type="button" id="admin-flip-v" class="btn btn-ghost btn-inline">Flip V</button>
+          <label class="admin-crop-label"><input type="checkbox" id="admin-crop-mode" /> Crop (drag on image)</label>
+          <button type="button" id="admin-clear-crop" class="btn btn-ghost btn-inline">Clear crop</button>
+          <button type="button" id="admin-reset" class="btn btn-ghost btn-inline">Reset</button>
+          <button type="button" id="admin-set-cover" class="btn btn-ghost btn-inline">Set as cover</button>
+          <button type="button" id="admin-save" class="btn btn-primary btn-inline">Save to disk</button>
+        </div>
+        <p id="admin-editor-status" class="admin-editor-status" role="status"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail modal -->
+  <div id="detail-modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="detail-title">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <button type="button" class="modal-close" data-close aria-label="Close">&times;</button>
+      <div id="detail-content" class="detail-content"></div>
+    </div>
+  </div>
+
+  <link rel="stylesheet" href="css/admin.css" />
+  <script src="js/app.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

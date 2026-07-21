@@ -1,0 +1,24 @@
+# Local / OS
+.DS_Store
+**/.DS_Store
+*.bak
+js/*.bak
+
+# Local thumbs / work files
+.desk_thumbs/
+.id_thumbs/
+.tmp*
+.review/
+
+# Admin secrets (use example file instead)
+admin_config.json
+
+# Uploads sandbox
+uploads/*
+!uploads/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+photos/d_IMG_3474.jpg

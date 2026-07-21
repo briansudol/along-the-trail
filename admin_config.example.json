@@ -1,0 +1,4 @@
+{
+  "password": "change-me",
+  "note": "Copy to admin_config.json for local admin_server.py. Do not commit real passwords."
+}
