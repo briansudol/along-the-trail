@@ -1,9 +1,33 @@
 /**
  * Admin login + photo editor for the mushroom atlas.
+ * LOCALHOST ONLY — never shown on GitHub Pages / public hosts.
  * Requires admin_server.py so saves write to disk.
  */
 (function () {
   "use strict";
+
+  // Public deploy (github.io, custom domain): do not load admin UI at all
+  var host = (window.location.hostname || "").toLowerCase();
+  var isLocal =
+    host === "localhost" ||
+    host === "127.0.0.1" ||
+    host === "[::1]" ||
+    host === "";
+  if (!isLocal) {
+    // Remove any admin markup so it never appears on the public site
+    [
+      "admin-login-btn",
+      "admin-bar",
+      "admin-login-modal",
+      "admin-library-modal",
+      "admin-editor-modal",
+      "admin-server-hint",
+    ].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+    });
+    return;
+  }
 
   var TOKEN_KEY = "mushroom-atlas-admin-token";
   var token = sessionStorage.getItem(TOKEN_KEY) || "";
@@ -425,18 +449,18 @@
         });
     });
 
-    // Health check: hide admin if plain static server
+    // Health check: only show Admin when local admin_server.py is running
     fetch("/api/health")
       .then(function (r) {
         return r.json();
       })
       .then(function () {
-        $("admin-login-btn").hidden = false;
-        $("admin-server-hint").hidden = true;
+        if ($("admin-login-btn")) $("admin-login-btn").hidden = false;
+        if ($("admin-server-hint")) $("admin-server-hint").hidden = true;
       })
       .catch(function () {
-        $("admin-login-btn").hidden = true;
-        $("admin-server-hint").hidden = false;
+        if ($("admin-login-btn")) $("admin-login-btn").hidden = true;
+        if ($("admin-server-hint")) $("admin-server-hint").hidden = false;
       });
 
     updateChrome();

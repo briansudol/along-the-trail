@@ -6,9 +6,9 @@ Interactive field atlas website — species ID, category, habitat, tree associat
 
 After deploy, the public gallery is at:
 
-`https://<your-github-username>.github.io/mushrooms-delaware-valley/`
+`https://briansudol.github.io/mushrooms-delaware-valley/`
 
-(Admin photo editing is **local only** — GitHub Pages is static and cannot run `admin_server.py`.)
+**Admin photo editing is localhost-only.** On GitHub Pages the Admin button and editor are removed automatically. Use `admin_server.py` on your Mac to edit images, then `git push` to update the live site.
 
 ## Preview locally (with admin photo editor)
 
