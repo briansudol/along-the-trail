@@ -1,7 +1,7 @@
 {
   "site": {
     "title": "Mushrooms of the Delaware Water Gap and Sourlands",
-    "tagline": "A living field gallery \u2014 grouped by genus, mapped by GPS.",
+    "tagline": "A living field gallery \u2014 grouped by genus, mapped by GPS across NJ, PA, and MA.",
     "authors": [
       "Brian Sudol",
       "Nick Sypniewski",
@@ -521,7 +521,7 @@
       "tree_associates": "Oaks and mixed hardwoods of the Sourlands.",
       "field_marks": "Pores under the cap; thick stems; fleshy caps.",
       "season": "Summer to early fall",
-      "region_notes": "Abundant in Sourland oak woods.",
+      "region_notes": "Abundant in Sourland oak woods. Also Middlesex Fells (MA).",
       "cover_image": "photos/35_bicolor_bolete.jpg",
       "photos": [
         {
@@ -1099,6 +1099,54 @@
             "lon": -74.705803,
             "season": "Summer to fall"
           }
+        },
+        {
+          "src": "photos/54_yellow_bolete_pair.jpg",
+          "caption": "Yellow-pored bolete pair in pine-oak litter",
+          "view": "side",
+          "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+          "lat": 42.446472,
+          "lon": -71.120522,
+          "id_detail": {
+            "common_name": "Yellow-pored Bolete (butter-foot group)",
+            "scientific_name": "Boletus cf. auripes / yellow bolete complex",
+            "edibility": "Many yellow-pored boletes are edible when well ID'd; confirm species \u2014 educational only here",
+            "summary": "Pair of boletes with orange-tan caps, bright yellow stems, and yellow sponge-like pores. Growing in pine needles and oak litter under mixed woods. Matches the butter-foot / yellow bolete look (Boletus auripes and allies).",
+            "uses": "Some related yellow boletes are choice edibles when correctly identified and cooked; always rule out bitter and blue-staining toxic lookalikes. Not a foraging recommendation.",
+            "habitat": "Mycorrhizal on forest floor under hardwoods and mixed stands.",
+            "tree_associates": "Oaks and mixed hardwoods; pine needles often present in mixed stands.",
+            "field_marks": "Orange-tan to yellow-brown dry cap; yellow pore surface (tubes); thick bright yellow stem; no gills.",
+            "confidence": "high-group",
+            "photo_location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+            "view": "side",
+            "lat": 42.446472,
+            "lon": -71.120522,
+            "season": "Summer to fall (this find: early August)"
+          }
+        },
+        {
+          "src": "photos/55_yellow_bolete_pores.jpg",
+          "caption": "Yellow pore surface and stems",
+          "view": "underside",
+          "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+          "lat": 42.446475,
+          "lon": -71.120522,
+          "id_detail": {
+            "common_name": "Yellow-pored Bolete (butter-foot group)",
+            "scientific_name": "Boletus cf. auripes / yellow bolete complex",
+            "edibility": "Many yellow-pored boletes are edible when well ID'd; confirm species \u2014 educational only here",
+            "summary": "Pair of boletes with orange-tan caps, bright yellow stems, and yellow sponge-like pores. Growing in pine needles and oak litter under mixed woods. Matches the butter-foot / yellow bolete look (Boletus auripes and allies).",
+            "uses": "Some related yellow boletes are choice edibles when correctly identified and cooked; always rule out bitter and blue-staining toxic lookalikes. Not a foraging recommendation.",
+            "habitat": "Mycorrhizal on forest floor under hardwoods and mixed stands.",
+            "tree_associates": "Oaks and mixed hardwoods; pine needles often present in mixed stands.",
+            "field_marks": "Orange-tan to yellow-brown dry cap; yellow pore surface (tubes); thick bright yellow stem; no gills.",
+            "confidence": "high-group",
+            "photo_location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+            "view": "underside",
+            "lat": 42.446475,
+            "lon": -71.120522,
+            "season": "Summer to fall (this find: early August)"
+          }
         }
       ],
       "subcategories": [
@@ -1132,13 +1180,13 @@
       "category_slug": "gilled",
       "edibility": "Variable \u2014 many acrid; do not eat without species ID",
       "confidence": "genus",
-      "summary": "Colorful brittle-fleshed woodland mushrooms. Red-capped species are common on Sourland oak floors.",
+      "summary": "Colorful brittle-fleshed woodland mushrooms. Red- and pink-capped species are common on oak floors and mossy pine litter.",
       "uses": "Few mild species edible when cooked; many peppery.",
       "habitat": "Forest floor under hardwoods; mycorrhizal.",
       "tree_associates": "Oaks, beech, pine, mixed stands.",
       "field_marks": "Brittle chalky flesh; colorful caps; no veil on most species.",
       "season": "Summer to fall",
-      "region_notes": "Common in Sourland oak woods.",
+      "region_notes": "Common in Sourland oak woods; also Middlesex Fells (MA).",
       "cover_image": "photos/36_red_russula_troop.jpg",
       "photos": [
         {
@@ -1212,12 +1260,175 @@
             "lon": -74.707314,
             "season": "Summer to fall"
           }
+        },
+        {
+          "src": "photos/44_red_russula_side.jpg",
+          "caption": "Pink-red Russula on moss bank",
+          "view": "side",
+          "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+          "lat": 42.442981,
+          "lon": -71.113883,
+          "id_detail": {
+            "common_name": "Red Russula (pink-red)",
+            "scientific_name": "Russula sp. (red / emetica group)",
+            "edibility": "Do not eat \u2014 many acrid or GI-upsetting; needs species-level ID",
+            "summary": "Bright pink-red to rose cap with pure white gills and a white stem. Brittle flesh typical of Russula. Growing on moss among pine needles in mixed woods \u2014 often compared to the emetica / silvicola complex; taste (mild vs peppery) and peel would refine species.",
+            "uses": "Not for the table without expert species ID. Many red Russulas are acrid or cause stomach upset.",
+            "habitat": "Mycorrhizal on forest floor; mossy spots under pine and mixed hardwoods.",
+            "tree_associates": "Pine and mixed hardwoods (oak/beech common regionally).",
+            "field_marks": "Pink-red smooth cap (often depressed in center); pure white close gills; white stem without ring or volva; brittle chalky flesh.",
+            "confidence": "high-genus",
+            "photo_location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+            "view": "side",
+            "lat": 42.442981,
+            "lon": -71.113883,
+            "season": "Summer to fall (this find: early August)"
+          }
+        },
+        {
+          "src": "photos/45_red_russula_gills.jpg",
+          "caption": "White gills and stem \u2014 underside",
+          "view": "underside",
+          "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+          "lat": 42.442978,
+          "lon": -71.113861,
+          "id_detail": {
+            "common_name": "Red Russula (pink-red)",
+            "scientific_name": "Russula sp. (red / emetica group)",
+            "edibility": "Do not eat \u2014 many acrid or GI-upsetting; needs species-level ID",
+            "summary": "Bright pink-red to rose cap with pure white gills and a white stem. Brittle flesh typical of Russula. Growing on moss among pine needles in mixed woods \u2014 often compared to the emetica / silvicola complex; taste (mild vs peppery) and peel would refine species.",
+            "uses": "Not for the table without expert species ID. Many red Russulas are acrid or cause stomach upset.",
+            "habitat": "Mycorrhizal on forest floor; mossy spots under pine and mixed hardwoods.",
+            "tree_associates": "Pine and mixed hardwoods (oak/beech common regionally).",
+            "field_marks": "Pink-red smooth cap (often depressed in center); pure white close gills; white stem without ring or volva; brittle chalky flesh.",
+            "confidence": "high-genus",
+            "photo_location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+            "view": "underside",
+            "lat": 42.442978,
+            "lon": -71.113861,
+            "season": "Summer to fall (this find: early August)"
+          }
+        },
+        {
+          "src": "photos/46_red_russula_top.jpg",
+          "caption": "Pink-red cap from above",
+          "view": "top",
+          "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+          "lat": 42.442978,
+          "lon": -71.113861,
+          "id_detail": {
+            "common_name": "Red Russula (pink-red)",
+            "scientific_name": "Russula sp. (red / emetica group)",
+            "edibility": "Do not eat \u2014 many acrid or GI-upsetting; needs species-level ID",
+            "summary": "Bright pink-red to rose cap with pure white gills and a white stem. Brittle flesh typical of Russula. Growing on moss among pine needles in mixed woods \u2014 often compared to the emetica / silvicola complex; taste (mild vs peppery) and peel would refine species.",
+            "uses": "Not for the table without expert species ID. Many red Russulas are acrid or cause stomach upset.",
+            "habitat": "Mycorrhizal on forest floor; mossy spots under pine and mixed hardwoods.",
+            "tree_associates": "Pine and mixed hardwoods (oak/beech common regionally).",
+            "field_marks": "Pink-red smooth cap (often depressed in center); pure white close gills; white stem without ring or volva; brittle chalky flesh.",
+            "confidence": "high-genus",
+            "photo_location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+            "view": "top",
+            "lat": 42.442978,
+            "lon": -71.113861,
+            "season": "Summer to fall (this find: early August)"
+          }
         }
       ],
       "subcategories": [
         {
           "name": "Red-capped Russula",
           "note": "Species complex"
+        }
+      ]
+    },
+    {
+      "id": "rollrim",
+      "common_name": "Brown Roll-rim",
+      "scientific_name": "Paxillus involutus complex",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "edibility": "Toxic \u2014 do not eat",
+      "confidence": "group",
+      "summary": "Large brown gilled mushrooms with wavy or inrolled margins. The Paxillus involutus complex is mycorrhizal and dangerously toxic.",
+      "uses": "Not edible. Serious poisoning risk.",
+      "habitat": "Forest floor under pine, birch, oak, and mixed woods.",
+      "tree_associates": "Pine, birch, oak, mixed stands.",
+      "field_marks": "Tan-brown wavy cap; brown gills; thick stem; inrolled margin when young.",
+      "season": "Summer to fall",
+      "region_notes": "Middlesex Fells (MA).",
+      "cover_image": "photos/50_rollrim_top.jpg",
+      "photos": [
+        {
+          "src": "photos/50_rollrim_top.jpg",
+          "caption": "Brown roll-rim \u2014 cap from above with button",
+          "view": "top",
+          "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+          "lat": 42.443906,
+          "lon": -71.120681,
+          "id_detail": {
+            "common_name": "Brown Roll-rim",
+            "scientific_name": "Paxillus involutus complex",
+            "edibility": "Toxic \u2014 can cause serious immune-mediated poisoning; do not eat",
+            "summary": "Large tan-to-brown gilled mushroom with a wavy, often inrolled margin and brown gills. Young button nearby. In oak and mixed litter. Formerly eaten in parts of Europe; now known to be dangerously toxic.",
+            "uses": "Not edible. Documented severe reactions after repeated consumption. Educational only.",
+            "habitat": "Mycorrhizal under conifers and hardwoods; leaf litter and mossy soil.",
+            "tree_associates": "Pine, birch, oak, and mixed woods.",
+            "field_marks": "Tan-brown cap with lobed/wavy margin; brown close gills that may bruise darker; thick stem; often clustered with buttons; margin inrolled when young.",
+            "confidence": "moderate-high",
+            "photo_location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+            "view": "top",
+            "lat": 42.443906,
+            "lon": -71.120681,
+            "season": "Summer to fall (this find: early August)"
+          }
+        },
+        {
+          "src": "photos/51_rollrim_gills.jpg",
+          "caption": "Brown roll-rim \u2014 gills and young button",
+          "view": "side",
+          "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+          "lat": 42.443889,
+          "lon": -71.120681,
+          "id_detail": {
+            "common_name": "Brown Roll-rim",
+            "scientific_name": "Paxillus involutus complex",
+            "edibility": "Toxic \u2014 can cause serious immune-mediated poisoning; do not eat",
+            "summary": "Large tan-to-brown gilled mushroom with a wavy, often inrolled margin and brown gills. Young button nearby. In oak and mixed litter. Formerly eaten in parts of Europe; now known to be dangerously toxic.",
+            "uses": "Not edible. Documented severe reactions after repeated consumption. Educational only.",
+            "habitat": "Mycorrhizal under conifers and hardwoods; leaf litter and mossy soil.",
+            "tree_associates": "Pine, birch, oak, and mixed woods.",
+            "field_marks": "Tan-brown cap with lobed/wavy margin; brown close gills that may bruise darker; thick stem; often clustered with buttons; margin inrolled when young.",
+            "confidence": "moderate-high",
+            "photo_location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+            "view": "side",
+            "lat": 42.443889,
+            "lon": -71.120681,
+            "season": "Summer to fall (this find: early August)"
+          }
+        },
+        {
+          "src": "photos/52_rollrim_profile.jpg",
+          "caption": "Brown roll-rim \u2014 profile in oak litter",
+          "view": "side",
+          "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+          "lat": 42.443889,
+          "lon": -71.120675,
+          "id_detail": {
+            "common_name": "Brown Roll-rim",
+            "scientific_name": "Paxillus involutus complex",
+            "edibility": "Toxic \u2014 can cause serious immune-mediated poisoning; do not eat",
+            "summary": "Large tan-to-brown gilled mushroom with a wavy, often inrolled margin and brown gills. Young button nearby. In oak and mixed litter. Formerly eaten in parts of Europe; now known to be dangerously toxic.",
+            "uses": "Not edible. Documented severe reactions after repeated consumption. Educational only.",
+            "habitat": "Mycorrhizal under conifers and hardwoods; leaf litter and mossy soil.",
+            "tree_associates": "Pine, birch, oak, and mixed woods.",
+            "field_marks": "Tan-brown cap with lobed/wavy margin; brown close gills that may bruise darker; thick stem; often clustered with buttons; margin inrolled when young.",
+            "confidence": "moderate-high",
+            "photo_location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+            "view": "side",
+            "lat": 42.443889,
+            "lon": -71.120675,
+            "season": "Summer to fall (this find: early August)"
+          }
         }
       ]
     },
@@ -1229,13 +1440,13 @@
       "category_slug": "polypore",
       "edibility": "Mostly inedible; chicken of the woods and beefsteak edible when young and correctly ID\u2019d",
       "confidence": "group",
-      "summary": "Wood-decay shelves and crusts: beefsteak, cinnabar, chicken of the woods, turkey tail, and orange Stereum.",
+      "summary": "Wood-decay shelves and crusts: beefsteak, cinnabar, chicken of the woods, turkey tail, orange Stereum, and large woody conks (Ganoderma).",
       "uses": "Chicken of the woods and beefsteak are traditional edibles when young. Most others are too tough to eat.",
       "habitat": "Dead and dying hardwood wood.",
       "tree_associates": "Oaks and other hardwoods.",
       "field_marks": "Pores or smooth underside; shelves or crusts on wood.",
       "season": "Spring through fall",
-      "region_notes": "Sourlands and Delaware Water Gap.",
+      "region_notes": "Sourlands, Delaware Water Gap, and Middlesex Fells (MA).",
       "cover_image": "photos/15_beefsteak.jpg",
       "photos": [
         {
@@ -1429,6 +1640,102 @@
             "lon": -74.700522,
             "season": "Summer to fall"
           }
+        },
+        {
+          "src": "photos/42_chicken_cincinnatus_rosette.jpg",
+          "caption": "White-pored chicken of the woods \u2014 ground rosette",
+          "view": "top",
+          "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+          "lat": 42.466156,
+          "lon": -71.118653,
+          "id_detail": {
+            "common_name": "White-pored Chicken of the Woods",
+            "scientific_name": "Laetiporus cincinnatus",
+            "edibility": "Choice edible when young (confirm ID; cook thoroughly)",
+            "summary": "Salmon-orange to pinkish rosette growing from soil at the base of hardwoods (from roots). Creamy white margins and white pore surface distinguish it from yellow-pored L. sulphureus.",
+            "uses": "Choice edible when young and soft; cook well. Some people have GI sensitivity \u2014 try a small amount first.",
+            "habitat": "Terrestrial rosettes from buried roots or butt of living/dead hardwoods, especially oak.",
+            "tree_associates": "Primarily oak and other hardwoods.",
+            "field_marks": "Ground-level rosette of wavy, overlapping fronds; pinkish-orange zones with pale cream margins; white pores (not sulfur-yellow).",
+            "confidence": "high",
+            "photo_location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+            "view": "top",
+            "lat": 42.466156,
+            "lon": -71.118653,
+            "season": "Late spring through fall (this find: early August)"
+          }
+        },
+        {
+          "src": "photos/43_chicken_cincinnatus_cluster.jpg",
+          "caption": "White-pored chicken of the woods \u2014 full cluster",
+          "view": "side",
+          "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+          "lat": 42.466161,
+          "lon": -71.118653,
+          "id_detail": {
+            "common_name": "White-pored Chicken of the Woods",
+            "scientific_name": "Laetiporus cincinnatus",
+            "edibility": "Choice edible when young (confirm ID; cook thoroughly)",
+            "summary": "Large multi-tiered basal rosette with concentric orange-salmon bands and lobed white margins. Classic L. cincinnatus growth form \u2014 from roots at ground level rather than shelves on a trunk.",
+            "uses": "Choice edible when young and soft; cook well. Some people have GI sensitivity \u2014 try a small amount first.",
+            "habitat": "Terrestrial rosettes from buried roots or butt of living/dead hardwoods, especially oak.",
+            "tree_associates": "Primarily oak and other hardwoods.",
+            "field_marks": "Basal rosette; salmon-orange upper surface; white margin; white pore surface underneath.",
+            "confidence": "high",
+            "photo_location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+            "view": "side",
+            "lat": 42.466161,
+            "lon": -71.118653,
+            "season": "Late spring through fall (this find: early August)"
+          }
+        },
+        {
+          "src": "photos/53_artists_conk.jpg",
+          "caption": "Large woody polypore at tree base",
+          "view": "top",
+          "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+          "lat": 42.451758,
+          "lon": -71.117194,
+          "id_detail": {
+            "common_name": "Artist's Conk / large woody polypore",
+            "scientific_name": "Ganoderma cf. applanatum (or allies)",
+            "edibility": "Inedible (woody)",
+            "summary": "Large, zoned, corky shelf polypore low on a hardwood base or stump. Dull tan to buff upper surface with concentric ridges \u2014 typical of perennial Ganoderma (artist's conk) and similar woody conks.",
+            "uses": "Not eaten. Artist's conks are classic for etching spore-print 'art' on the white pore surface when fresh; important wood-decay fungi.",
+            "habitat": "Living or dead hardwood trunks and stumps.",
+            "tree_associates": "Oaks and other hardwoods.",
+            "field_marks": "Large perennial shelf; zoned dull upper crust; white pore surface that bruises brown when fresh (Ganoderma); woody texture.",
+            "confidence": "moderate",
+            "photo_location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+            "view": "top",
+            "lat": 42.451758,
+            "lon": -71.117194,
+            "season": "Summer to fall (this find: early August)"
+          }
+        },
+        {
+          "src": "photos/56_weeping_polypore.jpg",
+          "caption": "Guttating lobed polypore on stump",
+          "view": "side",
+          "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+          "lat": 42.458039,
+          "lon": -71.119339,
+          "id_detail": {
+            "common_name": "Weeping stump polypore",
+            "scientific_name": "Inonotus cf. dryadeus (or young Laetiporus)",
+            "edibility": "Inedible / not recommended",
+            "summary": "Soft, lobed, peach-tan polypore mass on a rotten stump with clear guttation droplets. Young weeping conk (Inonotus dryadeus) often beads liquid; young chicken of the woods can look brainy and pale before brightening.",
+            "uses": "Not for the table. Weeping conk is a wood-decay fungus; chicken of the woods is edible only when young and correctly ID'd.",
+            "habitat": "Dead stumps and living oak bases (weeping conk); dead/dying hardwoods (Laetiporus).",
+            "tree_associates": "Oak and other hardwoods.",
+            "field_marks": "Brainy/lobed soft shelf on stump; pale orange-tan with whitish edge; guttation droplets when actively growing.",
+            "confidence": "moderate",
+            "photo_location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+            "view": "side",
+            "lat": 42.458039,
+            "lon": -71.119339,
+            "season": "Summer to fall (this find: early August)"
+          }
         }
       ],
       "subcategories": [
@@ -1598,13 +1905,13 @@
       "category_slug": "coral",
       "edibility": "Some edible when young and cooked; confirm species",
       "confidence": "group",
-      "summary": "Branched coral-like fungi. Crown-tipped coral (Artomyces) is common on dead hardwood in the Sourlands.",
+      "summary": "Branched coral-like fungi: crown-tipped coral (Artomyces) on dead hardwood, and peachy Ramaria corals on the forest floor.",
       "uses": "Crown-tipped coral sometimes eaten when young. Avoid unknown corals.",
-      "habitat": "Decaying hardwood logs.",
+      "habitat": "Dead hardwood (Artomyces) or forest floor under hardwoods (Ramaria).",
       "tree_associates": "Saprobic on hardwood.",
-      "field_marks": "Coral form; crown-tipped branches for Artomyces.",
+      "field_marks": "Coral/branching fruitbodies; no classic cap; tips may be crown-like (Artomyces) or blunt/yellow-tipped (Ramaria).",
       "season": "Summer to fall",
-      "region_notes": "Sourland moist logs.",
+      "region_notes": "Sourlands, Delaware Water Gap, and Middlesex Fells (MA).",
       "cover_image": "photos/08_coral.jpg",
       "photos": [
         {
@@ -1676,12 +1983,103 @@
           },
           "lat": 40.473503,
           "lon": -74.708108
+        },
+        {
+          "src": "photos/47_peach_coral_top.jpg",
+          "caption": "Peach coral fungus \u2014 branch tips",
+          "view": "top",
+          "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+          "lat": 42.451767,
+          "lon": -71.107253,
+          "id_detail": {
+            "common_name": "Peach Coral Fungus",
+            "scientific_name": "Ramaria sp. (cf. formosa group)",
+            "edibility": "Do not eat \u2014 several Ramaria (incl. formosa group) are toxic / purgative",
+            "summary": "Upright branched coral fungus, peach to salmon-pink with paler yellowish tips. Growing from forest floor among oak litter (mycorrhizal Ramaria, not wood-only Artomyces).",
+            "uses": "Not recommended. Some Ramaria are edible when correctly ID'd; many cause GI upset. Never eat coral fungi without expert confirmation.",
+            "habitat": "Ground under hardwoods and mixed woods; mycorrhizal.",
+            "tree_associates": "Oaks and mixed hardwoods.",
+            "field_marks": "Dense upright coral of parallel branches; peach/salmon flesh; tips often paler or yellowish; base fused; no cap or gills.",
+            "confidence": "high-genus",
+            "photo_location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+            "view": "top",
+            "lat": 42.451767,
+            "lon": -71.107253,
+            "season": "Summer to fall (this find: early August)"
+          }
+        },
+        {
+          "src": "photos/48_peach_coral_side.jpg",
+          "caption": "Peach coral fungus \u2014 full cluster in oak litter",
+          "view": "side",
+          "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+          "lat": 42.451767,
+          "lon": -71.107247,
+          "id_detail": {
+            "common_name": "Peach Coral Fungus",
+            "scientific_name": "Ramaria sp. (cf. formosa group)",
+            "edibility": "Do not eat \u2014 several Ramaria (incl. formosa group) are toxic / purgative",
+            "summary": "Upright branched coral fungus, peach to salmon-pink with paler yellowish tips. Growing from forest floor among oak litter (mycorrhizal Ramaria, not wood-only Artomyces).",
+            "uses": "Not recommended. Some Ramaria are edible when correctly ID'd; many cause GI upset. Never eat coral fungi without expert confirmation.",
+            "habitat": "Ground under hardwoods and mixed woods; mycorrhizal.",
+            "tree_associates": "Oaks and mixed hardwoods.",
+            "field_marks": "Dense upright coral of parallel branches; peach/salmon flesh; tips often paler or yellowish; base fused; no cap or gills.",
+            "confidence": "high-genus",
+            "photo_location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+            "view": "side",
+            "lat": 42.451767,
+            "lon": -71.107247,
+            "season": "Summer to fall (this find: early August)"
+          }
         }
       ],
       "subcategories": [
         {
           "name": "Crown-tipped Coral",
           "note": "Artomyces pyxidatus"
+        }
+      ]
+    },
+    {
+      "id": "parasols",
+      "common_name": "Parasols",
+      "scientific_name": "Macrolepiota / Chlorophyllum",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "edibility": "Variable \u2014 some choice, some toxic; expert ID required",
+      "confidence": "group",
+      "summary": "Large umbrella mushrooms with scaly caps, free gills, and a ring. Includes true parasols and shaggy / green-spored lookalikes.",
+      "uses": "Only the true parasol is a classic edible for experts; toxic lookalikes exist. Educational only.",
+      "habitat": "Leaf litter in oak woods; some species also in lawns and parks.",
+      "tree_associates": "Oaks and mixed hardwoods (litter saprotrophs).",
+      "field_marks": "Large scaly tan cap with darker disc; free gills; stem ring; tall parasol stature.",
+      "season": "Summer to fall",
+      "region_notes": "Middlesex Fells (MA).",
+      "cover_image": "photos/49_parasol.jpg",
+      "photos": [
+        {
+          "src": "photos/49_parasol.jpg",
+          "caption": "Parasol mushroom in oak leaf litter",
+          "view": "side",
+          "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+          "lat": 42.452131,
+          "lon": -71.109397,
+          "id_detail": {
+            "common_name": "Parasol (Lepiota group)",
+            "scientific_name": "Macrolepiota / Chlorophyllum sp.",
+            "edibility": "Variable \u2014 some choice (true parasol), some toxic (green-spored parasol). Do not eat without expert ID",
+            "summary": "Large umbrella-shaped gilled mushroom with a scaly tan cap, darker central disc, free gills, and a ring on the stem. Parasol / shaggy-parasol complex; green spore print would indicate toxic Chlorophyllum molybdites.",
+            "uses": "True parasol (Macrolepiota procera) is a choice edible for experts; lookalikes include toxic green-spored parasols. Educational only on this site.",
+            "habitat": "Leaf litter in oak and mixed woods; also lawns and edges for some Chlorophyllum.",
+            "tree_associates": "Oaks and mixed hardwoods (saprotrophic on litter).",
+            "field_marks": "Large tan scaly/fibrillose cap with brown disc; free gills; stem ring; tall parasol habit. Spore print white (Macrolepiota/Chlorophyllum rhacodes group) vs greenish (C. molybdites).",
+            "confidence": "high-group",
+            "photo_location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+            "view": "side",
+            "lat": 42.452131,
+            "lon": -71.109397,
+            "season": "Summer to fall (this find: early August)"
+          }
         }
       ]
     },

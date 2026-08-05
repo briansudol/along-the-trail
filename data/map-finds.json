@@ -51,6 +51,32 @@
         "lon_min": -75.15,
         "lon_max": -75.08
       }
+    },
+    "middlesex-fells": {
+      "id": "middlesex-fells",
+      "name": "Middlesex Fells Reservation",
+      "subtitle": "Stoneham / Medford / Winchester / Melrose, MA \u2014 2,200+ acres of rocky woodland & trails",
+      "center": [
+        42.45,
+        -71.11
+      ],
+      "zoom": 13,
+      "bounds": [
+        [
+          42.424,
+          -71.134
+        ],
+        [
+          42.473,
+          -71.07
+        ]
+      ],
+      "filter": {
+        "lat_min": 42.42,
+        "lat_max": 42.48,
+        "lon_min": -71.14,
+        "lon_max": -71.07
+      }
     }
   },
   "finds": [
@@ -1054,6 +1080,201 @@
       "lat": 40.986422,
       "lon": -75.096353,
       "photo_index": 0
+    },
+    {
+      "species_id": "polypores-crusts",
+      "common_name": "White-pored Chicken of the Woods",
+      "scientific_name": "Laetiporus cincinnatus",
+      "category": "Polypores & crusts",
+      "category_slug": "polypore",
+      "thumb": "photos/42_chicken_cincinnatus_rosette.jpg",
+      "caption": "White-pored chicken of the woods \u2014 ground rosette",
+      "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+      "lat": 42.466156,
+      "lon": -71.118653,
+      "photo_index": 8
+    },
+    {
+      "species_id": "polypores-crusts",
+      "common_name": "White-pored Chicken of the Woods",
+      "scientific_name": "Laetiporus cincinnatus",
+      "category": "Polypores & crusts",
+      "category_slug": "polypore",
+      "thumb": "photos/43_chicken_cincinnatus_cluster.jpg",
+      "caption": "White-pored chicken of the woods \u2014 full cluster",
+      "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+      "lat": 42.466161,
+      "lon": -71.118653,
+      "photo_index": 9
+    },
+    {
+      "species_id": "russula",
+      "common_name": "Red Russula (pink-red)",
+      "scientific_name": "Russula sp. (red / emetica group)",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/44_red_russula_side.jpg",
+      "caption": "Pink-red Russula on moss bank",
+      "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+      "lat": 42.442981,
+      "lon": -71.113883,
+      "photo_index": 3
+    },
+    {
+      "species_id": "russula",
+      "common_name": "Red Russula (pink-red)",
+      "scientific_name": "Russula sp. (red / emetica group)",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/45_red_russula_gills.jpg",
+      "caption": "White gills and stem \u2014 underside",
+      "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+      "lat": 42.442978,
+      "lon": -71.113861,
+      "photo_index": 4
+    },
+    {
+      "species_id": "russula",
+      "common_name": "Red Russula (pink-red)",
+      "scientific_name": "Russula sp. (red / emetica group)",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/46_red_russula_top.jpg",
+      "caption": "Pink-red cap from above",
+      "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+      "lat": 42.442978,
+      "lon": -71.113861,
+      "photo_index": 5
+    },
+    {
+      "species_id": "coral-fungi",
+      "common_name": "Peach Coral Fungus",
+      "scientific_name": "Ramaria sp. (cf. formosa group)",
+      "category": "Coral fungi",
+      "category_slug": "coral",
+      "thumb": "photos/47_peach_coral_top.jpg",
+      "caption": "Peach coral fungus \u2014 branch tips",
+      "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+      "lat": 42.451767,
+      "lon": -71.107253,
+      "photo_index": 3
+    },
+    {
+      "species_id": "coral-fungi",
+      "common_name": "Peach Coral Fungus",
+      "scientific_name": "Ramaria sp. (cf. formosa group)",
+      "category": "Coral fungi",
+      "category_slug": "coral",
+      "thumb": "photos/48_peach_coral_side.jpg",
+      "caption": "Peach coral fungus \u2014 full cluster in oak litter",
+      "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+      "lat": 42.451767,
+      "lon": -71.107247,
+      "photo_index": 4
+    },
+    {
+      "species_id": "parasols",
+      "common_name": "Parasol (Lepiota group)",
+      "scientific_name": "Macrolepiota / Chlorophyllum sp.",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/49_parasol.jpg",
+      "caption": "Parasol mushroom in oak leaf litter",
+      "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+      "lat": 42.452131,
+      "lon": -71.109397,
+      "photo_index": 0
+    },
+    {
+      "species_id": "rollrim",
+      "common_name": "Brown Roll-rim",
+      "scientific_name": "Paxillus involutus complex",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/50_rollrim_top.jpg",
+      "caption": "Brown roll-rim \u2014 cap from above with button",
+      "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+      "lat": 42.443906,
+      "lon": -71.120681,
+      "photo_index": 0
+    },
+    {
+      "species_id": "rollrim",
+      "common_name": "Brown Roll-rim",
+      "scientific_name": "Paxillus involutus complex",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/51_rollrim_gills.jpg",
+      "caption": "Brown roll-rim \u2014 gills and young button",
+      "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+      "lat": 42.443889,
+      "lon": -71.120681,
+      "photo_index": 1
+    },
+    {
+      "species_id": "rollrim",
+      "common_name": "Brown Roll-rim",
+      "scientific_name": "Paxillus involutus complex",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/52_rollrim_profile.jpg",
+      "caption": "Brown roll-rim \u2014 profile in oak litter",
+      "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+      "lat": 42.443889,
+      "lon": -71.120675,
+      "photo_index": 2
+    },
+    {
+      "species_id": "polypores-crusts",
+      "common_name": "Artist's Conk / large woody polypore",
+      "scientific_name": "Ganoderma cf. applanatum (or allies)",
+      "category": "Polypores & crusts",
+      "category_slug": "polypore",
+      "thumb": "photos/53_artists_conk.jpg",
+      "caption": "Large woody polypore at tree base",
+      "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+      "lat": 42.451758,
+      "lon": -71.117194,
+      "photo_index": 10
+    },
+    {
+      "species_id": "boletes",
+      "common_name": "Yellow-pored Bolete (butter-foot group)",
+      "scientific_name": "Boletus cf. auripes / yellow bolete complex",
+      "category": "Boletes",
+      "category_slug": "bolete",
+      "thumb": "photos/54_yellow_bolete_pair.jpg",
+      "caption": "Yellow-pored bolete pair in pine-oak litter",
+      "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+      "lat": 42.446472,
+      "lon": -71.120522,
+      "photo_index": 24
+    },
+    {
+      "species_id": "boletes",
+      "common_name": "Yellow-pored Bolete (butter-foot group)",
+      "scientific_name": "Boletus cf. auripes / yellow bolete complex",
+      "category": "Boletes",
+      "category_slug": "bolete",
+      "thumb": "photos/55_yellow_bolete_pores.jpg",
+      "caption": "Yellow pore surface and stems",
+      "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+      "lat": 42.446475,
+      "lon": -71.120522,
+      "photo_index": 25
+    },
+    {
+      "species_id": "polypores-crusts",
+      "common_name": "Weeping stump polypore",
+      "scientific_name": "Inonotus cf. dryadeus (or young Laetiporus)",
+      "category": "Polypores & crusts",
+      "category_slug": "polypore",
+      "thumb": "photos/56_weeping_polypore.jpg",
+      "caption": "Guttating lobed polypore on stump",
+      "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+      "lat": 42.458039,
+      "lon": -71.119339,
+      "photo_index": 11
     }
   ]
 }

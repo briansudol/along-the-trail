@@ -709,6 +709,7 @@
     document.querySelectorAll(".map-tab").forEach(function (tab) {
       var on = tab.getAttribute("data-map") === regionId;
       tab.classList.toggle("is-active", on);
+      tab.setAttribute("aria-selected", on ? "true" : "false");
     });
     if (mapLayers.markers) trailMap.removeLayer(mapLayers.markers);
     mapLayers.markers = L.layerGroup().addTo(trailMap);
