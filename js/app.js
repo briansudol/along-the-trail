@@ -136,10 +136,79 @@
       .replace(/"/g, "&quot;");
   }
 
+  function isVideoSrc(src) {
+    return /\.(mp4|webm|mov|ogg)(\?|$)/i.test(src || "");
+  }
+
+  function isVideoMedia(media) {
+    if (!media) return false;
+    if (media.type === "video") return true;
+    return isVideoSrc(media.src || media);
+  }
+
+  function mediaPoster(media) {
+    if (!media) return "";
+    if (typeof media === "string") return isVideoSrc(media) ? "" : media;
+    return media.poster || (isVideoMedia(media) ? "" : media.src) || "";
+  }
+
   function primaryPhoto(item) {
     if (item.cover_image) return item.cover_image;
-    if (item.photos && item.photos.length) return item.photos[0].src;
+    if (item.photos && item.photos.length) {
+      var first = item.photos[0];
+      if (isVideoMedia(first)) return first.poster || first.src || "";
+      return first.src;
+    }
     return item.image || "";
+  }
+
+  function cardMediaHtml(item) {
+    var cover = item.cover_image || "";
+    var photos = item.photos || [];
+    var video = photos.find(function (p) {
+      return isVideoMedia(p);
+    });
+    // Prefer still cover for card; fall back to video poster or first frame media
+    var imgSrc = cover || (video && video.poster) || primaryPhoto(item);
+    var badge = video
+      ? '<span class="media-badge media-badge-video" aria-hidden="true">▶ Video</span>'
+      : "";
+    return (
+      '<div class="card-image">' +
+      badge +
+      '<img src="' +
+      escapeHtml(imgSrc) +
+      '" alt="' +
+      escapeHtml(item.common_name) +
+      '" loading="lazy" />' +
+      "</div>"
+    );
+  }
+
+  function mainMediaHtml(media) {
+    if (!media || !media.src) return '<img id="detail-main-img" src="" alt="" />';
+    if (isVideoMedia(media)) {
+      var poster = media.poster ? ' poster="' + escapeHtml(media.poster) + '"' : "";
+      return (
+        '<video id="detail-main-video" class="detail-main-video" controls playsinline preload="metadata"' +
+        poster +
+        ">" +
+        '<source src="' +
+        escapeHtml(media.src) +
+        '" type="video/mp4" />' +
+        "Your browser does not support the video tag." +
+        "</video>"
+      );
+    }
+    return (
+      '<img id="detail-main-img" src="' + escapeHtml(media.src) + '" alt="" />'
+    );
+  }
+
+  function thumbSrcFor(media) {
+    if (!media) return "";
+    if (isVideoMedia(media)) return media.poster || media.src || "";
+    return media.src || "";
   }
 
   function primaryLocation(item) {
@@ -217,11 +286,7 @@
           '" data-kind="' +
           (viewMode === "wildlife" ? "wildlife" : item.is_group ? "group" : "community") +
           '">' +
-          '<div class="card-image"><img src="' +
-          escapeHtml(primaryPhoto(item)) +
-          '" alt="' +
-          escapeHtml(item.common_name) +
-          '" loading="lazy" /></div>' +
+          cardMediaHtml(item) +
           '<div class="card-body">' +
           '<span class="card-category">' +
           escapeHtml(item.category || "") +
@@ -340,18 +405,26 @@
     if (!item) return;
 
     var photos = item.photos || [];
-    // Prefer cover image as first displayed
+    // Prefer cover image as first displayed; if a video exists, open on it so clips play immediately
     var startIdx = 0;
-    if (item.cover_image) {
-      for (var i = 0; i < photos.length; i++) {
-        if (photos[i].src === item.cover_image) {
-          startIdx = i;
+    var videoIdx = -1;
+    for (var i = 0; i < photos.length; i++) {
+      if (isVideoMedia(photos[i])) {
+        videoIdx = i;
+        break;
+      }
+    }
+    if (videoIdx >= 0) {
+      startIdx = videoIdx;
+    } else if (item.cover_image) {
+      for (var j = 0; j < photos.length; j++) {
+        if (photos[j].src === item.cover_image) {
+          startIdx = j;
           break;
         }
       }
     }
     var activePhoto = photos[startIdx] || photos[0] || {};
-    var activeSrc = activePhoto.src || "";
 
     var thumbs =
       photos.length > 1
@@ -359,19 +432,25 @@
           photos
             .map(function (p, i) {
               var label =
-                (p.id_detail && p.id_detail.common_name) || p.caption || "Photo " + (i + 1);
+                (p.id_detail && p.id_detail.common_name) ||
+                p.caption ||
+                (isVideoMedia(p) ? "Video " : "Photo ") + (i + 1);
+              var tSrc = thumbSrcFor(p);
               return (
                 '<button type="button" class="' +
                 (i === startIdx ? "is-active" : "") +
+                (isVideoMedia(p) ? " is-video" : "") +
                 '" data-photo-idx="' +
                 i +
                 '" title="' +
                 escapeHtml(label) +
                 '"><img src="' +
-                escapeHtml(p.src) +
+                escapeHtml(tSrc) +
                 '" alt="' +
                 escapeHtml(label) +
-                '" /></button>'
+                '" />' +
+                (isVideoMedia(p) ? '<span class="thumb-video-mark">▶</span>' : "") +
+                "</button>"
               );
             })
             .join("") +
@@ -397,10 +476,8 @@
 
     els.detail.innerHTML =
       '<div class="detail-hero">' +
-      '<div class="detail-photos">' +
-      '<img id="detail-main-img" src="' +
-      escapeHtml(activeSrc) +
-      '" alt="" />' +
+      '<div class="detail-photos" id="detail-photos-main">' +
+      mainMediaHtml(activePhoto) +
       thumbs +
       "</div>" +
       '<div id="detail-id-wrap">' +
@@ -411,23 +488,53 @@
     els.modal.hidden = false;
     document.body.classList.add("modal-open");
 
-    els.detail.querySelectorAll(".detail-photo-nav button").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var idx = parseInt(btn.getAttribute("data-photo-idx"), 10);
-        var p = photos[idx];
-        var main = document.getElementById("detail-main-img");
-        if (main && p) main.src = p.src;
-        els.detail.querySelectorAll(".detail-photo-nav button").forEach(function (b) {
-          b.classList.remove("is-active");
-        });
-        btn.classList.add("is-active");
-        var wrap = document.getElementById("detail-id-wrap");
-        if (wrap) wrap.innerHTML = renderIdPanel(item, p);
+    function setDetailMedia(p) {
+      var host = document.getElementById("detail-photos-main");
+      if (!host || !p) return;
+      // Keep thumbs; replace only the main media element(s)
+      var nav = host.querySelector(".detail-photo-nav");
+      var navHtml = nav ? nav.outerHTML : "";
+      host.innerHTML = mainMediaHtml(p) + navHtml;
+      // re-bind thumb clicks after replacing nav
+      host.querySelectorAll(".detail-photo-nav button").forEach(function (btn) {
+        btn.addEventListener("click", onThumbClick);
       });
+    }
+
+    function onThumbClick() {
+      var idx = parseInt(this.getAttribute("data-photo-idx"), 10);
+      var p = photos[idx];
+      // pause any playing video before swap
+      var playing = els.detail.querySelector("video");
+      if (playing) {
+        try {
+          playing.pause();
+        } catch (e) {}
+      }
+      setDetailMedia(p);
+      els.detail.querySelectorAll(".detail-photo-nav button").forEach(function (b) {
+        b.classList.remove("is-active");
+      });
+      var activeBtn = els.detail.querySelector(
+        '.detail-photo-nav button[data-photo-idx="' + idx + '"]'
+      );
+      if (activeBtn) activeBtn.classList.add("is-active");
+      var wrap = document.getElementById("detail-id-wrap");
+      if (wrap) wrap.innerHTML = renderIdPanel(item, p);
+    }
+
+    els.detail.querySelectorAll(".detail-photo-nav button").forEach(function (btn) {
+      btn.addEventListener("click", onThumbClick);
     });
   }
 
   function closeModal() {
+    var playing = els.detail ? els.detail.querySelector("video") : null;
+    if (playing) {
+      try {
+        playing.pause();
+      } catch (e) {}
+    }
     els.modal.hidden = true;
     document.body.classList.remove("modal-open");
     els.detail.innerHTML = "";

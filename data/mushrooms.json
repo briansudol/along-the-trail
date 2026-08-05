@@ -2580,6 +2580,76 @@
         }
       ],
       "cover_image": "photos/21_red_eft.jpg"
+    },
+    {
+      "id": "coopers-hawk",
+      "common_name": "Cooper's Hawk",
+      "scientific_name": "Accipiter cooperii",
+      "category": "Bird",
+      "category_slug": "wildlife",
+      "edibility": "Not a mushroom \u2014 wildlife",
+      "confidence": "moderate",
+      "summary": "Medium-sized woodland hawk perched high in white pine. Brown upperparts with streaked pale underparts match a juvenile Cooper's Hawk (Accipiter cooperii); Sharp-shinned Hawk is the main lookalike.",
+      "uses": "Apex predator of small birds and mammals \u2014 observe quietly and leave undisturbed.",
+      "habitat": "Woodlands, forest edges, and pine canopy; often hunts songbirds among trees.",
+      "tree_associates": "Pines and mixed hardwood forest canopy.",
+      "field_marks": "Brown mottled back; pale breast with dark streaks (juvenile pattern); relatively long tail; perched upright looking down from mid\u2013high pine limbs.",
+      "season": "Year-round resident in much of the Northeast; this clip early August",
+      "region_notes": "Middlesex Fells Reservation, MA.",
+      "cover_image": "photos/57_coopers_hawk_poster.jpg",
+      "photos": [
+        {
+          "src": "photos/57_coopers_hawk_poster.jpg",
+          "type": "image",
+          "caption": "Cooper's Hawk in white pine canopy (still from video)",
+          "view": "side",
+          "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+          "lat": 42.4678,
+          "lon": -71.1145,
+          "id_detail": {
+            "common_name": "Cooper's Hawk",
+            "scientific_name": "Accipiter cooperii",
+            "edibility": "Not a mushroom \u2014 wildlife",
+            "summary": "Still from trail video: juvenile-pattern Accipiter with streaked underparts high in pine.",
+            "uses": "Observe quietly; do not approach nests.",
+            "habitat": "Woodland canopy and edges.",
+            "tree_associates": "White pine and mixed forest.",
+            "field_marks": "Streaked pale breast; brown back; Accipiter proportions.",
+            "confidence": "moderate",
+            "photo_location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+            "view": "side",
+            "lat": 42.4678,
+            "lon": -71.1145,
+            "season": "Early August"
+          }
+        },
+        {
+          "src": "photos/57_coopers_hawk.mp4",
+          "type": "video",
+          "poster": "photos/57_coopers_hawk_poster.jpg",
+          "caption": "Cooper's Hawk perched in pine canopy (~29 s)",
+          "view": "video",
+          "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+          "lat": 42.4678,
+          "lon": -71.1145,
+          "id_detail": {
+            "common_name": "Cooper's Hawk",
+            "scientific_name": "Accipiter cooperii",
+            "edibility": "Not a mushroom \u2014 wildlife",
+            "summary": "Trail video of a hawk high in white pines. Streaked underparts and canopy perch favor juvenile Cooper's Hawk; Sharp-shinned Hawk remains a possible lookalike without closer size/tail cues.",
+            "uses": "Observe quietly; do not approach nests.",
+            "habitat": "Woodland canopy \u2014 often hunts among branches.",
+            "tree_associates": "White pine and mixed forest.",
+            "field_marks": "Brown upperparts; streaked pale underparts; upright perch scanning downward.",
+            "confidence": "moderate",
+            "photo_location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+            "view": "video",
+            "lat": 42.4678,
+            "lon": -71.1145,
+            "season": "Early August 2026"
+          }
+        }
+      ]
     }
   ]
 }

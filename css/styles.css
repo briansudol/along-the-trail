@@ -186,12 +186,29 @@ p { margin: 0 0 1rem; }
 }
 .card-image {
   aspect-ratio: 4/3; overflow: hidden; background: #e8e4db;
+  position: relative;
 }
 .card-image img {
   width: 100%; height: 100%; object-fit: cover;
   transition: transform 0.4s var(--ease);
 }
 .card:hover .card-image img { transform: scale(1.04); }
+.media-badge {
+  position: absolute;
+  z-index: 2;
+  top: 0.55rem;
+  left: 0.55rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(20, 28, 22, 0.78);
+  color: #f4f1ea;
+  pointer-events: none;
+}
+.media-badge-video { background: rgba(30, 90, 55, 0.88); }
 .card-body { padding: 1.1rem 1.15rem 1.25rem; flex: 1; display: flex; flex-direction: column; gap: 0.35rem; }
 .card-category {
   font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
@@ -646,8 +663,14 @@ p { margin: 0 0 1rem; }
   .detail-hero { grid-template-columns: 1fr; }
 }
 .detail-photos { background: #1a211c; }
-.detail-photos img {
+.detail-photos img,
+.detail-photos .detail-main-video {
   width: 100%; height: min(28rem, 55vh); object-fit: cover;
+  display: block; background: #0f1411;
+}
+.detail-photos .detail-main-video {
+  object-fit: contain;
+  background: #0a0e0c;
 }
 .detail-photo-nav {
   display: flex; gap: 0.4rem; padding: 0.65rem; justify-content: center; flex-wrap: wrap;
@@ -656,9 +679,14 @@ p { margin: 0 0 1rem; }
 .detail-photo-nav button {
   width: 3.2rem; height: 3.2rem; padding: 0; border: 2px solid transparent;
   border-radius: 0.4rem; overflow: hidden; cursor: pointer; background: #2a332e;
+  position: relative;
 }
 .detail-photo-nav button.is-active { border-color: var(--spore); }
 .detail-photo-nav img { width: 100%; height: 100%; object-fit: cover; }
+.detail-photo-nav .thumb-video-mark {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  background: rgba(0,0,0,0.35); color: #fff; font-size: 0.85rem; pointer-events: none;
+}
 .detail-header { padding: 1.75rem 1.75rem 1.25rem; }
 .detail-header .card-category { margin-bottom: 0.35rem; display: block; }
 .photo-specific-label {

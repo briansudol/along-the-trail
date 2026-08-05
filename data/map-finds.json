@@ -1275,6 +1275,19 @@
       "lat": 42.458039,
       "lon": -71.119339,
       "photo_index": 11
+    },
+    {
+      "species_id": "coopers-hawk",
+      "common_name": "Cooper's Hawk",
+      "scientific_name": "Accipiter cooperii",
+      "category": "Bird",
+      "category_slug": "wildlife",
+      "thumb": "photos/57_coopers_hawk_poster.jpg",
+      "caption": "Cooper's Hawk in white pine canopy",
+      "location": "Middlesex Fells Reservation, Stoneham / Medford, MA",
+      "lat": 42.4678,
+      "lon": -71.1145,
+      "photo_index": 0
     }
   ]
 }
