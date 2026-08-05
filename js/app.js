@@ -640,19 +640,27 @@
       (item.photos || []).forEach(function (p, i) {
         var lat = p.lat;
         var lon = p.lon;
+        if ((lat == null || lon == null) && p.id_detail) {
+          lat = lat != null ? lat : p.id_detail.lat;
+          lon = lon != null ? lon : p.id_detail.lon;
+        }
         if (lat == null && item.gps) {
           lat = item.gps.lat;
           lon = item.gps.lon;
         }
         if (lat == null || lon == null) return;
+        lat = Number(lat);
+        lon = Number(lon);
+        if (!isFinite(lat) || !isFinite(lon)) return;
+        var detail = p.id_detail || {};
         finds.push({
           species_id: item.id,
-          common_name: item.common_name,
-          scientific_name: item.scientific_name,
+          common_name: detail.common_name || item.common_name,
+          scientific_name: detail.scientific_name || item.scientific_name,
           category_slug: item.category_slug,
           thumb: p.src,
           caption: p.caption || "",
-          location: p.location || item.location || "",
+          location: p.location || detail.photo_location || item.location || "",
           lat: lat,
           lon: lon,
           photo_index: i,
@@ -676,6 +684,7 @@
   function findsInRegion(regionId, finds) {
     if (!mapData || !mapData.regions[regionId]) return [];
     var f = mapData.regions[regionId].filter;
+    if (!f) return [];
     return finds.filter(function (x) {
       return (
         x.lat >= f.lat_min &&
@@ -700,10 +709,59 @@
     });
   }
 
+  /** Jump map to a region (handles long-distance tab switches like NJ → MA). */
+  function focusMapOnRegion(region, markers) {
+    if (!trailMap || !region) return;
+    trailMap.invalidateSize();
+
+    function applyView() {
+      trailMap.invalidateSize();
+      var used = false;
+      if (markers && markers.length) {
+        try {
+          var fg = L.featureGroup(markers);
+          var b = fg.getBounds();
+          if (b && b.isValid()) {
+            trailMap.fitBounds(b.pad(0.25), { maxZoom: 15, animate: false });
+            used = true;
+          }
+        } catch (e) {
+          used = false;
+        }
+      }
+      if (!used && region.bounds && region.bounds.length === 2) {
+        try {
+          trailMap.fitBounds(region.bounds, { maxZoom: region.zoom || 13, animate: false });
+          used = true;
+        } catch (e2) {
+          used = false;
+        }
+      }
+      if (!used && region.center) {
+        trailMap.setView(region.center, region.zoom || 13, { animate: false });
+      }
+      // Second pass after layout settles (fixes gray tiles on first paint)
+      setTimeout(function () {
+        trailMap.invalidateSize();
+      }, 100);
+    }
+
+    // Defer so Leaflet recalculates container size after tab UI updates
+    requestAnimationFrame(function () {
+      setTimeout(applyView, 50);
+    });
+  }
+
   function renderMapRegion(regionId) {
     if (!trailMap || !mapData) return;
-    activeMapRegion = regionId;
     var region = mapData.regions[regionId];
+    if (!region) {
+      console.error("Unknown map region:", regionId, "known:", Object.keys(mapData.regions || {}));
+      var titleEl = document.getElementById("map-region-title");
+      if (titleEl) titleEl.textContent = "Map region unavailable";
+      return;
+    }
+    activeMapRegion = regionId;
     document.getElementById("map-region-title").textContent = region.name;
     document.getElementById("map-region-sub").textContent = region.subtitle || "";
     document.querySelectorAll(".map-tab").forEach(function (tab) {
@@ -777,30 +835,21 @@
       });
     });
 
-    if (finds.length) {
-      try {
-        trailMap.fitBounds(L.featureGroup(markerByIdx.filter(Boolean)).getBounds().pad(0.2), {
-          maxZoom: 15,
-        });
-      } catch (e) {
-        trailMap.setView(region.center, region.zoom);
-      }
-    } else {
-      trailMap.setView(region.center, region.zoom);
-    }
+    focusMapOnRegion(region, markerByIdx.filter(Boolean));
   }
 
   function setupMaps() {
     if (!document.getElementById("trail-map") || typeof L === "undefined") return;
-    fetch("data/map-finds.json")
+    fetch("data/map-finds.json", { cache: "no-cache" })
       .then(function (r) {
+        if (!r.ok) throw new Error("map-finds.json HTTP " + r.status);
         return r.json();
       })
       .then(function (data) {
         mapData = data;
         trailMap = L.map("trail-map", { scrollWheelZoom: false });
         var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          maxZoom: 18,
+          maxZoom: 19,
           attribution: "&copy; OpenStreetMap",
         });
         var topo = L.tileLayer("https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png", {
@@ -817,21 +866,32 @@
         setTimeout(function () {
           trailMap.invalidateSize();
           renderMapRegion("sourland");
-        }, 150);
+        }, 200);
         var mapsSection = document.getElementById("maps");
         if (mapsSection && "IntersectionObserver" in window) {
+          var mapSeen = false;
           new IntersectionObserver(
             function (entries) {
               entries.forEach(function (en) {
-                if (en.isIntersecting) trailMap.invalidateSize();
+                if (!en.isIntersecting || !trailMap) return;
+                trailMap.invalidateSize();
+                // First time the map scrolls into view, re-focus so tiles aren't gray
+                if (!mapSeen) {
+                  mapSeen = true;
+                  if (activeMapRegion && mapData && mapData.regions[activeMapRegion]) {
+                    focusMapOnRegion(mapData.regions[activeMapRegion], null);
+                  }
+                }
               });
             },
-            { threshold: 0.1 }
+            { threshold: 0.15 }
           ).observe(mapsSection);
         }
       })
       .catch(function (err) {
         console.error(err);
+        var titleEl = document.getElementById("map-region-title");
+        if (titleEl) titleEl.textContent = "Could not load trail maps";
       });
   }
 
