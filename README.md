@@ -13,7 +13,7 @@ After deploy, the public gallery is at:
 ## Preview locally (with admin photo editor)
 
 ```bash
-cd ~/along-the-trail
+cd ~/along-the-trail-site
 cp admin_config.example.json admin_config.json   # first time only
 python3 admin_server.py
 ```
@@ -40,7 +40,7 @@ Open [http://localhost:8877](http://localhost:8877).
 ## Project layout
 
 ```
-along-the-trail/
+along-the-trail-site/
   index.html
   css/styles.css
   js/app.js
