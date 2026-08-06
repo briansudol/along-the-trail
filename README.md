@@ -1,6 +1,6 @@
-# Mushrooms of the Delaware Water Gap and Sourlands
+# Along the Trail: Fungi & Field Finds
 
-Interactive field atlas website — species ID, category, habitat, tree associates, uses, search, and community photo uploads.
+Interactive trail guide — fungi and field finds with species ID, habitat notes, GPS trail maps, search, and community photo uploads.
 
 ## Live site (GitHub Pages)
 
