@@ -6,14 +6,14 @@ Interactive trail guide — fungi and field finds with species ID, habitat notes
 
 After deploy, the public gallery is at:
 
-`https://briansudol.github.io/mushrooms-delaware-valley/`
+`https://briansudol.github.io/along-the-trail/`
 
 **Admin photo editing is localhost-only.** On GitHub Pages the Admin button and editor are removed automatically. Use `admin_server.py` on your Mac to edit images, then `git push` to update the live site.
 
 ## Preview locally (with admin photo editor)
 
 ```bash
-cd ~/mushrooms-delaware-valley
+cd ~/along-the-trail
 cp admin_config.example.json admin_config.json   # first time only
 python3 admin_server.py
 ```
@@ -40,7 +40,7 @@ Open [http://localhost:8877](http://localhost:8877).
 ## Project layout
 
 ```
-mushrooms-delaware-valley/
+along-the-trail/
   index.html
   css/styles.css
   js/app.js
