@@ -1,10 +1,11 @@
 :root {
-  --bg: #f4f1ea;
-  --bg-card: #fffcf7;
+  /* Pantone 11-4001 TCX Brilliant White (sampled from swatch) */
+  --bg: #ebf1fe;
+  --bg-card: #ffffff;
   --ink: #1a211c;
   --ink-soft: #3d4a42;
   --muted: #6b756e;
-  --line: #ddd6c8;
+  --line: #d5dce8;
   --forest: #2f4f3e;
   --forest-deep: #1e3329;
   --moss: #5a7a62;
@@ -185,7 +186,7 @@ p { margin: 0 0 1rem; }
   outline: none;
 }
 .card-image {
-  aspect-ratio: 4/3; overflow: hidden; background: #e8e4db;
+  aspect-ratio: 4/3; overflow: hidden; background: #e4e9f2;
   position: relative;
 }
 .card-image img {
@@ -277,7 +278,7 @@ p { margin: 0 0 1rem; }
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
-  background: #e8e4db;
+  background: #e4e9f2;
   box-shadow: var(--shadow);
 }
 .trail-map {
