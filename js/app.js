@@ -102,7 +102,7 @@
       parts.push(s.name, s.note);
     });
     (item.photos || []).forEach(function (p) {
-      parts.push(p.caption, p.location);
+      parts.push(p.caption, p.location, p.taken_at, formatTakenAt(photoTakenAt(p)));
     });
     return parts.filter(Boolean).join(" ").toLowerCase().indexOf(q) !== -1;
   }
@@ -339,6 +339,45 @@
     );
   }
 
+  function photoTakenAt(photo) {
+    if (!photo) return "";
+    if (photo.taken_at) return photo.taken_at;
+    if (photo.id_detail && photo.id_detail.taken_at) return photo.id_detail.taken_at;
+    return "";
+  }
+
+  /** Format camera EXIF timestamps without timezone shifting. */
+  function formatTakenAt(iso) {
+    if (!iso) return "";
+    var m = String(iso).match(
+      /^(\d{4})-(\d{2})-(\d{2})(?:[T ](\d{2}):(\d{2})(?::(\d{2}))?)?/
+    );
+    if (!m) return String(iso);
+    var months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    var date = months[parseInt(m[2], 10) - 1] + " " + parseInt(m[3], 10) + ", " + m[1];
+    if (m[4] != null) {
+      var h = parseInt(m[4], 10);
+      var min = m[5];
+      var ampm = h >= 12 ? "p.m." : "a.m.";
+      var h12 = h % 12 || 12;
+      date += " · " + h12 + ":" + min + " " + ampm;
+    }
+    return date;
+  }
+
   function renderIdPanel(item, photo) {
     var d = (photo && photo.id_detail) || {};
     var common = d.common_name || item.common_name;
@@ -348,6 +387,7 @@
     var loc = (d.photo_location || (photo && photo.location) || "") ;
     var view = (d.view || (photo && photo.view) || "");
     var conf = d.confidence || item.confidence || "";
+    var taken = formatTakenAt(photoTakenAt(photo));
 
     return (
       '<div id="detail-id-panel">' +
@@ -378,6 +418,7 @@
       block("Where it grows", d.habitat || item.habitat) +
       block("Tree & forest associates", d.tree_associates || item.tree_associates) +
       block("Field marks", d.field_marks || item.field_marks) +
+      (taken ? block("Photographed", taken) : "") +
       block("Season", item.season) +
       block("Group overview", item.is_group ? item.summary : "") +
       "</div>" +
@@ -768,6 +809,7 @@
           thumb: p.src,
           caption: p.caption || "",
           location: p.location || detail.photo_location || item.location || "",
+          taken_at: p.taken_at || detail.taken_at || "",
           lat: lat,
           lon: lon,
           photo_index: i,
@@ -893,7 +935,11 @@
           "<div><strong>" +
           escapeHtml(f.common_name) +
           "</strong><span>" +
-          escapeHtml(f.caption || f.scientific_name || "") +
+          escapeHtml(
+            [formatTakenAt(f.taken_at), f.caption || f.scientific_name || ""]
+              .filter(Boolean)
+              .join(" · ")
+          ) +
           "</span></div></button></li>"
         );
       })
@@ -913,7 +959,9 @@
           "</strong><em>" +
           escapeHtml(f.scientific_name || "") +
           "</em><div style='font-size:0.8rem;color:#6b756e;margin-top:0.25rem'>" +
-          escapeHtml(f.location || "") +
+          escapeHtml(
+            [formatTakenAt(f.taken_at), f.location || ""].filter(Boolean).join(" · ")
+          ) +
           '</div><button type="button" data-open-species="' +
           escapeHtml(f.species_id) +
           '" data-kind="' +

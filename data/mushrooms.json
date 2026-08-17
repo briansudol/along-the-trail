@@ -18,7 +18,7 @@
       "category_slug": "gilled",
       "edibility": "Many toxic or deadly \u2014 treat all as poisonous unless expertly identified",
       "confidence": "genus",
-      "summary": "Mycorrhizal gilled mushrooms including yellow patches, warty Lepidella types, pale striate grisettes, white buttons, and brown-warted blushers. Free white gills and a volva are classic clues.",
+      "summary": "Mycorrhizal gilled mushrooms including yellow patches, warty Lepidella types, pale striate grisettes, white buttons, and brown-warted blushers. Free white gills and a volva are classic clues, plus pale scaly and powder-cap Lepidella types from later summer walks.",
       "uses": "Not for the table unless expertly identified. Many Amanita species are deadly.",
       "habitat": "Forest floor under hardwoods; mycorrhizal.",
       "tree_associates": "Oaks, beech, birch, mixed hardwoods.",
@@ -240,8 +240,10 @@
             "view": "top",
             "lat": 40.468075,
             "lon": -74.709717,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:31:28"
+          },
+          "taken_at": "2026-07-19T08:31:28"
         },
         {
           "src": "photos/d_IMG_6106.jpg",
@@ -264,8 +266,10 @@
             "view": "top",
             "lat": 40.473464,
             "lon": -74.708167,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:14:16"
+          },
+          "taken_at": "2026-07-19T08:14:16"
         },
         {
           "src": "photos/d_IMG_6094.jpg",
@@ -288,8 +292,10 @@
             "view": "top",
             "lat": 40.475075,
             "lon": -74.7062,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:06:28"
+          },
+          "taken_at": "2026-07-19T08:06:28"
         },
         {
           "src": "photos/d_IMG_6124.jpg",
@@ -312,8 +318,10 @@
             "view": "top",
             "lat": 40.459361,
             "lon": -74.708564,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T09:13:33"
+          },
+          "taken_at": "2026-07-19T09:13:33"
         },
         {
           "src": "photos/d_IMG_6108.jpg",
@@ -336,8 +344,10 @@
             "view": "top",
             "lat": 40.473372,
             "lon": -74.708558,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:14:51"
+          },
+          "taken_at": "2026-07-19T08:14:51"
         },
         {
           "src": "photos/d_IMG_6129.jpg",
@@ -360,8 +370,10 @@
             "view": "top",
             "lat": 40.459431,
             "lon": -74.708419,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T09:18:04"
+          },
+          "taken_at": "2026-07-19T09:18:04"
         },
         {
           "src": "photos/d_IMG_6061.jpg",
@@ -384,8 +396,10 @@
             "view": "top",
             "lat": 40.474442,
             "lon": -74.699142,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T07:17:57"
+          },
+          "taken_at": "2026-07-19T07:17:57"
         },
         {
           "src": "photos/d_IMG_6107.jpg",
@@ -408,8 +422,10 @@
             "view": "top",
             "lat": 40.473372,
             "lon": -74.708572,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:14:47"
+          },
+          "taken_at": "2026-07-19T08:14:47"
         },
         {
           "src": "photos/d_IMG_6054.jpg",
@@ -432,8 +448,10 @@
             "view": "top",
             "lat": 40.474106,
             "lon": -74.697242,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T07:03:42"
+          },
+          "taken_at": "2026-07-19T07:03:42"
         },
         {
           "src": "photos/d_IMG_6092.jpg",
@@ -456,8 +474,10 @@
             "view": "top",
             "lat": 40.475083,
             "lon": -74.706208,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:06:17"
+          },
+          "taken_at": "2026-07-19T08:06:17"
         },
         {
           "src": "photos/d_IMG_6109.jpg",
@@ -480,8 +500,62 @@
             "view": "top",
             "lat": 40.471347,
             "lon": -74.707956,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:18:58"
+          },
+          "taken_at": "2026-07-19T08:18:58"
+        },
+        {
+          "src": "photos/d_IMG_6432.jpg",
+          "caption": "Pale scaly Amanita \u2014 tessellated cap and striate margin",
+          "view": "top",
+          "location": "Sourland Mountain Preserve, Hillsborough, NJ",
+          "lat": 40.463233,
+          "lon": -74.700281,
+          "id_detail": {
+            "common_name": "Pale Scaly Amanita",
+            "scientific_name": "Amanita sp. (sect. Vaginatae / scaly allies)",
+            "edibility": "Treat as toxic \u2014 do not eat",
+            "summary": "Flattened pale cap with pinkish-tan mosaic scales, a darker disc, and a strongly grooved (striate) margin. Typical of pale Amanita in oak litter; species-level ID needs the stem base/volva.",
+            "uses": "Not for the table unless expertly identified. Many Amanita species are deadly.",
+            "habitat": "Forest floor under hardwoods; mycorrhizal.",
+            "tree_associates": "Oaks, beech, birch, mixed hardwoods.",
+            "field_marks": "Pale scaly/tessellated cap; darker central disc; strongly striate margin; white flesh.",
+            "confidence": "moderate-high",
+            "photo_location": "Sourland Mountain Preserve, Hillsborough, NJ",
+            "view": "top",
+            "lat": 40.463233,
+            "lon": -74.700281,
+            "season": "Summer to fall (this find: mid-August 2026)",
+            "taken_at": "2026-08-16T07:29:24"
+          },
+          "taken_at": "2026-08-16T07:29:24"
+        },
+        {
+          "src": "photos/d_IMG_6438.jpg",
+          "caption": "Powder-cap / gray Amanita in oak litter",
+          "view": "side",
+          "location": "Sourland Mountain Preserve, Hillsborough, NJ",
+          "lat": 40.456189,
+          "lon": -74.700456,
+          "id_detail": {
+            "common_name": "Powder-cap Amanita",
+            "scientific_name": "Amanita sp. (sect. Lepidella / powdery allies)",
+            "edibility": "Treat as toxic \u2014 do not eat",
+            "summary": "Small gray-white mushroom with a powdery or felted cap and a brownish stem in oak litter. Fits eastern powder-cap / Lepidella-type Amanita; full ID needs the buried base and volva.",
+            "uses": "Not for the table unless expertly identified. Many Amanita species are deadly.",
+            "habitat": "Forest floor under hardwoods; mycorrhizal.",
+            "tree_associates": "Oaks and mixed hardwoods.",
+            "field_marks": "Pale gray-white powdery/felted cap; brown stem; small-medium stature in litter.",
+            "confidence": "moderate",
+            "photo_location": "Sourland Mountain Preserve, Hillsborough, NJ",
+            "view": "side",
+            "lat": 40.456189,
+            "lon": -74.700456,
+            "season": "Summer to fall (this find: mid-August 2026)",
+            "taken_at": "2026-08-16T07:46:30"
+          },
+          "taken_at": "2026-08-16T07:46:30"
         }
       ],
       "subcategories": [
@@ -617,8 +691,10 @@
             "view": "side",
             "lat": 40.467389,
             "lon": -74.698983,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T10:05:01"
+          },
+          "taken_at": "2026-07-19T10:05:01"
         },
         {
           "src": "photos/d_IMG_6079.jpg",
@@ -641,8 +717,10 @@
             "view": "side",
             "lat": 40.476403,
             "lon": -74.705375,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T07:55:19"
+          },
+          "taken_at": "2026-07-19T07:55:19"
         },
         {
           "src": "photos/d_IMG_6078.jpg",
@@ -665,8 +743,10 @@
             "view": "top",
             "lat": 40.476381,
             "lon": -74.705361,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T07:55:03"
+          },
+          "taken_at": "2026-07-19T07:55:03"
         },
         {
           "src": "photos/23_bolete_brown.jpg",
@@ -761,8 +841,10 @@
             "view": "top",
             "lat": 40.47395,
             "lon": -74.698044,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T07:09:47"
+          },
+          "taken_at": "2026-07-19T07:09:47"
         },
         {
           "src": "photos/d_IMG_6077.jpg",
@@ -785,8 +867,10 @@
             "view": "top",
             "lat": 40.477192,
             "lon": -74.704344,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T07:49:21"
+          },
+          "taken_at": "2026-07-19T07:49:21"
         },
         {
           "src": "photos/d_IMG_6070.jpg",
@@ -809,8 +893,10 @@
             "view": "top",
             "lat": 40.478475,
             "lon": -74.703636,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T07:40:04"
+          },
+          "taken_at": "2026-07-19T07:40:04"
         },
         {
           "src": "photos/d_IMG_6086.jpg",
@@ -833,8 +919,10 @@
             "view": "top",
             "lat": 40.475433,
             "lon": -74.705894,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:03:16"
+          },
+          "taken_at": "2026-07-19T08:03:16"
         },
         {
           "src": "photos/d_IMG_6089.jpg",
@@ -857,8 +945,10 @@
             "view": "top",
             "lat": 40.475436,
             "lon": -74.70575,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:04:38"
+          },
+          "taken_at": "2026-07-19T08:04:38"
         },
         {
           "src": "photos/30_bolete_orange_group.jpg",
@@ -905,8 +995,10 @@
             "view": "top",
             "lat": 40.475086,
             "lon": -74.7062,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:06:35"
+          },
+          "taken_at": "2026-07-19T08:06:35"
         },
         {
           "src": "photos/d_IMG_6123.jpg",
@@ -929,8 +1021,10 @@
             "view": "top",
             "lat": 40.461692,
             "lon": -74.711258,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T09:04:05"
+          },
+          "taken_at": "2026-07-19T09:04:05"
         },
         {
           "src": "photos/d_IMG_6088.jpg",
@@ -953,8 +1047,10 @@
             "view": "top",
             "lat": 40.475478,
             "lon": -74.705781,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:04:36"
+          },
+          "taken_at": "2026-07-19T08:04:36"
         },
         {
           "src": "photos/d_IMG_6076.jpg",
@@ -977,8 +1073,10 @@
             "view": "top",
             "lat": 40.477189,
             "lon": -74.704344,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T07:49:14"
+          },
+          "taken_at": "2026-07-19T07:49:14"
         },
         {
           "src": "photos/28_leccinum.jpg",
@@ -1049,8 +1147,10 @@
             "view": "top",
             "lat": 40.465144,
             "lon": -74.711228,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:39:08"
+          },
+          "taken_at": "2026-07-19T08:39:08"
         },
         {
           "src": "photos/d_IMG_6101.jpg",
@@ -1073,8 +1173,10 @@
             "view": "top",
             "lat": 40.474319,
             "lon": -74.707206,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:10:24"
+          },
+          "taken_at": "2026-07-19T08:10:24"
         },
         {
           "src": "photos/d_IMG_6084.jpg",
@@ -1097,8 +1199,10 @@
             "view": "top",
             "lat": 40.475456,
             "lon": -74.705803,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:02:42"
+          },
+          "taken_at": "2026-07-19T08:02:42"
         },
         {
           "src": "photos/54_yellow_bolete_pair.jpg",
@@ -1121,8 +1225,10 @@
             "view": "side",
             "lat": 42.446472,
             "lon": -71.120522,
-            "season": "Summer to fall (this find: early August)"
-          }
+            "season": "Summer to fall (this find: early August)",
+            "taken_at": "2026-08-02T09:09:03"
+          },
+          "taken_at": "2026-08-02T09:09:03"
         },
         {
           "src": "photos/55_yellow_bolete_pores.jpg",
@@ -1145,8 +1251,10 @@
             "view": "underside",
             "lat": 42.446475,
             "lon": -71.120522,
-            "season": "Summer to fall (this find: early August)"
-          }
+            "season": "Summer to fall (this find: early August)",
+            "taken_at": "2026-08-02T09:09:09"
+          },
+          "taken_at": "2026-08-02T09:09:09"
         }
       ],
       "subcategories": [
@@ -1258,8 +1366,10 @@
             "view": "top",
             "lat": 40.473656,
             "lon": -74.707314,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:11:42"
+          },
+          "taken_at": "2026-07-19T08:11:42"
         },
         {
           "src": "photos/44_red_russula_side.jpg",
@@ -1282,8 +1392,10 @@
             "view": "side",
             "lat": 42.442981,
             "lon": -71.113883,
-            "season": "Summer to fall (this find: early August)"
-          }
+            "season": "Summer to fall (this find: early August)",
+            "taken_at": "2026-08-02T08:40:21"
+          },
+          "taken_at": "2026-08-02T08:40:21"
         },
         {
           "src": "photos/45_red_russula_gills.jpg",
@@ -1306,8 +1418,10 @@
             "view": "underside",
             "lat": 42.442978,
             "lon": -71.113861,
-            "season": "Summer to fall (this find: early August)"
-          }
+            "season": "Summer to fall (this find: early August)",
+            "taken_at": "2026-08-02T08:40:44"
+          },
+          "taken_at": "2026-08-02T08:40:44"
         },
         {
           "src": "photos/46_red_russula_top.jpg",
@@ -1330,14 +1444,145 @@
             "view": "top",
             "lat": 42.442978,
             "lon": -71.113861,
-            "season": "Summer to fall (this find: early August)"
-          }
+            "season": "Summer to fall (this find: early August)",
+            "taken_at": "2026-08-02T08:40:48"
+          },
+          "taken_at": "2026-08-02T08:40:48"
         }
       ],
       "subcategories": [
         {
           "name": "Red-capped Russula",
           "note": "Species complex"
+        }
+      ]
+    },
+    {
+      "id": "milkcaps",
+      "common_name": "Milkcaps",
+      "scientific_name": "Lactifluus / Lactarius",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "edibility": "Variable \u2014 some edible when cooked; confirm species and white latex",
+      "confidence": "genus",
+      "summary": "Orange-tan oak-woods milkcaps with depressed caps, cream decurrent gills, and stout pale stems. Close relatives of Russula; they bleed white latex when fresh.",
+      "uses": "A few eastern Lactifluus (volemus / hygrophoroides group) are traditional edibles when correctly identified; many other milkcaps are acrid or inedible. Educational only.",
+      "habitat": "Soil and leaf litter under oaks; mycorrhizal.",
+      "tree_associates": "Oaks and mixed hardwoods.",
+      "field_marks": "Orange-tan velvety cap; cream decurrent gills; thick pale stem that spots brown; white milk when cut.",
+      "season": "Summer to fall",
+      "region_notes": "Sourland oak woods (mid-August 2026).",
+      "cover_image": "photos/d_IMG_6440.jpg",
+      "photos": [
+        {
+          "src": "photos/d_IMG_6439.jpg",
+          "caption": "Milkcap \u2014 orange-tan cap by a log",
+          "view": "top",
+          "location": "Sourland Mountain Preserve, Hillsborough, NJ",
+          "lat": 40.459378,
+          "lon": -74.707864,
+          "id_detail": {
+            "common_name": "Weeping / Hygrophorus Milkcap",
+            "scientific_name": "Lactifluus volemus / hygrophoroides group",
+            "edibility": "Some species edible when cooked; confirm milk and species \u2014 not a beginner edible",
+            "summary": "Orange-tan, slightly velvety cap with a depressed center, cream decurrent gills, and a stout white stem that stains brown. Classic late-summer oak milkcap (Lactifluus) \u2014 white latex when cut; L. volemus has close gills and a fishy scent, L. hygrophoroides has distant gills.",
+            "uses": "Several Lactifluus in this group are traditional edibles when correctly identified and cooked; look-alikes exist. Educational only on this site.",
+            "habitat": "Soil and oak litter; mycorrhizal (not on wood).",
+            "tree_associates": "Oaks and mixed hardwoods.",
+            "field_marks": "Orange-tan dry/velvety cap; depressed disc; cream decurrent gills; thick pale stem that spots brown; white milk when fresh.",
+            "confidence": "high-genus",
+            "photo_location": "Sourland Mountain Preserve, Hillsborough, NJ",
+            "view": "top",
+            "lat": 40.459378,
+            "lon": -74.707864,
+            "season": "Summer to fall (this find: mid-August 2026)",
+            "taken_at": "2026-08-16T07:58:24"
+          },
+          "taken_at": "2026-08-16T07:58:24"
+        },
+        {
+          "src": "photos/d_IMG_6440.jpg",
+          "caption": "Milkcap \u2014 decurrent cream gills and stout stem",
+          "view": "underside",
+          "location": "Sourland Mountain Preserve, Hillsborough, NJ",
+          "lat": 40.459356,
+          "lon": -74.707864,
+          "id_detail": {
+            "common_name": "Weeping / Hygrophorus Milkcap",
+            "scientific_name": "Lactifluus volemus / hygrophoroides group",
+            "edibility": "Some species edible when cooked; confirm milk and species \u2014 not a beginner edible",
+            "summary": "Orange-tan, slightly velvety cap with a depressed center, cream decurrent gills, and a stout white stem that stains brown. Classic late-summer oak milkcap (Lactifluus) \u2014 white latex when cut; L. volemus has close gills and a fishy scent, L. hygrophoroides has distant gills.",
+            "uses": "Several Lactifluus in this group are traditional edibles when correctly identified and cooked; look-alikes exist. Educational only on this site.",
+            "habitat": "Soil and oak litter; mycorrhizal (not on wood).",
+            "tree_associates": "Oaks and mixed hardwoods.",
+            "field_marks": "Orange-tan dry/velvety cap; depressed disc; cream decurrent gills; thick pale stem that spots brown; white milk when fresh.",
+            "confidence": "high-genus",
+            "photo_location": "Sourland Mountain Preserve, Hillsborough, NJ",
+            "view": "underside",
+            "lat": 40.459356,
+            "lon": -74.707864,
+            "season": "Summer to fall (this find: mid-August 2026)",
+            "taken_at": "2026-08-16T07:58:28"
+          },
+          "taken_at": "2026-08-16T07:58:28"
+        },
+        {
+          "src": "photos/d_IMG_6441.jpg",
+          "caption": "Milkcap \u2014 profile by a boulder",
+          "view": "side",
+          "location": "Sourland Mountain Preserve, Hillsborough, NJ",
+          "lat": 40.465053,
+          "lon": -74.711189,
+          "id_detail": {
+            "common_name": "Weeping / Hygrophorus Milkcap",
+            "scientific_name": "Lactifluus volemus / hygrophoroides group",
+            "edibility": "Some species edible when cooked; confirm milk and species \u2014 not a beginner edible",
+            "summary": "Orange-tan, slightly velvety cap with a depressed center, cream decurrent gills, and a stout white stem that stains brown. Classic late-summer oak milkcap (Lactifluus) \u2014 white latex when cut; L. volemus has close gills and a fishy scent, L. hygrophoroides has distant gills.",
+            "uses": "Several Lactifluus in this group are traditional edibles when correctly identified and cooked; look-alikes exist. Educational only on this site.",
+            "habitat": "Soil and oak litter; mycorrhizal (not on wood).",
+            "tree_associates": "Oaks and mixed hardwoods.",
+            "field_marks": "Orange-tan dry/velvety cap; depressed disc; cream decurrent gills; thick pale stem that spots brown; white milk when fresh.",
+            "confidence": "high-genus",
+            "photo_location": "Sourland Mountain Preserve, Hillsborough, NJ",
+            "view": "side",
+            "lat": 40.465053,
+            "lon": -74.711189,
+            "season": "Summer to fall (this find: mid-August 2026)",
+            "taken_at": "2026-08-16T08:22:23"
+          },
+          "taken_at": "2026-08-16T08:22:23"
+        },
+        {
+          "src": "photos/d_IMG_6442.jpg",
+          "caption": "Milkcap \u2014 orange funnel cap from above",
+          "view": "top",
+          "location": "Sourland Mountain Preserve, Hillsborough, NJ",
+          "lat": 40.465061,
+          "lon": -74.711189,
+          "id_detail": {
+            "common_name": "Weeping / Hygrophorus Milkcap",
+            "scientific_name": "Lactifluus volemus / hygrophoroides group",
+            "edibility": "Some species edible when cooked; confirm milk and species \u2014 not a beginner edible",
+            "summary": "Orange-tan, slightly velvety cap with a depressed center, cream decurrent gills, and a stout white stem that stains brown. Classic late-summer oak milkcap (Lactifluus) \u2014 white latex when cut; L. volemus has close gills and a fishy scent, L. hygrophoroides has distant gills.",
+            "uses": "Several Lactifluus in this group are traditional edibles when correctly identified and cooked; look-alikes exist. Educational only on this site.",
+            "habitat": "Soil and oak litter; mycorrhizal (not on wood).",
+            "tree_associates": "Oaks and mixed hardwoods.",
+            "field_marks": "Orange-tan dry/velvety cap; depressed disc; cream decurrent gills; thick pale stem that spots brown; white milk when fresh.",
+            "confidence": "high-genus",
+            "photo_location": "Sourland Mountain Preserve, Hillsborough, NJ",
+            "view": "top",
+            "lat": 40.465061,
+            "lon": -74.711189,
+            "season": "Summer to fall (this find: mid-August 2026)",
+            "taken_at": "2026-08-16T08:22:29"
+          },
+          "taken_at": "2026-08-16T08:22:29"
+        }
+      ],
+      "subcategories": [
+        {
+          "name": "Weeping / Hygrophorus milkcap group",
+          "note": "Lactifluus volemus / hygrophoroides"
         }
       ]
     },
@@ -1379,8 +1624,10 @@
             "view": "top",
             "lat": 42.443906,
             "lon": -71.120681,
-            "season": "Summer to fall (this find: early August)"
-          }
+            "season": "Summer to fall (this find: early August)",
+            "taken_at": "2026-08-02T09:02:41"
+          },
+          "taken_at": "2026-08-02T09:02:41"
         },
         {
           "src": "photos/51_rollrim_gills.jpg",
@@ -1403,8 +1650,10 @@
             "view": "side",
             "lat": 42.443889,
             "lon": -71.120681,
-            "season": "Summer to fall (this find: early August)"
-          }
+            "season": "Summer to fall (this find: early August)",
+            "taken_at": "2026-08-02T09:02:45"
+          },
+          "taken_at": "2026-08-02T09:02:45"
         },
         {
           "src": "photos/52_rollrim_profile.jpg",
@@ -1427,8 +1676,10 @@
             "view": "side",
             "lat": 42.443889,
             "lon": -71.120675,
-            "season": "Summer to fall (this find: early August)"
-          }
+            "season": "Summer to fall (this find: early August)",
+            "taken_at": "2026-08-02T09:02:49"
+          },
+          "taken_at": "2026-08-02T09:02:49"
         }
       ]
     },
@@ -1542,8 +1793,10 @@
             "view": "top",
             "lat": 40.475844,
             "lon": -74.705269,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:01:16"
+          },
+          "taken_at": "2026-07-19T08:01:16"
         },
         {
           "src": "photos/03_polypore.jpg",
@@ -1614,8 +1867,10 @@
             "view": "top",
             "lat": 40.474472,
             "lon": -74.700486,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T07:25:13"
+          },
+          "taken_at": "2026-07-19T07:25:13"
         },
         {
           "src": "photos/d_IMG_6067.jpg",
@@ -1638,8 +1893,10 @@
             "view": "top",
             "lat": 40.474483,
             "lon": -74.700522,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T07:25:40"
+          },
+          "taken_at": "2026-07-19T07:25:40"
         },
         {
           "src": "photos/42_chicken_cincinnatus_rosette.jpg",
@@ -1662,8 +1919,10 @@
             "view": "top",
             "lat": 42.466156,
             "lon": -71.118653,
-            "season": "Late spring through fall (this find: early August)"
-          }
+            "season": "Late spring through fall (this find: early August)",
+            "taken_at": "2026-08-02T09:56:17"
+          },
+          "taken_at": "2026-08-02T09:56:17"
         },
         {
           "src": "photos/43_chicken_cincinnatus_cluster.jpg",
@@ -1686,8 +1945,10 @@
             "view": "side",
             "lat": 42.466161,
             "lon": -71.118653,
-            "season": "Late spring through fall (this find: early August)"
-          }
+            "season": "Late spring through fall (this find: early August)",
+            "taken_at": "2026-08-02T09:56:24"
+          },
+          "taken_at": "2026-08-02T09:56:24"
         },
         {
           "src": "photos/53_artists_conk.jpg",
@@ -1710,8 +1971,10 @@
             "view": "top",
             "lat": 42.451758,
             "lon": -71.117194,
-            "season": "Summer to fall (this find: early August)"
-          }
+            "season": "Summer to fall (this find: early August)",
+            "taken_at": "2026-08-02T09:22:58"
+          },
+          "taken_at": "2026-08-02T09:22:58"
         },
         {
           "src": "photos/56_weeping_polypore.jpg",
@@ -1734,8 +1997,10 @@
             "view": "side",
             "lat": 42.458039,
             "lon": -71.119339,
-            "season": "Summer to fall (this find: early August)"
-          }
+            "season": "Summer to fall (this find: early August)",
+            "taken_at": "2026-08-02T09:37:57"
+          },
+          "taken_at": "2026-08-02T09:37:57"
         }
       ],
       "subcategories": [
@@ -1769,7 +2034,7 @@
       "category_slug": "gilled",
       "edibility": "Choice edible when correctly identified",
       "confidence": "high",
-      "summary": "Pale shelf- or fan-shaped gilled mushrooms on wood with decurrent gills.",
+      "summary": "Pale shelf- or fan-shaped gilled mushrooms on wood with decurrent gills, plus a solitary white wood-grower from a Sourland trunk base (veiled oyster / silky volvariella group).",
       "uses": "Excellent edible when fresh and correctly identified.",
       "habitat": "Dead or dying hardwood logs and tree bases.",
       "tree_associates": "Maple, beech, oak, aspen, willow.",
@@ -1847,8 +2112,36 @@
             "view": "top",
             "lat": 40.477681,
             "lon": -74.703758,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T07:47:11"
+          },
+          "taken_at": "2026-07-19T07:47:11"
+        },
+        {
+          "src": "photos/d_IMG_6446.jpg",
+          "caption": "White gilled mushroom at a hardwood trunk base",
+          "view": "side",
+          "location": "Sourland Mountain Preserve, Hillsborough, NJ",
+          "lat": 40.474317,
+          "lon": -74.700103,
+          "id_detail": {
+            "common_name": "Veiled Oyster / Silky Volvariella",
+            "scientific_name": "Pleurotus dryinus / Volvariella bombycina",
+            "edibility": "Do not eat without expert ID \u2014 look-alikes include toxic white Amanitas",
+            "summary": "Solitary white gilled mushroom emerging from a crevice at the base of a living hardwood. Finely powdery/silky cap, white gills, and a distinct pale stem. Fits veiled oyster (Pleurotus dryinus) or silky volvariella (Volvariella bombycina), both wood-growers; a white Amanita at the root flare is the main look-alike.",
+            "uses": "Not a beginner edible. True oysters and V. bombycina are eaten by experts; white Amanitas at tree bases can be deadly. Educational only.",
+            "habitat": "Wounds, cavities, and root flare of living or dead hardwoods.",
+            "tree_associates": "Oaks and other hardwoods.",
+            "field_marks": "White powdery or silky cap; white gills; distinct stem; growing from wood at the trunk base, not from open soil.",
+            "confidence": "moderate",
+            "photo_location": "Sourland Mountain Preserve, Hillsborough, NJ",
+            "view": "side",
+            "lat": 40.474317,
+            "lon": -74.700103,
+            "season": "Summer to fall (this find: mid-August 2026)",
+            "taken_at": "2026-08-16T09:01:45"
+          },
+          "taken_at": "2026-08-16T09:01:45"
         }
       ],
       "subcategories": []
@@ -1861,13 +2154,13 @@
       "category_slug": "chanterelle",
       "edibility": "Choice edible when correctly identified",
       "confidence": "moderate-high",
-      "summary": "Apricot mushrooms with wavy caps and blunt false gills.",
+      "summary": "Apricot and cinnabar-red chanterelles with wavy or funnel caps and blunt false gills. Soil-growing and mycorrhizal \u2014 never in dense clusters on logs (that is the toxic jack-o'-lantern).",
       "uses": "Prized edible when ID is certain. Avoid Jack-o\u2019-lantern look-alikes.",
       "habitat": "Soil under hardwoods after rain.",
       "tree_associates": "Oak, beech (ectomycorrhizal).",
-      "field_marks": "False gills; solid stem; fruity scent.",
+      "field_marks": "False gills; solid stem; fruity scent; apricot or cinnabar-red; grows from soil.",
       "season": "Midsummer to fall",
-      "region_notes": "Sourland oak litter.",
+      "region_notes": "Sourland oak litter, including a mid-August cinnabar chanterelle.",
       "cover_image": "photos/04_chanterelle.jpg",
       "photos": [
         {
@@ -1893,9 +2186,138 @@
             "lon": -74.710464,
             "season": "Summer to fall"
           }
+        },
+        {
+          "src": "photos/d_IMG_6436.jpg",
+          "caption": "Cinnabar chanterelle \u2014 top on moss",
+          "view": "top",
+          "location": "Sourland Mountain Preserve, Hillsborough, NJ",
+          "lat": 40.458375,
+          "lon": -74.697472,
+          "id_detail": {
+            "common_name": "Cinnabar Chanterelle",
+            "scientific_name": "Cantharellus cinnabarinus",
+            "edibility": "Choice edible when correctly identified",
+            "summary": "Small, bright cinnabar-red to vermillion chanterelle on mossy oak soil. Funnel-shaped with blunt decurrent false gills. Eastern red chanterelle \u2014 a soil-growing true Cantharellus, not a jack-o'-lantern.",
+            "uses": "Prized edible when ID is certain. Confirm blunt false gills, solid stem, and growth from soil \u2014 never from a log cluster.",
+            "habitat": "Mossy soil and oak litter; mycorrhizal, not on wood.",
+            "tree_associates": "Oaks and mixed hardwoods.",
+            "field_marks": "Vivid red-orange; small stature; blunt false gills running down a matching stem; grows singly or scattered from soil/moss.",
+            "confidence": "high",
+            "photo_location": "Sourland Mountain Preserve, Hillsborough, NJ",
+            "view": "top",
+            "lat": 40.458375,
+            "lon": -74.697472,
+            "season": "Summer to fall (this find: mid-August 2026)",
+            "taken_at": "2026-08-16T07:41:00"
+          },
+          "taken_at": "2026-08-16T07:41:00"
+        },
+        {
+          "src": "photos/d_IMG_6437.jpg",
+          "caption": "Cinnabar chanterelle \u2014 underside with false gills",
+          "view": "underside",
+          "location": "Sourland Mountain Preserve, Hillsborough, NJ",
+          "lat": 40.458369,
+          "lon": -74.697472,
+          "id_detail": {
+            "common_name": "Cinnabar Chanterelle",
+            "scientific_name": "Cantharellus cinnabarinus",
+            "edibility": "Choice edible when correctly identified",
+            "summary": "Small, bright cinnabar-red to vermillion chanterelle on mossy oak soil. Funnel-shaped with blunt decurrent false gills. Eastern red chanterelle \u2014 a soil-growing true Cantharellus, not a jack-o'-lantern.",
+            "uses": "Prized edible when ID is certain. Confirm blunt false gills, solid stem, and growth from soil \u2014 never from a log cluster.",
+            "habitat": "Mossy soil and oak litter; mycorrhizal, not on wood.",
+            "tree_associates": "Oaks and mixed hardwoods.",
+            "field_marks": "Vivid red-orange; small stature; blunt false gills running down a matching stem; grows singly or scattered from soil/moss.",
+            "confidence": "high",
+            "photo_location": "Sourland Mountain Preserve, Hillsborough, NJ",
+            "view": "underside",
+            "lat": 40.458369,
+            "lon": -74.697472,
+            "season": "Summer to fall (this find: mid-August 2026)",
+            "taken_at": "2026-08-16T07:41:03"
+          },
+          "taken_at": "2026-08-16T07:41:03"
         }
       ],
       "subcategories": []
+    },
+    {
+      "id": "jack-o-lantern",
+      "common_name": "Jack-o'-lantern",
+      "scientific_name": "Omphalotus illudens",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "edibility": "Toxic \u2014 do not eat (classic chanterelle look-alike)",
+      "confidence": "high-genus",
+      "summary": "Orange-yellow gilled mushrooms in clusters on hardwood logs and stumps. The eastern jack-o'-lantern is the usual toxic look-alike for chanterelles.",
+      "uses": "Not edible. Causes severe GI distress. Compare with true chanterelles in the gallery.",
+      "habitat": "Decaying hardwood logs, stumps, and buried roots.",
+      "tree_associates": "Oaks and other hardwoods.",
+      "field_marks": "Clustered on wood; true sharp decurrent gills; orange to rusty-yellow; overlapping caps.",
+      "season": "Summer to fall",
+      "region_notes": "Sourland hardwood logs (mid-August 2026).",
+      "cover_image": "photos/d_IMG_6429.jpg",
+      "photos": [
+        {
+          "src": "photos/d_IMG_6429.jpg",
+          "caption": "Jack-o'-lantern cluster on a hardwood log",
+          "view": "top",
+          "location": "Sourland Mountain Preserve, Hillsborough, NJ",
+          "lat": 40.466197,
+          "lon": -74.699081,
+          "id_detail": {
+            "common_name": "Jack-o'-lantern",
+            "scientific_name": "Omphalotus illudens",
+            "edibility": "Toxic \u2014 do not eat (classic chanterelle look-alike)",
+            "summary": "Orange-yellow gilled mushrooms growing in a cluster on a decaying hardwood log. Funnel-shaped caps with gills running down the stem. Eastern jack-o'-lantern \u2014 toxic, and the usual wood-growing look-alike for chanterelles.",
+            "uses": "Not edible. Causes severe GI distress. Educational contrast with true chanterelles (which grow from soil, not wood, and have blunt false gills).",
+            "habitat": "Clusters on stumps, buried roots, and decaying hardwood logs.",
+            "tree_associates": "Oaks and other hardwoods.",
+            "field_marks": "Bright orange to rusty-yellow; clustered on wood; true sharp gills that run down the stem; often large overlapping caps.",
+            "confidence": "high-genus",
+            "photo_location": "Sourland Mountain Preserve, Hillsborough, NJ",
+            "view": "top",
+            "lat": 40.466197,
+            "lon": -74.699081,
+            "season": "Summer to fall (this find: mid-August 2026)",
+            "taken_at": "2026-08-16T07:22:57"
+          },
+          "taken_at": "2026-08-16T07:22:57"
+        },
+        {
+          "src": "photos/d_IMG_6430.jpg",
+          "caption": "Jack-o'-lantern \u2014 closer view of overlapping orange caps",
+          "view": "top",
+          "location": "Sourland Mountain Preserve, Hillsborough, NJ",
+          "lat": 40.466203,
+          "lon": -74.699097,
+          "id_detail": {
+            "common_name": "Jack-o'-lantern",
+            "scientific_name": "Omphalotus illudens",
+            "edibility": "Toxic \u2014 do not eat (classic chanterelle look-alike)",
+            "summary": "Orange-yellow gilled mushrooms growing in a cluster on a decaying hardwood log. Funnel-shaped caps with gills running down the stem. Eastern jack-o'-lantern \u2014 toxic, and the usual wood-growing look-alike for chanterelles.",
+            "uses": "Not edible. Causes severe GI distress. Educational contrast with true chanterelles (which grow from soil, not wood, and have blunt false gills).",
+            "habitat": "Clusters on stumps, buried roots, and decaying hardwood logs.",
+            "tree_associates": "Oaks and other hardwoods.",
+            "field_marks": "Bright orange to rusty-yellow; clustered on wood; true sharp gills that run down the stem; often large overlapping caps.",
+            "confidence": "high-genus",
+            "photo_location": "Sourland Mountain Preserve, Hillsborough, NJ",
+            "view": "top",
+            "lat": 40.466203,
+            "lon": -74.699097,
+            "season": "Summer to fall (this find: mid-August 2026)",
+            "taken_at": "2026-08-16T07:23:00"
+          },
+          "taken_at": "2026-08-16T07:23:00"
+        }
+      ],
+      "subcategories": [
+        {
+          "name": "Eastern Jack-o'-lantern",
+          "note": "Omphalotus illudens"
+        }
+      ]
     },
     {
       "id": "coral-fungi",
@@ -1956,10 +2378,12 @@
             "photo_location": "Sourland Mountains area, NJ",
             "view": "top",
             "lat": 40.473478,
-            "lon": -74.708197
+            "lon": -74.708197,
+            "taken_at": "2026-07-19T08:13:46"
           },
           "lat": 40.473478,
-          "lon": -74.708197
+          "lon": -74.708197,
+          "taken_at": "2026-07-19T08:13:46"
         },
         {
           "src": "photos/d_IMG_6105.jpg",
@@ -1979,10 +2403,12 @@
             "photo_location": "Sourland Mountains area, NJ",
             "view": "top",
             "lat": 40.473503,
-            "lon": -74.708108
+            "lon": -74.708108,
+            "taken_at": "2026-07-19T08:13:54"
           },
           "lat": 40.473503,
-          "lon": -74.708108
+          "lon": -74.708108,
+          "taken_at": "2026-07-19T08:13:54"
         },
         {
           "src": "photos/47_peach_coral_top.jpg",
@@ -2005,8 +2431,10 @@
             "view": "top",
             "lat": 42.451767,
             "lon": -71.107253,
-            "season": "Summer to fall (this find: early August)"
-          }
+            "season": "Summer to fall (this find: early August)",
+            "taken_at": "2026-08-02T08:08:19"
+          },
+          "taken_at": "2026-08-02T08:08:19"
         },
         {
           "src": "photos/48_peach_coral_side.jpg",
@@ -2029,8 +2457,10 @@
             "view": "side",
             "lat": 42.451767,
             "lon": -71.107247,
-            "season": "Summer to fall (this find: early August)"
-          }
+            "season": "Summer to fall (this find: early August)",
+            "taken_at": "2026-08-02T08:08:24"
+          },
+          "taken_at": "2026-08-02T08:08:24"
         }
       ],
       "subcategories": [
@@ -2078,8 +2508,10 @@
             "view": "side",
             "lat": 42.452131,
             "lon": -71.109397,
-            "season": "Summer to fall (this find: early August)"
-          }
+            "season": "Summer to fall (this find: early August)",
+            "taken_at": "2026-08-02T08:11:59"
+          },
+          "taken_at": "2026-08-02T08:11:59"
         }
       ]
     },
@@ -2121,8 +2553,10 @@
             "view": "top",
             "lat": 40.474353,
             "lon": -74.707397,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:09:36"
+          },
+          "taken_at": "2026-07-19T08:09:36"
         },
         {
           "src": "photos/d_IMG_6100.jpg",
@@ -2145,8 +2579,10 @@
             "view": "top",
             "lat": 40.474431,
             "lon": -74.707336,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:09:50"
+          },
+          "taken_at": "2026-07-19T08:09:50"
         }
       ],
       "subcategories": []
@@ -2189,8 +2625,10 @@
             "view": "top",
             "lat": 40.475978,
             "lon": -74.7052,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T07:59:33"
+          },
+          "taken_at": "2026-07-19T07:59:33"
         },
         {
           "src": "photos/d_IMG_6082.jpg",
@@ -2213,8 +2651,10 @@
             "view": "top",
             "lat": 40.475992,
             "lon": -74.705208,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T07:59:48"
+          },
+          "taken_at": "2026-07-19T07:59:48"
         }
       ],
       "subcategories": [
@@ -2310,8 +2750,10 @@
             "view": "top",
             "lat": 40.474044,
             "lon": -74.697106,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T07:02:30"
+          },
+          "taken_at": "2026-07-19T07:02:30"
         },
         {
           "src": "photos/d_IMG_6098.jpg",
@@ -2334,8 +2776,10 @@
             "view": "top",
             "lat": 40.474717,
             "lon": -74.707025,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:08:35"
+          },
+          "taken_at": "2026-07-19T08:08:35"
         },
         {
           "src": "photos/d_IMG_6115.jpg",
@@ -2358,8 +2802,10 @@
             "view": "top",
             "lat": 40.467086,
             "lon": -74.710617,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:34:48"
+          },
+          "taken_at": "2026-07-19T08:34:48"
         },
         {
           "src": "photos/d_IMG_6080.jpg",
@@ -2382,8 +2828,10 @@
             "view": "top",
             "lat": 40.476406,
             "lon": -74.705375,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T07:55:33"
+          },
+          "taken_at": "2026-07-19T07:55:33"
         },
         {
           "src": "photos/d_IMG_6069.jpg",
@@ -2406,8 +2854,10 @@
             "view": "top",
             "lat": 40.467933,
             "lon": -74.681747,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T07:39:46"
+          },
+          "taken_at": "2026-07-19T07:39:46"
         },
         {
           "src": "photos/d_IMG_6112.jpg",
@@ -2430,8 +2880,10 @@
             "view": "top",
             "lat": 40.467953,
             "lon": -74.709672,
-            "season": "Summer to fall"
-          }
+            "season": "Summer to fall",
+            "taken_at": "2026-07-19T08:32:09"
+          },
+          "taken_at": "2026-07-19T08:32:09"
         }
       ],
       "subcategories": [
@@ -2510,8 +2962,10 @@
             "photo_location": "Delaware Water Gap, Hardwick Township, NJ",
             "view": "top",
             "lat": 40.985133,
-            "lon": -75.103111
-          }
+            "lon": -75.103111,
+            "taken_at": "2026-06-27T09:45:51"
+          },
+          "taken_at": "2026-06-27T09:45:51"
         },
         {
           "src": "photos/d_IMG_5691.jpg",
@@ -2533,8 +2987,10 @@
             "photo_location": "Delaware Water Gap, Hardwick Township, NJ",
             "view": "top",
             "lat": 40.985133,
-            "lon": -75.103111
-          }
+            "lon": -75.103111,
+            "taken_at": "2026-06-27T09:45:51"
+          },
+          "taken_at": "2026-06-27T09:45:51"
         }
       ],
       "cover_image": "photos/20_toad.jpg"
