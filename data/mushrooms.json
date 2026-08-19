@@ -25,7 +25,7 @@
       "field_marks": "Free white gills; often ring and/or volva; white spore print.",
       "season": "Summer to fall",
       "region_notes": "Common in Sourland oak woods.",
-      "cover_image": "photos/24_yellow_amanita_upright.jpg",
+      "cover_image": "photos/covers/amanita.jpg",
       "photos": [
         {
           "src": "photos/24_yellow_amanita_upright.jpg",
@@ -589,14 +589,14 @@
       "category_slug": "bolete",
       "edibility": "Variable by species \u2014 never eat without confident ID",
       "confidence": "family",
-      "summary": "Pored mushrooms of oak woods: two-colored boletes, brown boletes, orange-capped types, and pale boletes.",
+      "summary": "Pored mushrooms of oak woods: two-colored boletes, brown boletes, orange-capped types, and pale boletes, plus bitter Tylopilus and red-cracking boletes from Baldpate Mountain.",
       "uses": "Variable; only eat after confident ID and thorough cooking. Avoid red-pored unknowns.",
       "habitat": "Soil in oak and mixed woods after rain; mycorrhizal.",
       "tree_associates": "Oaks and mixed hardwoods of the Sourlands.",
       "field_marks": "Pores under the cap; thick stems; fleshy caps.",
       "season": "Summer to early fall",
       "region_notes": "Abundant in Sourland oak woods. Also Middlesex Fells (MA).",
-      "cover_image": "photos/35_bicolor_bolete.jpg",
+      "cover_image": "photos/covers/boletes.jpg",
       "photos": [
         {
           "src": "photos/35_bicolor_bolete.jpg",
@@ -1255,6 +1255,110 @@
             "taken_at": "2026-08-02T09:09:09"
           },
           "taken_at": "2026-08-02T09:09:09"
+        },
+        {
+          "src": "photos/d_IMG_6477.jpg",
+          "caption": "Bitter bolete \u2014 profile by a boulder",
+          "view": "side",
+          "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+          "lat": 40.349983,
+          "lon": -74.940711,
+          "id_detail": {
+            "common_name": "Bitter Bolete (Tylopilus)",
+            "scientific_name": "Tylopilus rubrobrunneus / allies",
+            "edibility": "Not edible \u2014 typically intensely bitter",
+            "summary": "Large pinkish-brown bolete with a dry, slightly mottled cap and brown pore surface, fruiting in oak litter by a boulder. Eastern Tylopilus (bitter boletes) are common late-summer mycorrhizal mushrooms.",
+            "uses": "Not for the table. Bitter Tylopilus are a classic disappointment for porcini hunters.",
+            "habitat": "Soil under oaks; mycorrhizal.",
+            "tree_associates": "Oaks and mixed hardwoods.",
+            "field_marks": "Pink-brown cap; brown pores (not yellow); thick stem; dry matt surface.",
+            "confidence": "high-genus",
+            "photo_location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+            "view": "side",
+            "lat": 40.349983,
+            "lon": -74.940711,
+            "season": "Summer to fall (this find: August 18, 2026)",
+            "taken_at": "2026-08-18T17:51:20"
+          },
+          "taken_at": "2026-08-18T17:51:20"
+        },
+        {
+          "src": "photos/d_IMG_6478.jpg",
+          "caption": "Bitter bolete \u2014 brown pore face",
+          "view": "underside",
+          "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+          "lat": 40.349983,
+          "lon": -74.940719,
+          "id_detail": {
+            "common_name": "Bitter Bolete (Tylopilus)",
+            "scientific_name": "Tylopilus rubrobrunneus / allies",
+            "edibility": "Not edible \u2014 typically intensely bitter",
+            "summary": "Large pinkish-brown bolete with a dry, slightly mottled cap and brown pore surface, fruiting in oak litter by a boulder. Eastern Tylopilus (bitter boletes) are common late-summer mycorrhizal mushrooms.",
+            "uses": "Not for the table. Bitter Tylopilus are a classic disappointment for porcini hunters.",
+            "habitat": "Soil under oaks; mycorrhizal.",
+            "tree_associates": "Oaks and mixed hardwoods.",
+            "field_marks": "Pink-brown cap; brown pores (not yellow); thick stem; dry matt surface.",
+            "confidence": "high-genus",
+            "photo_location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+            "view": "underside",
+            "lat": 40.349983,
+            "lon": -74.940719,
+            "season": "Summer to fall (this find: August 18, 2026)",
+            "taken_at": "2026-08-18T17:51:27"
+          },
+          "taken_at": "2026-08-18T17:51:27"
+        },
+        {
+          "src": "photos/d_IMG_6479.jpg",
+          "caption": "Bitter bolete \u2014 pink-brown cap",
+          "view": "top",
+          "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+          "lat": 40.349975,
+          "lon": -74.940742,
+          "id_detail": {
+            "common_name": "Bitter Bolete (Tylopilus)",
+            "scientific_name": "Tylopilus rubrobrunneus / allies",
+            "edibility": "Not edible \u2014 typically intensely bitter",
+            "summary": "Large pinkish-brown bolete with a dry, slightly mottled cap and brown pore surface, fruiting in oak litter by a boulder. Eastern Tylopilus (bitter boletes) are common late-summer mycorrhizal mushrooms.",
+            "uses": "Not for the table. Bitter Tylopilus are a classic disappointment for porcini hunters.",
+            "habitat": "Soil under oaks; mycorrhizal.",
+            "tree_associates": "Oaks and mixed hardwoods.",
+            "field_marks": "Pink-brown cap; brown pores (not yellow); thick stem; dry matt surface.",
+            "confidence": "high-genus",
+            "photo_location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+            "view": "top",
+            "lat": 40.349975,
+            "lon": -74.940742,
+            "season": "Summer to fall (this find: August 18, 2026)",
+            "taken_at": "2026-08-18T17:51:35"
+          },
+          "taken_at": "2026-08-18T17:51:35"
+        },
+        {
+          "src": "photos/d_IMG_6480.jpg",
+          "caption": "Red-cracking bolete with an earthball nearby",
+          "view": "top",
+          "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+          "lat": 40.349822,
+          "lon": -74.940667,
+          "id_detail": {
+            "common_name": "Red-cracking Bolete",
+            "scientific_name": "Xerocomellus chrysenteron / Hortiboletus allies",
+            "edibility": "Sometimes listed edible when cooked \u2014 not a beginner edible; confirm ID",
+            "summary": "Small bolete with a reddish-brown cap cracked to show yellow flesh, bright yellow pores, and a pale yellow stem. A dark earthball sits in the same litter. Typical red-cracking / Hortiboletus group of oak woods.",
+            "uses": "Variable; only after confident ID. Educational only.",
+            "habitat": "Soil and woody debris under hardwoods; mycorrhizal.",
+            "tree_associates": "Oaks and mixed woods.",
+            "field_marks": "Red-brown cap cracking yellow; yellow pores; slender pale stem.",
+            "confidence": "moderate-high",
+            "photo_location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+            "view": "top",
+            "lat": 40.349822,
+            "lon": -74.940667,
+            "season": "Summer to fall (this find: August 18, 2026)",
+            "taken_at": "2026-08-18T17:52:32"
+          },
+          "taken_at": "2026-08-18T17:52:32"
         }
       ],
       "subcategories": [
@@ -1295,7 +1399,7 @@
       "field_marks": "Brittle chalky flesh; colorful caps; no veil on most species.",
       "season": "Summer to fall",
       "region_notes": "Common in Sourland oak woods; also Middlesex Fells (MA).",
-      "cover_image": "photos/36_red_russula_troop.jpg",
+      "cover_image": "photos/covers/russula.jpg",
       "photos": [
         {
           "src": "photos/36_red_russula_troop.jpg",
@@ -1472,7 +1576,7 @@
       "field_marks": "Orange-tan velvety cap; cream decurrent gills; thick pale stem that spots brown; white milk when cut.",
       "season": "Summer to fall",
       "region_notes": "Sourland oak woods (mid-August 2026).",
-      "cover_image": "photos/d_IMG_6440.jpg",
+      "cover_image": "photos/covers/milkcaps.jpg",
       "photos": [
         {
           "src": "photos/d_IMG_6439.jpg",
@@ -1601,7 +1705,7 @@
       "field_marks": "Tan-brown wavy cap; brown gills; thick stem; inrolled margin when young.",
       "season": "Summer to fall",
       "region_notes": "Middlesex Fells (MA).",
-      "cover_image": "photos/50_rollrim_top.jpg",
+      "cover_image": "photos/covers/rollrim.jpg",
       "photos": [
         {
           "src": "photos/50_rollrim_top.jpg",
@@ -1698,7 +1802,7 @@
       "field_marks": "Pores or smooth underside; shelves or crusts on wood.",
       "season": "Spring through fall",
       "region_notes": "Sourlands, Delaware Water Gap, and Middlesex Fells (MA).",
-      "cover_image": "photos/15_beefsteak.jpg",
+      "cover_image": "photos/covers/polypores-crusts.jpg",
       "photos": [
         {
           "src": "photos/15_beefsteak.jpg",
@@ -2041,7 +2145,7 @@
       "field_marks": "Decurrent gills; lateral stem; on wood.",
       "season": "Cool wet weather",
       "region_notes": "Common on Sourland hardwoods.",
-      "cover_image": "photos/25_oyster_cluster.jpg",
+      "cover_image": "photos/covers/oyster.jpg",
       "photos": [
         {
           "src": "photos/25_oyster_cluster.jpg",
@@ -2142,9 +2246,112 @@
             "taken_at": "2026-08-16T09:01:45"
           },
           "taken_at": "2026-08-16T09:01:45"
+        },
+        {
+          "src": "photos/d_IMG_6481.jpg",
+          "caption": "Oyster cluster on a standing hardwood",
+          "view": "side",
+          "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+          "lat": 40.349411,
+          "lon": -74.940108,
+          "id_detail": {
+            "common_name": "Oyster Mushroom",
+            "scientific_name": "Pleurotus ostreatus / pulmonarius complex",
+            "edibility": "Choice edible when correctly identified",
+            "summary": "Cream-yellow overlapping shelves on a standing hardwood. Decurrent gills and a short eccentric stem \u2014 classic late-summer oyster cluster.",
+            "uses": "Excellent edible when fresh and correctly identified. Confirm on wood with decurrent gills.",
+            "habitat": "Dead or dying hardwood trunks.",
+            "tree_associates": "Maple, beech, oak, aspen, willow.",
+            "field_marks": "Shelf/fan cluster on wood; cream-yellow; decurrent gills.",
+            "confidence": "high",
+            "photo_location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+            "view": "side",
+            "lat": 40.349411,
+            "lon": -74.940108,
+            "season": "Summer to fall (this find: August 18, 2026)",
+            "taken_at": "2026-08-18T17:55:04"
+          },
+          "taken_at": "2026-08-18T17:55:04"
         }
       ],
       "subcategories": []
+    },
+    {
+      "id": "honey-mushrooms",
+      "common_name": "Honey Mushrooms",
+      "scientific_name": "Armillaria / Desarmillaria",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "edibility": "Variable \u2014 some edible when thoroughly cooked; look-alikes include deadly Galerina",
+      "confidence": "genus",
+      "summary": "Dense tufts of tan, darker-centered caps from buried hardwood roots. Ringless honey mushrooms (Desarmillaria caespitosa) are the usual late-summer clusters in eastern oak woods.",
+      "uses": "Only for experts who can separate them from Galerina and other wood-cluster look-alikes. Educational only.",
+      "habitat": "Bases of hardwoods and buried roots.",
+      "tree_associates": "Oaks and mixed hardwoods.",
+      "field_marks": "Cespitose clusters; tan caps with darker discs; often no ring in the eastern summer species.",
+      "season": "Late summer to fall",
+      "region_notes": "Baldpate Mountain (August 18, 2026).",
+      "cover_image": "photos/covers/honey-mushrooms.jpg",
+      "photos": [
+        {
+          "src": "photos/d_IMG_6472.jpg",
+          "caption": "Ringless honey mushroom tuft \u2014 tops",
+          "view": "top",
+          "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+          "lat": 40.350678,
+          "lon": -74.940675,
+          "id_detail": {
+            "common_name": "Ringless Honey Mushroom",
+            "scientific_name": "Desarmillaria caespitosa (Armillaria tabescens group)",
+            "edibility": "Sometimes eaten when thoroughly cooked \u2014 causes GI upset in many people; not a beginner edible",
+            "summary": "Dense tuft of tan caps with darker discs, growing from buried wood or roots. Late-summer ringless honey mushrooms are the usual clustered Armillaria of eastern oak woods; no ring on the stem.",
+            "uses": "Traditional edible only when correctly identified and well cooked. Look-alikes include toxic Galerina on wood. Educational only here.",
+            "habitat": "Clusters at the base of hardwoods or from buried roots.",
+            "tree_associates": "Oaks and other hardwoods.",
+            "field_marks": "Cespitose (many stems from one base); tan cap with darker center; no ring; on buried wood, not scattered in moss.",
+            "confidence": "high-genus",
+            "photo_location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+            "view": "top",
+            "lat": 40.350678,
+            "lon": -74.940675,
+            "season": "Summer to fall (this find: August 18, 2026)",
+            "taken_at": "2026-08-18T17:48:08"
+          },
+          "taken_at": "2026-08-18T17:48:08"
+        },
+        {
+          "src": "photos/d_IMG_6473.jpg",
+          "caption": "Ringless honey mushrooms \u2014 cluster from the side",
+          "view": "side",
+          "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+          "lat": 40.350697,
+          "lon": -74.940697,
+          "id_detail": {
+            "common_name": "Ringless Honey Mushroom",
+            "scientific_name": "Desarmillaria caespitosa (Armillaria tabescens group)",
+            "edibility": "Sometimes eaten when thoroughly cooked \u2014 causes GI upset in many people; not a beginner edible",
+            "summary": "Dense tuft of tan caps with darker discs, growing from buried wood or roots. Late-summer ringless honey mushrooms are the usual clustered Armillaria of eastern oak woods; no ring on the stem.",
+            "uses": "Traditional edible only when correctly identified and well cooked. Look-alikes include toxic Galerina on wood. Educational only here.",
+            "habitat": "Clusters at the base of hardwoods or from buried roots.",
+            "tree_associates": "Oaks and other hardwoods.",
+            "field_marks": "Cespitose (many stems from one base); tan cap with darker center; no ring; on buried wood, not scattered in moss.",
+            "confidence": "high-genus",
+            "photo_location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+            "view": "side",
+            "lat": 40.350697,
+            "lon": -74.940697,
+            "season": "Summer to fall (this find: August 18, 2026)",
+            "taken_at": "2026-08-18T17:48:17"
+          },
+          "taken_at": "2026-08-18T17:48:17"
+        }
+      ],
+      "subcategories": [
+        {
+          "name": "Ringless honey mushroom",
+          "note": "Desarmillaria caespitosa"
+        }
+      ]
     },
     {
       "id": "chanterelle",
@@ -2161,7 +2368,7 @@
       "field_marks": "False gills; solid stem; fruity scent; apricot or cinnabar-red; grows from soil.",
       "season": "Midsummer to fall",
       "region_notes": "Sourland oak litter, including a mid-August cinnabar chanterelle.",
-      "cover_image": "photos/04_chanterelle.jpg",
+      "cover_image": "photos/covers/chanterelle.jpg",
       "photos": [
         {
           "src": "photos/04_chanterelle.jpg",
@@ -2257,7 +2464,7 @@
       "field_marks": "Clustered on wood; true sharp decurrent gills; orange to rusty-yellow; overlapping caps.",
       "season": "Summer to fall",
       "region_notes": "Sourland hardwood logs (mid-August 2026).",
-      "cover_image": "photos/d_IMG_6429.jpg",
+      "cover_image": "photos/covers/jack-o-lantern.jpg",
       "photos": [
         {
           "src": "photos/d_IMG_6429.jpg",
@@ -2334,7 +2541,7 @@
       "field_marks": "Coral/branching fruitbodies; no classic cap; tips may be crown-like (Artomyces) or blunt/yellow-tipped (Ramaria).",
       "season": "Summer to fall",
       "region_notes": "Sourlands, Delaware Water Gap, and Middlesex Fells (MA).",
-      "cover_image": "photos/08_coral.jpg",
+      "cover_image": "photos/covers/coral-fungi.jpg",
       "photos": [
         {
           "src": "photos/08_coral.jpg",
@@ -2485,7 +2692,7 @@
       "field_marks": "Large scaly tan cap with darker disc; free gills; stem ring; tall parasol stature.",
       "season": "Summer to fall",
       "region_notes": "Middlesex Fells (MA).",
-      "cover_image": "photos/49_parasol.jpg",
+      "cover_image": "photos/covers/parasols.jpg",
       "photos": [
         {
           "src": "photos/49_parasol.jpg",
@@ -2530,7 +2737,7 @@
       "field_marks": "Hard rind; no soft white interior of true puffballs when mature.",
       "season": "Summer to fall",
       "region_notes": "Sourland forest floor.",
-      "cover_image": "photos/d_IMG_6099.jpg",
+      "cover_image": "photos/covers/earthballs.jpg",
       "photos": [
         {
           "src": "photos/d_IMG_6099.jpg",
@@ -2602,7 +2809,7 @@
       "field_marks": "Purple/lilac colors; gills may be purple; mycorrhizal or saprobic depending on genus.",
       "season": "Summer to fall",
       "region_notes": "Sourland oak litter.",
-      "cover_image": "photos/d_IMG_6081.jpg",
+      "cover_image": "photos/covers/purple-gilled.jpg",
       "photos": [
         {
           "src": "photos/d_IMG_6081.jpg",
@@ -2667,19 +2874,19 @@
     {
       "id": "small-litter",
       "common_name": "Small Litter & Wood Mushrooms",
-      "scientific_name": "Marasmius, Schizophyllum, Gymnopus, and allies",
+      "scientific_name": "Marasmius, Schizophyllum, Gymnopus, Mycena, and allies",
       "category": "Gilled mushrooms",
       "category_slug": "gilled",
       "edibility": "Generally not considered edible",
       "confidence": "group",
-      "summary": "Delicate litter and wood fungi: orange pinwheels, split gills, oak-loving collybias, and other small gilled species.",
+      "summary": "Delicate litter and wood fungi: orange pinwheels, split gills, oak-loving collybias, and other small gilled species, plus pale wood Mycena on logs.",
       "uses": "Little culinary value; excellent for ecology and learning.",
       "habitat": "Leaf litter and small wood.",
       "tree_associates": "Oak litter and hardwood twigs.",
       "field_marks": "Small stature; thin stems; on litter or wood.",
       "season": "Summer to fall",
       "region_notes": "Sourland trails.",
-      "cover_image": "photos/05_marasmius.jpg",
+      "cover_image": "photos/covers/small-litter.jpg",
       "photos": [
         {
           "src": "photos/05_marasmius.jpg",
@@ -2884,6 +3091,58 @@
             "taken_at": "2026-07-19T08:32:09"
           },
           "taken_at": "2026-07-19T08:32:09"
+        },
+        {
+          "src": "photos/d_IMG_6470.jpg",
+          "caption": "Pale Mycena on a hardwood log",
+          "view": "side",
+          "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+          "lat": 40.350944,
+          "lon": -74.941506,
+          "id_detail": {
+            "common_name": "Pale Wood Mycena",
+            "scientific_name": "Mycena galericulata / allies",
+            "edibility": "Not considered edible",
+            "summary": "Pale beige, conical to bell-shaped mushrooms on a hardwood log. Long pale stems and crowded pale gills. Typical of common bonnet (Mycena) fruiting from bark in late summer.",
+            "uses": "Too small and poorly known for the table; several Mycena are inedible.",
+            "habitat": "Dead hardwood logs and stumps.",
+            "tree_associates": "Oaks and mixed hardwoods.",
+            "field_marks": "Conical/bell cap; pale beige; slender pale stem; on wood.",
+            "confidence": "moderate-high",
+            "photo_location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+            "view": "side",
+            "lat": 40.350944,
+            "lon": -74.941506,
+            "season": "Summer to fall (this find: August 18, 2026)",
+            "taken_at": "2026-08-18T17:46:07"
+          },
+          "taken_at": "2026-08-18T17:46:07"
+        },
+        {
+          "src": "photos/d_IMG_6471.jpg",
+          "caption": "Pale Mycena \u2014 gills from below",
+          "view": "underside",
+          "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+          "lat": 40.350942,
+          "lon": -74.941528,
+          "id_detail": {
+            "common_name": "Pale Wood Mycena",
+            "scientific_name": "Mycena galericulata / allies",
+            "edibility": "Not considered edible",
+            "summary": "Pale beige, conical to bell-shaped mushrooms on a hardwood log. Long pale stems and crowded pale gills. Typical of common bonnet (Mycena) fruiting from bark in late summer.",
+            "uses": "Too small and poorly known for the table; several Mycena are inedible.",
+            "habitat": "Dead hardwood logs and stumps.",
+            "tree_associates": "Oaks and mixed hardwoods.",
+            "field_marks": "Conical/bell cap; pale beige; slender pale stem; on wood.",
+            "confidence": "moderate-high",
+            "photo_location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+            "view": "underside",
+            "lat": 40.350942,
+            "lon": -74.941528,
+            "season": "Summer to fall (this find: August 18, 2026)",
+            "taken_at": "2026-08-18T17:46:13"
+          },
+          "taken_at": "2026-08-18T17:46:13"
         }
       ],
       "subcategories": [
@@ -2898,6 +3157,293 @@
         {
           "name": "Oak-loving Collybia",
           "note": "Gymnopus dryophilus complex"
+        },
+        {
+          "name": "Pale wood Mycena",
+          "note": "Mycena galericulata / allies"
+        }
+      ]
+    },
+    {
+      "id": "pluteus",
+      "common_name": "Deer Mushroom",
+      "scientific_name": "Pluteus",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "edibility": "Some species edible when identified; pink-gilled look-alikes exist",
+      "confidence": "genus",
+      "summary": "Wood-loving gilled mushrooms with free gills that turn pink and a fibrous stem. The common deer mushroom (Pluteus cervinus group) fruits from buried hardwood in oak litter.",
+      "uses": "P. cervinus is eaten by some; Entoloma look-alikes are a risk. Educational only.",
+      "habitat": "Decayed wood, often buried under leaf litter.",
+      "tree_associates": "Hardwoods, especially oak.",
+      "field_marks": "Free gills becoming pink; radially streaked cap; fibrous stem.",
+      "season": "Summer to fall",
+      "region_notes": "Baldpate Mountain (August 18, 2026).",
+      "cover_image": "photos/covers/pluteus.jpg",
+      "photos": [
+        {
+          "src": "photos/d_IMG_6474.jpg",
+          "caption": "Deer mushroom in oak litter",
+          "view": "side",
+          "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+          "lat": 40.350308,
+          "lon": -74.940483,
+          "id_detail": {
+            "common_name": "Deer Mushroom",
+            "scientific_name": "Pluteus cervinus group",
+            "edibility": "Edible when correctly identified \u2014 not a beginner edible",
+            "summary": "Broad cream-tan cap with a streaked disc and lined margin, pale gills that become pink, and a fibrous reddish-brown stem. Grows from buried wood in litter. Classic eastern deer mushroom (Pluteus).",
+            "uses": "Pluteus cervinus is eaten by some foragers; pink-gilled look-alikes include Entoloma. Educational only on this site.",
+            "habitat": "On decayed wood, often buried under oak litter.",
+            "tree_associates": "Hardwoods, especially oak.",
+            "field_marks": "Cream-tan radially streaked cap; striate margin; free gills (white then pink); reddish-brown fibrous stem.",
+            "confidence": "moderate-high",
+            "photo_location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+            "view": "side",
+            "lat": 40.350308,
+            "lon": -74.940483,
+            "season": "Summer to fall (this find: August 18, 2026)",
+            "taken_at": "2026-08-18T17:50:23"
+          },
+          "taken_at": "2026-08-18T17:50:23"
+        },
+        {
+          "src": "photos/d_IMG_6475.jpg",
+          "caption": "Deer mushroom \u2014 streaked cap",
+          "view": "top",
+          "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+          "lat": 40.350311,
+          "lon": -74.940475,
+          "id_detail": {
+            "common_name": "Deer Mushroom",
+            "scientific_name": "Pluteus cervinus group",
+            "edibility": "Edible when correctly identified \u2014 not a beginner edible",
+            "summary": "Broad cream-tan cap with a streaked disc and lined margin, pale gills that become pink, and a fibrous reddish-brown stem. Grows from buried wood in litter. Classic eastern deer mushroom (Pluteus).",
+            "uses": "Pluteus cervinus is eaten by some foragers; pink-gilled look-alikes include Entoloma. Educational only on this site.",
+            "habitat": "On decayed wood, often buried under oak litter.",
+            "tree_associates": "Hardwoods, especially oak.",
+            "field_marks": "Cream-tan radially streaked cap; striate margin; free gills (white then pink); reddish-brown fibrous stem.",
+            "confidence": "moderate-high",
+            "photo_location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+            "view": "top",
+            "lat": 40.350311,
+            "lon": -74.940475,
+            "season": "Summer to fall (this find: August 18, 2026)",
+            "taken_at": "2026-08-18T17:50:24"
+          },
+          "taken_at": "2026-08-18T17:50:24"
+        },
+        {
+          "src": "photos/d_IMG_6476.jpg",
+          "caption": "Deer mushroom \u2014 pale gills",
+          "view": "underside",
+          "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+          "lat": 40.350303,
+          "lon": -74.940492,
+          "id_detail": {
+            "common_name": "Deer Mushroom",
+            "scientific_name": "Pluteus cervinus group",
+            "edibility": "Edible when correctly identified \u2014 not a beginner edible",
+            "summary": "Broad cream-tan cap with a streaked disc and lined margin, pale gills that become pink, and a fibrous reddish-brown stem. Grows from buried wood in litter. Classic eastern deer mushroom (Pluteus).",
+            "uses": "Pluteus cervinus is eaten by some foragers; pink-gilled look-alikes include Entoloma. Educational only on this site.",
+            "habitat": "On decayed wood, often buried under oak litter.",
+            "tree_associates": "Hardwoods, especially oak.",
+            "field_marks": "Cream-tan radially streaked cap; striate margin; free gills (white then pink); reddish-brown fibrous stem.",
+            "confidence": "moderate-high",
+            "photo_location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+            "view": "underside",
+            "lat": 40.350303,
+            "lon": -74.940492,
+            "season": "Summer to fall (this find: August 18, 2026)",
+            "taken_at": "2026-08-18T17:50:27"
+          },
+          "taken_at": "2026-08-18T17:50:27"
+        }
+      ],
+      "subcategories": [
+        {
+          "name": "Deer mushroom",
+          "note": "Pluteus cervinus group"
+        }
+      ]
+    },
+    {
+      "id": "inky-caps",
+      "common_name": "Inky Caps",
+      "scientific_name": "Coprinopsis / Coprinus",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "edibility": "Variable \u2014 some edible young; others toxic with alcohol. Do not eat",
+      "confidence": "genus",
+      "summary": "Shaggy white-to-gray mushrooms that blacken and dissolve into ink. This troop ringed a large hardwood at Baldpate. Includes shaggy mane and common inky-cap relatives.",
+      "uses": "Not recommended. Common inky cap causes a severe reaction with alcohol.",
+      "habitat": "Soil and woody debris at tree bases; disturbed ground.",
+      "tree_associates": "Hardwoods.",
+      "field_marks": "Shaggy/woolly caps; clustered; gills and cap deliquesce to black ink.",
+      "season": "Spring through fall; this find mid-August",
+      "region_notes": "Baldpate Mountain (August 18, 2026).",
+      "cover_image": "photos/covers/inky-caps.jpg",
+      "photos": [
+        {
+          "src": "photos/d_IMG_6482.jpg",
+          "caption": "Inky caps in a troop around a tree",
+          "view": "top",
+          "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+          "lat": 40.353089,
+          "lon": -74.93905,
+          "id_detail": {
+            "common_name": "Inky Caps",
+            "scientific_name": "Coprinopsis / Coprinus",
+            "edibility": "Variable \u2014 some edible when young; Coprinopsis atramentaria is toxic with alcohol. Do not eat",
+            "summary": "A troop of shaggy white-to-gray mushrooms around a large tree base. Caps open, turn inky black, and dissolve (deliquesce). Shaggy mane / common inky-cap group; alcohol-reactive species occur in this genus.",
+            "uses": "Not recommended. Common inky cap (C. atramentaria) causes a disulfiram-like reaction with alcohol. Educational only.",
+            "habitat": "Soil, woody debris, and disturbed ground at hardwood bases.",
+            "tree_associates": "Around living or dead hardwoods.",
+            "field_marks": "Shaggy/woolly white-gray caps; clustered at a tree; gills and cap turn black and liquefy.",
+            "confidence": "high-genus",
+            "photo_location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+            "view": "top",
+            "lat": 40.353089,
+            "lon": -74.93905,
+            "season": "Summer to fall (this find: August 18, 2026)",
+            "taken_at": "2026-08-18T18:01:13"
+          },
+          "taken_at": "2026-08-18T18:01:13"
+        },
+        {
+          "src": "photos/d_IMG_6483.jpg",
+          "caption": "Inky caps \u2014 deliquescing black gills",
+          "view": "underside",
+          "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+          "lat": 40.353053,
+          "lon": -74.939025,
+          "id_detail": {
+            "common_name": "Inky Caps",
+            "scientific_name": "Coprinopsis / Coprinus",
+            "edibility": "Variable \u2014 some edible when young; Coprinopsis atramentaria is toxic with alcohol. Do not eat",
+            "summary": "A troop of shaggy white-to-gray mushrooms around a large tree base. Caps open, turn inky black, and dissolve (deliquesce). Shaggy mane / common inky-cap group; alcohol-reactive species occur in this genus.",
+            "uses": "Not recommended. Common inky cap (C. atramentaria) causes a disulfiram-like reaction with alcohol. Educational only.",
+            "habitat": "Soil, woody debris, and disturbed ground at hardwood bases.",
+            "tree_associates": "Around living or dead hardwoods.",
+            "field_marks": "Shaggy/woolly white-gray caps; clustered at a tree; gills and cap turn black and liquefy.",
+            "confidence": "high-genus",
+            "photo_location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+            "view": "underside",
+            "lat": 40.353053,
+            "lon": -74.939025,
+            "season": "Summer to fall (this find: August 18, 2026)",
+            "taken_at": "2026-08-18T18:01:24"
+          },
+          "taken_at": "2026-08-18T18:01:24"
+        },
+        {
+          "src": "photos/d_IMG_6484.jpg",
+          "caption": "Shaggy inky caps at the trunk base",
+          "view": "side",
+          "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+          "lat": 40.353047,
+          "lon": -74.939025,
+          "id_detail": {
+            "common_name": "Inky Caps",
+            "scientific_name": "Coprinopsis / Coprinus",
+            "edibility": "Variable \u2014 some edible when young; Coprinopsis atramentaria is toxic with alcohol. Do not eat",
+            "summary": "A troop of shaggy white-to-gray mushrooms around a large tree base. Caps open, turn inky black, and dissolve (deliquesce). Shaggy mane / common inky-cap group; alcohol-reactive species occur in this genus.",
+            "uses": "Not recommended. Common inky cap (C. atramentaria) causes a disulfiram-like reaction with alcohol. Educational only.",
+            "habitat": "Soil, woody debris, and disturbed ground at hardwood bases.",
+            "tree_associates": "Around living or dead hardwoods.",
+            "field_marks": "Shaggy/woolly white-gray caps; clustered at a tree; gills and cap turn black and liquefy.",
+            "confidence": "high-genus",
+            "photo_location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+            "view": "side",
+            "lat": 40.353047,
+            "lon": -74.939025,
+            "season": "Summer to fall (this find: August 18, 2026)",
+            "taken_at": "2026-08-18T18:01:30"
+          },
+          "taken_at": "2026-08-18T18:01:30"
+        }
+      ],
+      "subcategories": [
+        {
+          "name": "Shaggy / common inky caps",
+          "note": "Coprinus / Coprinopsis"
+        }
+      ]
+    },
+    {
+      "id": "cup-fungi",
+      "common_name": "Cup Fungi",
+      "scientific_name": "Pezizales (Peziza / Galiella)",
+      "category": "Cup fungi",
+      "category_slug": "other",
+      "edibility": "Not considered edible",
+      "confidence": "group",
+      "summary": "Small brown cups on mossy hardwood logs \u2014 eastern Peziza and rubber-cup (Galiella) types. No gills or pores; the fertile surface is the inside of the cup.",
+      "uses": "Not eaten; interesting wood-decay ascomycetes.",
+      "habitat": "Decaying hardwood, often mossy logs.",
+      "tree_associates": "Hardwoods.",
+      "field_marks": "Cup-shaped; brown interior; pale rim; on wood.",
+      "season": "Summer to fall",
+      "region_notes": "Baldpate Mountain (August 18, 2026).",
+      "cover_image": "photos/covers/cup-fungi.jpg",
+      "photos": [
+        {
+          "src": "photos/d_IMG_6485.jpg",
+          "caption": "Brown cup fungi on a mossy log",
+          "view": "top",
+          "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+          "lat": 40.352742,
+          "lon": -74.935661,
+          "id_detail": {
+            "common_name": "Brown Cup Fungus",
+            "scientific_name": "Peziza / Galiella rufa group",
+            "edibility": "Not considered edible",
+            "summary": "Small pale-rimmed cups with brown interiors on a mossy hardwood log, plus a side view of a rubbery gray-brown cup. Fits eastern brown cup fungi (Peziza) and hairy rubber cup (Galiella rufa).",
+            "uses": "Not eaten; wood-decay ascomycetes.",
+            "habitat": "Decaying hardwood logs, often among moss.",
+            "tree_associates": "Hardwoods.",
+            "field_marks": "Cup-shaped; brown interior; pale exterior rim; on mossy wood; no gills or pores.",
+            "confidence": "high-genus",
+            "photo_location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+            "view": "top",
+            "lat": 40.352742,
+            "lon": -74.935661,
+            "season": "Summer to fall (this find: August 18, 2026)",
+            "taken_at": "2026-08-18T18:05:18"
+          },
+          "taken_at": "2026-08-18T18:05:18"
+        },
+        {
+          "src": "photos/d_IMG_6486.jpg",
+          "caption": "Brown cup fungus \u2014 side on moss",
+          "view": "side",
+          "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+          "lat": 40.352875,
+          "lon": -74.935761,
+          "id_detail": {
+            "common_name": "Brown Cup Fungus",
+            "scientific_name": "Peziza / Galiella rufa group",
+            "edibility": "Not considered edible",
+            "summary": "Small pale-rimmed cups with brown interiors on a mossy hardwood log, plus a side view of a rubbery gray-brown cup. Fits eastern brown cup fungi (Peziza) and hairy rubber cup (Galiella rufa).",
+            "uses": "Not eaten; wood-decay ascomycetes.",
+            "habitat": "Decaying hardwood logs, often among moss.",
+            "tree_associates": "Hardwoods.",
+            "field_marks": "Cup-shaped; brown interior; pale exterior rim; on mossy wood; no gills or pores.",
+            "confidence": "high-genus",
+            "photo_location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+            "view": "side",
+            "lat": 40.352875,
+            "lon": -74.935761,
+            "season": "Summer to fall (this find: August 18, 2026)",
+            "taken_at": "2026-08-18T18:05:23"
+          },
+          "taken_at": "2026-08-18T18:05:23"
+        }
+      ],
+      "subcategories": [
+        {
+          "name": "Brown cups / rubber cup",
+          "note": "Peziza / Galiella rufa"
         }
       ]
     }

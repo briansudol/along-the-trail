@@ -162,6 +162,21 @@
     return item.image || "";
   }
 
+  function galleryCountText(item) {
+    var photos = item.photos || [];
+    var n = photos.length;
+    var videos = photos.filter(isVideoMedia).length;
+    var stills = n - videos;
+    var trail = item.category_slug === "wildlife" ? "" : "trail ";
+    var parts = [];
+    if (stills === 1) parts.push("1 " + trail + "photo");
+    else if (stills > 1) parts.push(stills + " " + trail + "photos");
+    if (videos === 1) parts.push("1 video");
+    else if (videos > 1) parts.push(videos + " videos");
+    if (!parts.length) return "No photos in this gallery yet";
+    return parts.join(" and ") + " in this gallery";
+  }
+
   function cardMediaHtml(item) {
     var cover = item.cover_image || "";
     var photos = item.photos || [];
@@ -181,6 +196,13 @@
       '" alt="' +
       escapeHtml(item.common_name) +
       '" loading="lazy" />' +
+      '<span class="card-open-hint" aria-hidden="true">Open gallery</span>' +
+      "</div>" +
+      '<div class="card-cover-meta">' +
+      '<p class="card-count">' +
+      escapeHtml(galleryCountText(item)) +
+      "</p>" +
+      '<p class="card-click-hint">Click to open</p>' +
       "</div>"
     );
   }
@@ -254,7 +276,6 @@
     els.grid.innerHTML = items
       .map(function (item) {
         var loc = primaryLocation(item);
-        var nPhotos = (item.photos || []).length;
         var pending =
           item.pending_id === true ||
           item.confidence === "pending" ||
@@ -263,10 +284,6 @@
         if (pending) badges += '<span class="card-badge pending">Pending ID</span>';
         else if (item.source === "community")
           badges += '<span class="card-badge community">Community</span>';
-        if (item.is_group && nPhotos > 1) {
-          badges +=
-            '<span class="card-badge community">' + nPhotos + " photos</span>";
-        }
         var sub =
           item.subcategories && item.subcategories.length
             ? '<p class="card-loc">' +
@@ -285,6 +302,13 @@
           escapeHtml(item.id) +
           '" data-kind="' +
           (viewMode === "wildlife" ? "wildlife" : item.is_group ? "group" : "community") +
+          '" aria-label="' +
+          escapeHtml(
+            item.common_name +
+              ". " +
+              galleryCountText(item) +
+              ". Click to open."
+          ) +
           '">' +
           cardMediaHtml(item) +
           '<div class="card-body">' +
@@ -469,7 +493,11 @@
 
     var thumbs =
       photos.length > 1
-        ? '<div class="detail-photo-nav">' +
+        ? '<p class="detail-thumb-hint">Click any photo to view it · ' +
+          photos.length +
+          (photos.length === 1 ? " image" : " images") +
+          "</p>" +
+          '<div class="detail-photo-nav">' +
           photos
             .map(function (p, i) {
               var label =
@@ -533,8 +561,10 @@
       var host = document.getElementById("detail-photos-main");
       if (!host || !p) return;
       // Keep thumbs; replace only the main media element(s)
+      var hint = host.querySelector(".detail-thumb-hint");
       var nav = host.querySelector(".detail-photo-nav");
-      var navHtml = nav ? nav.outerHTML : "";
+      var navHtml =
+        (hint ? hint.outerHTML : "") + (nav ? nav.outerHTML : "");
       host.innerHTML = mainMediaHtml(p) + navHtml;
       // re-bind thumb clicks after replacing nav
       host.querySelectorAll(".detail-photo-nav button").forEach(function (btn) {

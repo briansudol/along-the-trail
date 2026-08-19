@@ -77,6 +77,32 @@
         "lon_min": -71.14,
         "lon_max": -71.07
       }
+    },
+    "baldpate": {
+      "id": "baldpate",
+      "name": "Ted Stiles Preserve at Baldpate Mountain",
+      "subtitle": "Hopewell Township / Lambertville, NJ \u2014 oak woods, boulder slopes & ridge trails",
+      "center": [
+        40.3515,
+        -74.9385
+      ],
+      "zoom": 15,
+      "bounds": [
+        [
+          40.347,
+          -74.945
+        ],
+        [
+          40.356,
+          -74.932
+        ]
+      ],
+      "filter": {
+        "lat_min": 40.347,
+        "lat_max": 40.356,
+        "lon_min": -74.945,
+        "lon_max": -74.932
+      }
     }
   },
   "finds": [
@@ -1502,6 +1528,244 @@
       "lon": -74.700103,
       "photo_index": 3,
       "taken_at": "2026-08-16T09:01:45"
+    },
+    {
+      "species_id": "small-litter",
+      "common_name": "Pale Wood Mycena",
+      "scientific_name": "Mycena galericulata / allies",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/d_IMG_6470.jpg",
+      "caption": "Pale Mycena on a hardwood log",
+      "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+      "lat": 40.350944,
+      "lon": -74.941506,
+      "photo_index": 8,
+      "taken_at": "2026-08-18T17:46:07"
+    },
+    {
+      "species_id": "small-litter",
+      "common_name": "Pale Wood Mycena",
+      "scientific_name": "Mycena galericulata / allies",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/d_IMG_6471.jpg",
+      "caption": "Pale Mycena \u2014 gills from below",
+      "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+      "lat": 40.350942,
+      "lon": -74.941528,
+      "photo_index": 9,
+      "taken_at": "2026-08-18T17:46:13"
+    },
+    {
+      "species_id": "honey-mushrooms",
+      "common_name": "Ringless Honey Mushroom",
+      "scientific_name": "Desarmillaria caespitosa (Armillaria tabescens group)",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/d_IMG_6472.jpg",
+      "caption": "Ringless honey mushroom tuft \u2014 tops",
+      "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+      "lat": 40.350678,
+      "lon": -74.940675,
+      "photo_index": 0,
+      "taken_at": "2026-08-18T17:48:08"
+    },
+    {
+      "species_id": "honey-mushrooms",
+      "common_name": "Ringless Honey Mushroom",
+      "scientific_name": "Desarmillaria caespitosa (Armillaria tabescens group)",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/d_IMG_6473.jpg",
+      "caption": "Ringless honey mushrooms \u2014 cluster from the side",
+      "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+      "lat": 40.350697,
+      "lon": -74.940697,
+      "photo_index": 1,
+      "taken_at": "2026-08-18T17:48:17"
+    },
+    {
+      "species_id": "pluteus",
+      "common_name": "Deer Mushroom",
+      "scientific_name": "Pluteus cervinus group",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/d_IMG_6474.jpg",
+      "caption": "Deer mushroom in oak litter",
+      "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+      "lat": 40.350308,
+      "lon": -74.940483,
+      "photo_index": 0,
+      "taken_at": "2026-08-18T17:50:23"
+    },
+    {
+      "species_id": "pluteus",
+      "common_name": "Deer Mushroom",
+      "scientific_name": "Pluteus cervinus group",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/d_IMG_6475.jpg",
+      "caption": "Deer mushroom \u2014 streaked cap",
+      "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+      "lat": 40.350311,
+      "lon": -74.940475,
+      "photo_index": 1,
+      "taken_at": "2026-08-18T17:50:24"
+    },
+    {
+      "species_id": "pluteus",
+      "common_name": "Deer Mushroom",
+      "scientific_name": "Pluteus cervinus group",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/d_IMG_6476.jpg",
+      "caption": "Deer mushroom \u2014 pale gills",
+      "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+      "lat": 40.350303,
+      "lon": -74.940492,
+      "photo_index": 2,
+      "taken_at": "2026-08-18T17:50:27"
+    },
+    {
+      "species_id": "boletes",
+      "common_name": "Bitter Bolete (Tylopilus)",
+      "scientific_name": "Tylopilus rubrobrunneus / allies",
+      "category": "Boletes",
+      "category_slug": "bolete",
+      "thumb": "photos/d_IMG_6477.jpg",
+      "caption": "Bitter bolete \u2014 profile by a boulder",
+      "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+      "lat": 40.349983,
+      "lon": -74.940711,
+      "photo_index": 26,
+      "taken_at": "2026-08-18T17:51:20"
+    },
+    {
+      "species_id": "boletes",
+      "common_name": "Bitter Bolete (Tylopilus)",
+      "scientific_name": "Tylopilus rubrobrunneus / allies",
+      "category": "Boletes",
+      "category_slug": "bolete",
+      "thumb": "photos/d_IMG_6478.jpg",
+      "caption": "Bitter bolete \u2014 brown pore face",
+      "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+      "lat": 40.349983,
+      "lon": -74.940719,
+      "photo_index": 27,
+      "taken_at": "2026-08-18T17:51:27"
+    },
+    {
+      "species_id": "boletes",
+      "common_name": "Bitter Bolete (Tylopilus)",
+      "scientific_name": "Tylopilus rubrobrunneus / allies",
+      "category": "Boletes",
+      "category_slug": "bolete",
+      "thumb": "photos/d_IMG_6479.jpg",
+      "caption": "Bitter bolete \u2014 pink-brown cap",
+      "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+      "lat": 40.349975,
+      "lon": -74.940742,
+      "photo_index": 28,
+      "taken_at": "2026-08-18T17:51:35"
+    },
+    {
+      "species_id": "boletes",
+      "common_name": "Red-cracking Bolete",
+      "scientific_name": "Xerocomellus chrysenteron / Hortiboletus allies",
+      "category": "Boletes",
+      "category_slug": "bolete",
+      "thumb": "photos/d_IMG_6480.jpg",
+      "caption": "Red-cracking bolete with an earthball nearby",
+      "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+      "lat": 40.349822,
+      "lon": -74.940667,
+      "photo_index": 29,
+      "taken_at": "2026-08-18T17:52:32"
+    },
+    {
+      "species_id": "oyster",
+      "common_name": "Oyster Mushroom",
+      "scientific_name": "Pleurotus ostreatus / pulmonarius complex",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/d_IMG_6481.jpg",
+      "caption": "Oyster cluster on a standing hardwood",
+      "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+      "lat": 40.349411,
+      "lon": -74.940108,
+      "photo_index": 4,
+      "taken_at": "2026-08-18T17:55:04"
+    },
+    {
+      "species_id": "inky-caps",
+      "common_name": "Inky Caps",
+      "scientific_name": "Coprinopsis / Coprinus",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/d_IMG_6482.jpg",
+      "caption": "Inky caps in a troop around a tree",
+      "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+      "lat": 40.353089,
+      "lon": -74.93905,
+      "photo_index": 0,
+      "taken_at": "2026-08-18T18:01:13"
+    },
+    {
+      "species_id": "inky-caps",
+      "common_name": "Inky Caps",
+      "scientific_name": "Coprinopsis / Coprinus",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/d_IMG_6483.jpg",
+      "caption": "Inky caps \u2014 deliquescing black gills",
+      "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+      "lat": 40.353053,
+      "lon": -74.939025,
+      "photo_index": 1,
+      "taken_at": "2026-08-18T18:01:24"
+    },
+    {
+      "species_id": "inky-caps",
+      "common_name": "Inky Caps",
+      "scientific_name": "Coprinopsis / Coprinus",
+      "category": "Gilled mushrooms",
+      "category_slug": "gilled",
+      "thumb": "photos/d_IMG_6484.jpg",
+      "caption": "Shaggy inky caps at the trunk base",
+      "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+      "lat": 40.353047,
+      "lon": -74.939025,
+      "photo_index": 2,
+      "taken_at": "2026-08-18T18:01:30"
+    },
+    {
+      "species_id": "cup-fungi",
+      "common_name": "Brown Cup Fungus",
+      "scientific_name": "Peziza / Galiella rufa group",
+      "category": "Cup fungi",
+      "category_slug": "other",
+      "thumb": "photos/d_IMG_6485.jpg",
+      "caption": "Brown cup fungi on a mossy log",
+      "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+      "lat": 40.352742,
+      "lon": -74.935661,
+      "photo_index": 0,
+      "taken_at": "2026-08-18T18:05:18"
+    },
+    {
+      "species_id": "cup-fungi",
+      "common_name": "Brown Cup Fungus",
+      "scientific_name": "Peziza / Galiella rufa group",
+      "category": "Cup fungi",
+      "category_slug": "other",
+      "thumb": "photos/d_IMG_6486.jpg",
+      "caption": "Brown cup fungus \u2014 side on moss",
+      "location": "Ted Stiles Preserve at Baldpate Mountain, Hopewell Township, NJ",
+      "lat": 40.352875,
+      "lon": -74.935761,
+      "photo_index": 1,
+      "taken_at": "2026-08-18T18:05:23"
     }
   ]
 }

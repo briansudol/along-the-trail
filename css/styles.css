@@ -194,6 +194,52 @@ p { margin: 0 0 1rem; }
   transition: transform 0.4s var(--ease);
 }
 .card:hover .card-image img { transform: scale(1.04); }
+.card-open-hint {
+  position: absolute;
+  right: 0.55rem;
+  bottom: 0.55rem;
+  z-index: 2;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.32rem 0.6rem;
+  border-radius: 999px;
+  background: rgba(20, 28, 22, 0.78);
+  color: #f4f1ea;
+  pointer-events: none;
+}
+.card:hover .card-open-hint,
+.card:focus-visible .card-open-hint {
+  background: rgba(30, 90, 55, 0.92);
+}
+.card-cover-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  padding: 0.55rem 1.15rem 0.15rem;
+  border-bottom: 1px solid var(--line);
+}
+.card-count {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--forest-deep);
+}
+.card-click-hint {
+  margin: 0;
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--moss);
+}
+.card-click-hint::after {
+  content: " →";
+}
 .media-badge {
   position: absolute;
   z-index: 2;
@@ -673,9 +719,22 @@ p { margin: 0 0 1rem; }
   object-fit: contain;
   background: #0a0e0c;
 }
-.detail-photo-nav {
-  display: flex; gap: 0.4rem; padding: 0.65rem; justify-content: center; flex-wrap: wrap;
+.detail-thumb-hint {
+  margin: 0;
+  padding: 0.55rem 0.75rem 0;
   background: #141a16;
+  color: #c5cdc7;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+.detail-photo-nav {
+  display: flex; gap: 0.4rem; padding: 0.45rem 0.65rem 0.65rem; justify-content: center; flex-wrap: wrap;
+  background: #141a16;
+}
+.detail-photo-nav button:hover {
+  border-color: #8aa090;
 }
 .detail-photo-nav button {
   width: 3.2rem; height: 3.2rem; padding: 0; border: 2px solid transparent;
