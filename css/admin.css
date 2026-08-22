@@ -15,6 +15,13 @@
   border-color: var(--moss);
   color: var(--ink);
 }
+.nav-admin-btn:focus-visible,
+.admin-thumb:focus-visible,
+.admin-inbox-card button:focus-visible {
+  outline: 2px solid var(--focus-color, var(--moss));
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px var(--focus-glow, color-mix(in srgb, var(--moss) 35%, transparent));
+}
 
 .admin-bar {
   position: fixed;
@@ -27,8 +34,8 @@
   justify-content: center;
   gap: 0.75rem;
   padding: 0.65rem 1rem;
-  background: #1e3329;
-  color: #e8efe9;
+  background: var(--forest-deep, #1e3329);
+  color: var(--on-forest, #e8efe9);
   box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
 }
 .admin-bar span {
@@ -67,7 +74,8 @@
 }
 .admin-help code {
   font-size: 0.85em;
-  background: #efe8dc;
+  background: var(--disclaimer-bg, #efe8dc);
+  color: var(--ink);
   padding: 0.1rem 0.35rem;
   border-radius: 0.25rem;
 }
@@ -184,6 +192,86 @@
   font-size: 0.9rem;
   color: var(--moss);
   min-height: 1.2em;
+}
+
+.admin-subhead {
+  margin: 1.5rem 0 0.5rem;
+  font-size: 1.05rem;
+}
+.admin-inbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  max-height: min(48vh, 26rem);
+  overflow: auto;
+}
+.admin-inbox-card {
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  gap: 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 0.7rem;
+  overflow: hidden;
+  background: var(--bg);
+}
+.admin-inbox-card img,
+.admin-inbox-missing {
+  width: 100%;
+  height: 7.5rem;
+  object-fit: cover;
+  display: block;
+  background: #1a211c;
+}
+.admin-inbox-missing {
+  color: #c5d4c9;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.admin-inbox-meta {
+  padding: 0.65rem 0.75rem 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.admin-inbox-meta strong {
+  color: var(--ink);
+}
+.admin-inbox-status {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.admin-inbox-meta label {
+  margin-top: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--ink-soft);
+}
+.admin-inbox-meta input[type="text"] {
+  font: inherit;
+  padding: 0.25rem 0.45rem;
+  border: 1px solid var(--line);
+  border-radius: 0.35rem;
+  min-width: 0;
+  flex: 1;
+}
+.admin-inbox-actions {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.45rem;
+}
+.admin-newsletter-list ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+.admin-newsletter-list li {
+  margin: 0.25rem 0;
+  font-size: 0.9rem;
 }
 
 body:has(#admin-bar:not([hidden])) {

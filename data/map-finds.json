@@ -16,14 +16,14 @@
         ],
         [
           40.485,
-          -74.685
+          -74.675
         ]
       ],
       "filter": {
         "lat_min": 40.45,
         "lat_max": 40.49,
         "lon_min": -74.72,
-        "lon_max": -74.685
+        "lon_max": -74.675
       }
     },
     "delaware-water-gap": {
@@ -102,6 +102,40 @@
         "lat_max": 40.356,
         "lon_min": -74.945,
         "lon_max": -74.932
+      }
+    },
+    "high-point": {
+      "id": "high-point",
+      "name": "High Point State Park",
+      "subtitle": "Sussex County, NJ — Kittatinny ridge, monument, and highland trails",
+      "center": [41.3209, -74.6616],
+      "zoom": 13,
+      "bounds": [
+        [41.29, -74.71],
+        [41.36, -74.62]
+      ],
+      "filter": {
+        "lat_min": 41.29,
+        "lat_max": 41.36,
+        "lon_min": -74.71,
+        "lon_max": -74.62
+      }
+    },
+    "cheesequake": {
+      "id": "cheesequake",
+      "name": "Cheesequake State Park",
+      "subtitle": "Old Bridge / Matawan, NJ — pine barrens, marsh, and mixed woods",
+      "center": [40.437, -74.274],
+      "zoom": 14,
+      "bounds": [
+        [40.425, -74.295],
+        [40.455, -74.255]
+      ],
+      "filter": {
+        "lat_min": 40.425,
+        "lat_max": 40.455,
+        "lon_min": -74.295,
+        "lon_max": -74.255
       }
     }
   },

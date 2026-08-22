@@ -19,6 +19,7 @@
       "admin-login-btn",
       "admin-bar",
       "admin-login-modal",
+      "admin-inbox-modal",
       "admin-library-modal",
       "admin-editor-modal",
       "admin-server-hint",
@@ -112,6 +113,148 @@
 
   function closeLibrary() {
     $("admin-library-modal").hidden = true;
+  }
+
+  function openInbox() {
+    if (!isLoggedIn()) {
+      openLogin();
+      return;
+    }
+    $("admin-inbox-modal").hidden = false;
+    loadInbox();
+  }
+
+  function closeInbox() {
+    $("admin-inbox-modal").hidden = true;
+  }
+
+  function photoSrc(item) {
+    var photos = item.photos || [];
+    if (photos[0] && photos[0].src) return bust(photos[0].src);
+    return item.image_url || "";
+  }
+
+  function loadInbox() {
+    var listEl = $("admin-inbox-list");
+    var newsEl = $("admin-newsletter-list");
+    if (listEl) listEl.innerHTML = "<p class='admin-loading'>Loading uploads…</p>";
+    if (newsEl) newsEl.innerHTML = "<p class='admin-loading'>Loading signups…</p>";
+
+    var uploads = window.TrailPersist
+      ? TrailPersist.listInbox()
+      : api("/api/community-inbox", null, "GET").then(function (d) {
+          return d.uploads || [];
+        });
+    var signups = window.TrailPersist
+      ? TrailPersist.listNewsletter()
+      : api("/api/newsletter", null, "GET").then(function (d) {
+          return d.signups || [];
+        });
+
+    uploads
+      .then(function (items) {
+        if (!listEl) return;
+        if (!items.length) {
+          listEl.innerHTML = "<p class='admin-help'>No pending community uploads.</p>";
+          return;
+        }
+        listEl.innerHTML = items
+          .map(function (item) {
+            var status = item.status || "pending";
+            return (
+              '<article class="admin-inbox-card" data-id="' +
+              escapeHtml(item.id) +
+              '">' +
+              (photoSrc(item)
+                ? '<img src="' + photoSrc(item) + '" alt="" />'
+                : '<div class="admin-inbox-missing">No image</div>') +
+              '<div class="admin-inbox-meta">' +
+              "<strong>" +
+              escapeHtml(item.common_name || "Unidentified find") +
+              "</strong>" +
+              "<span>" +
+              escapeHtml(item.location || "") +
+              "</span>" +
+              "<span>" +
+              escapeHtml(item.notes || "") +
+              "</span>" +
+              '<span class="admin-inbox-status">' +
+              escapeHtml(status) +
+              " · " +
+              escapeHtml((item.uploaded_at || "").slice(0, 10)) +
+              "</span>" +
+              '<label>Name <input type="text" class="admin-inbox-name" placeholder="Optional ID" /></label>' +
+              '<div class="admin-inbox-actions">' +
+              '<button type="button" class="btn btn-primary btn-inline" data-act="approve">Approve</button>' +
+              '<button type="button" class="btn btn-ghost btn-inline" data-act="reject">Reject</button>' +
+              "</div></div></article>"
+            );
+          })
+          .join("");
+        listEl.querySelectorAll(".admin-inbox-card").forEach(function (card) {
+          card.querySelectorAll("[data-act]").forEach(function (btn) {
+            btn.addEventListener("click", function () {
+              var id = card.getAttribute("data-id");
+              var action = btn.getAttribute("data-act");
+              var nameInput = card.querySelector(".admin-inbox-name");
+              btn.disabled = true;
+              var extra = { common_name: nameInput ? nameInput.value.trim() : "" };
+              var job = window.TrailPersist
+                ? TrailPersist.moderate(id, action, extra)
+                : api("/api/community-moderate", {
+                    id: id,
+                    action: action,
+                    common_name: extra.common_name,
+                  });
+              job
+                .then(function () {
+                  loadInbox();
+                })
+                .catch(function (err) {
+                  btn.disabled = false;
+                  alert(err.message || "Moderation failed");
+                });
+            });
+          });
+        });
+      })
+      .catch(function (err) {
+        if (listEl) {
+          listEl.innerHTML =
+            "<p class='admin-error'>" + escapeHtml(err.message || "Could not load inbox") + "</p>";
+        }
+      });
+
+    signups
+      .then(function (rows) {
+        if (!newsEl) return;
+        if (!rows.length) {
+          newsEl.innerHTML = "<p class='admin-help'>No newsletter signups yet.</p>";
+          return;
+        }
+        newsEl.innerHTML =
+          "<ul>" +
+          rows
+            .map(function (row) {
+              var email = typeof row === "string" ? row : row.email;
+              var when = row && row.consented_at ? String(row.consented_at).slice(0, 10) : "";
+              return (
+                "<li><code>" +
+                escapeHtml(email) +
+                "</code>" +
+                (when ? " · " + escapeHtml(when) : "") +
+                "</li>"
+              );
+            })
+            .join("") +
+          "</ul>";
+      })
+      .catch(function (err) {
+        if (newsEl) {
+          newsEl.innerHTML =
+            "<p class='admin-error'>" + escapeHtml(err.message || "Could not load signups") + "</p>";
+        }
+      });
   }
 
   function openEditor(item) {
@@ -344,10 +487,14 @@
 
     $("admin-login-btn").addEventListener("click", openLogin);
     $("admin-open-library").addEventListener("click", openLibrary);
+    if ($("admin-open-inbox")) {
+      $("admin-open-inbox").addEventListener("click", openInbox);
+    }
     $("admin-logout").addEventListener("click", function () {
       api("/api/logout", { token: token }).catch(function () {});
       setLoggedIn("");
       closeLibrary();
+      closeInbox();
       closeEditor();
     });
 
@@ -371,6 +518,7 @@
         var t = el.getAttribute("data-admin-close");
         if (t === "login") closeLogin();
         if (t === "library") closeLibrary();
+        if (t === "inbox") closeInbox();
         if (t === "editor") closeEditor();
       });
     });

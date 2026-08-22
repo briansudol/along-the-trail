@@ -7,17 +7,36 @@
   <meta name="description" content="A living trail guide to fungi and field finds — mushrooms, wildlife, and GPS trail maps from hikes across the Northeast. Identification, habitat, and notes for the curious." />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#f6f1e6" />
+  <meta name="color-scheme" content="light dark" />
   <style>
-    html, body { background: #f6f1e6; }
+    :root { --bg: #f6f1e6; }
+    html[data-theme="dark"] { --bg: #121a16; }
+    html, body { background: var(--bg); }
   </style>
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem("mushroom-atlas-theme");
+        if (t !== "light" && t !== "dark") {
+          t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.setAttribute("data-theme", t);
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", t === "dark" ? "#121a16" : "#f6f1e6");
+      } catch (e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/styles.css?v=ivory-2" />
+  <link rel="stylesheet" href="css/styles.css?v=dark-contrast-1" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
   <!-- EXIF reader for GPS / orientation from phone photos -->
   <script src="https://cdn.jsdelivr.net/npm/exifr@7.1.3/dist/full.umd.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -42,9 +61,20 @@
         <!-- Admin button only appears on localhost via admin.js + admin_server.py -->
         <button type="button" class="nav-admin-btn" id="admin-login-btn" hidden>Admin</button>
       </nav>
-      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
-        <span></span><span></span>
-      </button>
+      <div class="header-actions">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-pressed="false" aria-label="Switch to dark mode">
+          <svg class="theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M21 14.3A8.5 8.5 0 0 1 9.7 3 7 7 0 1 0 21 14.3z"></path>
+          </svg>
+          <svg class="theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.2"></circle>
+            <path d="M12 2.5v2.2M12 19.3v2.2M4.7 4.7l1.6 1.6M17.7 17.7l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.7 19.3l1.6-1.6M17.7 6.3l1.6-1.6"></path>
+          </svg>
+        </button>
+        <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu">
+          <span></span><span></span>
+        </button>
+      </div>
     </div>
     <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile">
       <a href="#gallery" data-view="mushrooms">Mushrooms</a>
@@ -83,28 +113,57 @@
 
     <section class="toolbar" id="gallery" aria-label="Filters">
       <div class="toolbar-inner">
-        <h2 id="gallery-heading" class="gallery-heading">Mushroom groups</h2>
+        <div class="toolbar-top">
+          <h2 id="gallery-heading" class="gallery-heading">Mushroom groups</h2>
+          <label class="sort-label" for="gallery-sort">
+            Sort
+            <select id="gallery-sort">
+              <option value="name">Name</option>
+              <option value="season">Season</option>
+              <option value="location">Location</option>
+            </select>
+          </label>
+        </div>
         <p id="wildlife-note" class="wildlife-note" hidden>
           Trail amphibians and other non-fungi finds. Return to
           <a href="#gallery" data-view="mushrooms">Mushrooms</a> for the main atlas.
         </p>
         <div id="mushroom-filters" class="filter-group" role="group" aria-label="Category filters">
-          <button type="button" class="chip is-active" data-filter="all">All groups</button>
-          <button type="button" class="chip" data-filter="polypore">Polypores &amp; crusts</button>
-          <button type="button" class="chip" data-filter="gilled">Gilled</button>
-          <button type="button" class="chip" data-filter="bolete">Boletes</button>
-          <button type="button" class="chip" data-filter="chanterelle">Chanterelles</button>
-          <button type="button" class="chip" data-filter="coral">Coral fungi</button>
-          <button type="button" class="chip" data-filter="pending">Pending ID</button>
-          <button type="button" class="chip" data-filter="community">Community uploads</button>
+          <button type="button" class="chip is-active" data-filter="all">All <span class="chip-count" data-count-for="all"></span></button>
+          <button type="button" class="chip" data-filter="gilled">Gilled <span class="chip-count" data-count-for="gilled"></span></button>
+          <button type="button" class="chip" data-filter="bolete">Boletes <span class="chip-count" data-count-for="bolete"></span></button>
+          <button type="button" class="chip" data-filter="polypore">Polypores &amp; crusts <span class="chip-count" data-count-for="polypore"></span></button>
+          <button type="button" class="chip" data-filter="chanterelle">Chanterelles <span class="chip-count" data-count-for="chanterelle"></span></button>
+          <button type="button" class="chip" data-filter="coral">Coral fungi <span class="chip-count" data-count-for="coral"></span></button>
+          <button type="button" class="chip" data-filter="other">Other fungi <span class="chip-count" data-count-for="other"></span></button>
+          <button type="button" class="chip" data-filter="pending">Pending ID <span class="chip-count" data-count-for="pending"></span></button>
+          <button type="button" class="chip" data-filter="community">Community <span class="chip-count" data-count-for="community"></span></button>
+          <button type="button" class="chip" data-filter="favorites">Favorites <span class="chip-count" data-count-for="favorites"></span></button>
         </div>
       </div>
     </section>
 
     <section class="gallery-section">
       <div class="gallery-inner">
-        <div id="gallery-grid" class="gallery-grid" aria-live="polite"></div>
-        <p id="empty-state" class="empty-state" hidden>No entries match your search. Try another name, tree, or category.</p>
+        <div id="gallery-grid" class="gallery-grid" aria-live="polite" aria-busy="true">
+          <div class="card skeleton-card" aria-hidden="true"><div class="card-image skeleton-block"></div><div class="card-body"><span class="skeleton-line skeleton-sm"></span><span class="skeleton-line skeleton-lg"></span><span class="skeleton-line skeleton-md"></span></div></div>
+          <div class="card skeleton-card" aria-hidden="true"><div class="card-image skeleton-block"></div><div class="card-body"><span class="skeleton-line skeleton-sm"></span><span class="skeleton-line skeleton-lg"></span><span class="skeleton-line skeleton-md"></span></div></div>
+          <div class="card skeleton-card" aria-hidden="true"><div class="card-image skeleton-block"></div><div class="card-body"><span class="skeleton-line skeleton-sm"></span><span class="skeleton-line skeleton-lg"></span><span class="skeleton-line skeleton-md"></span></div></div>
+          <div class="card skeleton-card" aria-hidden="true"><div class="card-image skeleton-block"></div><div class="card-body"><span class="skeleton-line skeleton-sm"></span><span class="skeleton-line skeleton-lg"></span><span class="skeleton-line skeleton-md"></span></div></div>
+          <div class="card skeleton-card" aria-hidden="true"><div class="card-image skeleton-block"></div><div class="card-body"><span class="skeleton-line skeleton-sm"></span><span class="skeleton-line skeleton-lg"></span><span class="skeleton-line skeleton-md"></span></div></div>
+          <div class="card skeleton-card" aria-hidden="true"><div class="card-image skeleton-block"></div><div class="card-body"><span class="skeleton-line skeleton-sm"></span><span class="skeleton-line skeleton-lg"></span><span class="skeleton-line skeleton-md"></span></div></div>
+        </div>
+        <div id="empty-state" class="empty-state" hidden>
+          <p class="empty-title" id="empty-title">No matching finds</p>
+          <p class="empty-copy" id="empty-copy">Try another name, tree, park, or category.</p>
+          <button type="button" class="btn btn-ghost btn-inline" id="empty-reset">Clear filters</button>
+        </div>
+        <div class="gallery-pager" id="gallery-pager" hidden>
+          <p class="gallery-range" id="gallery-range"></p>
+          <nav class="page-buttons" id="page-buttons" aria-label="Gallery pages"></nav>
+          <button type="button" class="btn btn-ghost btn-inline" id="load-more">Load more</button>
+        </div>
+        <div id="gallery-sentinel" class="gallery-sentinel" aria-hidden="true"></div>
       </div>
     </section>
 
@@ -119,20 +178,7 @@
           </p>
         </div>
 
-        <div class="map-tabs" role="tablist" aria-label="Park maps">
-          <button type="button" class="map-tab is-active" role="tab" aria-selected="true" data-map="sourland">
-            Sourland Mountain Preserve
-          </button>
-          <button type="button" class="map-tab" role="tab" aria-selected="false" data-map="baldpate">
-            Baldpate Mountain
-          </button>
-          <button type="button" class="map-tab" role="tab" aria-selected="false" data-map="delaware-water-gap">
-            Delaware Water Gap
-          </button>
-          <button type="button" class="map-tab" role="tab" aria-selected="false" data-map="middlesex-fells">
-            Middlesex Fells Reservation
-          </button>
-        </div>
+        <div class="map-tabs" id="map-tabs" role="tablist" aria-label="Park maps"></div>
 
         <div class="map-layout">
           <div class="map-frame">
@@ -146,6 +192,19 @@
             <h3 id="map-region-title">Sourland Mountain Preserve</h3>
             <p id="map-region-sub" class="map-region-sub"></p>
             <p id="map-find-count" class="map-find-count"></p>
+            <div class="map-filter-group" id="map-filters" role="group" aria-label="Filter map finds">
+              <button type="button" class="chip is-active" data-filter="all">All</button>
+              <button type="button" class="chip" data-filter="gilled">Gilled</button>
+              <button type="button" class="chip" data-filter="bolete">Boletes</button>
+              <button type="button" class="chip" data-filter="polypore">Polypores</button>
+              <button type="button" class="chip" data-filter="chanterelle">Chanterelles</button>
+              <button type="button" class="chip" data-filter="coral">Coral</button>
+              <button type="button" class="chip" data-filter="other">Other</button>
+              <button type="button" class="chip" data-filter="pending">Pending</button>
+              <button type="button" class="chip" data-filter="community">Community</button>
+              <button type="button" class="chip" data-filter="favorites">Favorites</button>
+              <button type="button" class="chip" data-filter="wildlife">Wildlife</button>
+            </div>
             <ul id="map-find-list" class="map-find-list"></ul>
             <p class="map-sidebar-note">
               Pins use GPS embedded in photos. Accuracy depends on phone signal; points may sit slightly off-trail.
@@ -359,6 +418,7 @@
   <!-- Admin bar -->
   <div id="admin-bar" class="admin-bar" hidden>
     <span>Admin mode</span>
+    <button type="button" id="admin-open-inbox" class="btn btn-primary btn-inline">Community inbox</button>
     <button type="button" id="admin-open-library" class="btn btn-primary btn-inline">Edit photos</button>
     <button type="button" id="admin-logout" class="btn btn-ghost btn-inline">Log out</button>
   </div>
@@ -379,6 +439,26 @@
           <button type="submit" class="btn btn-primary">Log in</button>
           <p id="admin-login-error" class="admin-error" role="alert"></p>
         </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin community inbox -->
+  <div id="admin-inbox-modal" class="modal" hidden>
+    <div class="modal-backdrop" data-admin-close="inbox"></div>
+    <div class="modal-panel admin-panel-lg">
+      <button type="button" class="modal-close" data-admin-close="inbox" aria-label="Close">&times;</button>
+      <div class="admin-panel-body">
+        <div class="admin-library-head">
+          <h2>Community inbox</h2>
+        </div>
+        <p class="admin-help">
+          Approve a find to publish it (copied to <code>photos/community/</code> for GitHub).
+          Rejected photos stay off the public gallery.
+        </p>
+        <div id="admin-inbox-list" class="admin-inbox-list"></div>
+        <h3 class="admin-subhead">Newsletter signups</h3>
+        <div id="admin-newsletter-list" class="admin-newsletter-list"></div>
       </div>
     </div>
   </div>
@@ -440,7 +520,9 @@
   </div>
 
   <link rel="stylesheet" href="css/admin.css" />
-  <script src="js/app.js?v=ivory-2"></script>
-  <script src="js/admin.js"></script>
+  <script src="js/backend-config.js"></script>
+  <script src="js/persist.js?v=persist-1"></script>
+  <script src="js/app.js?v=gallery-map-1"></script>
+  <script src="js/admin.js?v=persist-1"></script>
 </body>
 </html>

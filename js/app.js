@@ -8,6 +8,12 @@
   var activeFilter = "all";
   var searchQuery = "";
   var viewMode = "mushrooms"; // mushrooms | wildlife
+  var sortMode = "name";
+  var PAGE_SIZE = 12;
+  var visibleCount = PAGE_SIZE;
+  var FAV_KEY = "mushroom-atlas-favorites-v1";
+  var favorites = [];
+  var loadingMore = false;
 
   var els = {
     grid: document.getElementById("gallery-grid"),
@@ -30,7 +36,220 @@
     newsletterForm: document.getElementById("newsletter-form"),
     newsletterStatus: document.getElementById("newsletter-status"),
     galleryTitle: document.getElementById("gallery-heading"),
+    sort: document.getElementById("gallery-sort"),
+    emptyTitle: document.getElementById("empty-title"),
+    emptyCopy: document.getElementById("empty-copy"),
+    emptyReset: document.getElementById("empty-reset"),
+    pager: document.getElementById("gallery-pager"),
+    range: document.getElementById("gallery-range"),
+    pageButtons: document.getElementById("page-buttons"),
+    loadMore: document.getElementById("load-more"),
+    sentinel: document.getElementById("gallery-sentinel"),
   };
+
+  var THEME_KEY = "mushroom-atlas-theme";
+  var lastFocus = null;
+  var modalCloseTimer = null;
+  var detailCarousel = null;
+  var galleryHasEntered = false;
+
+  function reduceMotion() {
+    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  }
+
+  function markImagesLoaded(root) {
+    (root || document).querySelectorAll("img").forEach(function (img) {
+      function done() {
+        img.classList.add("is-loaded");
+      }
+      if (img.complete && img.naturalWidth) done();
+      else {
+        img.addEventListener("load", done);
+        img.addEventListener("error", done);
+      }
+    });
+  }
+
+  function pauseVideos(root) {
+    (root || els.detail || document).querySelectorAll("video").forEach(function (v) {
+      try {
+        v.pause();
+      } catch (e) {}
+    });
+  }
+
+  function setupTheme() {
+    var btn = document.getElementById("theme-toggle");
+    function current() {
+      return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light";
+    }
+    function sync() {
+      var t = current();
+      if (btn) {
+        btn.setAttribute("aria-pressed", t === "dark" ? "true" : "false");
+        btn.setAttribute("aria-label", t === "dark" ? "Switch to light mode" : "Switch to dark mode");
+      }
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute("content", t === "dark" ? "#121a16" : "#f6f1e6");
+    }
+    function apply(theme, persist) {
+      document.documentElement.setAttribute("data-theme", theme);
+      if (persist) {
+        try {
+          localStorage.setItem(THEME_KEY, theme);
+        } catch (e) {}
+      }
+      sync();
+    }
+    sync();
+    if (btn) {
+      btn.addEventListener("click", function () {
+        apply(current() === "dark" ? "light" : "dark", true);
+      });
+    }
+    try {
+      if (!localStorage.getItem(THEME_KEY) && window.matchMedia) {
+        window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
+          if (localStorage.getItem(THEME_KEY)) return;
+          apply(e.matches ? "dark" : "light", false);
+        });
+      }
+    } catch (e) {}
+  }
+  setupTheme();
+
+  function loadFavorites() {
+    try {
+      var list = JSON.parse(localStorage.getItem(FAV_KEY) || "[]");
+      favorites = Array.isArray(list) ? list.filter(Boolean) : [];
+    } catch (e) {
+      favorites = [];
+    }
+  }
+
+  function saveFavorites() {
+    try {
+      localStorage.setItem(FAV_KEY, JSON.stringify(favorites));
+    } catch (e) {}
+  }
+
+  function isFav(id) {
+    return !!id && favorites.indexOf(id) !== -1;
+  }
+
+  function toggleFavorite(id) {
+    if (!id) return;
+    if (isFav(id)) {
+      favorites = favorites.filter(function (x) {
+        return x !== id;
+      });
+    } else {
+      favorites.push(id);
+    }
+    saveFavorites();
+    document.querySelectorAll('.fav-btn[data-fav-id="' + id + '"]').forEach(function (btn) {
+      var on = isFav(id);
+      btn.classList.toggle("is-on", on);
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      btn.setAttribute("aria-label", on ? "Remove from favorites" : "Save to favorites");
+      var body = btn.parentNode && btn.parentNode.querySelector(".card-body");
+      if (body) {
+        var flag = body.querySelector(".saved-flag");
+        if (on && !flag) {
+          body.insertAdjacentHTML(
+            "beforeend",
+            '<span class="card-badge community saved-flag">Saved</span>'
+          );
+        } else if (!on && flag) {
+          flag.parentNode.removeChild(flag);
+        }
+      }
+    });
+    updateChipCounts();
+    if (activeFilter === "favorites") renderGallery();
+    if (trailMap && mapData) renderMapRegion(activeMapRegion);
+  }
+
+  function highlight(text) {
+    var raw = String(text || "");
+    var q = searchQuery.trim();
+    if (!q) return escapeHtml(raw);
+    var lower = raw.toLowerCase();
+    var needle = q.toLowerCase();
+    var out = "";
+    var i = 0;
+    var idx;
+    while ((idx = lower.indexOf(needle, i)) !== -1) {
+      out += escapeHtml(raw.slice(i, idx));
+      out += '<mark class="search-hit">' + escapeHtml(raw.slice(idx, idx + q.length)) + "</mark>";
+      i = idx + q.length;
+    }
+    out += escapeHtml(raw.slice(i));
+    return out;
+  }
+
+  function seasonKey(item) {
+    var s = String(item.season || "").toLowerCase();
+    var rank = "9";
+    if (/spring/.test(s)) rank = "1";
+    else if (/summer/.test(s)) rank = "2";
+    else if (/fall|autumn/.test(s)) rank = "3";
+    else if (/winter/.test(s)) rank = "4";
+    return rank + ":" + s;
+  }
+
+  function sortItems(items) {
+    var list = items.slice();
+    list.sort(function (a, b) {
+      var cmp = 0;
+      if (sortMode === "season") {
+        cmp = seasonKey(a).localeCompare(seasonKey(b));
+      } else if (sortMode === "location") {
+        cmp = primaryLocation(a).localeCompare(primaryLocation(b), undefined, { sensitivity: "base" });
+      }
+      if (cmp) return cmp;
+      return String(a.common_name || "").localeCompare(String(b.common_name || ""), undefined, {
+        sensitivity: "base",
+      });
+    });
+    return list;
+  }
+
+  function emptyMessage() {
+    var q = searchQuery.trim();
+    if (activeFilter === "favorites") {
+      return {
+        title: "No favorites yet",
+        copy: q
+          ? "None of your saved finds match that search."
+          : "Tap the heart on a card to save it on this device. Favorites stay in your browser.",
+      };
+    }
+    if (activeFilter === "community") {
+      return {
+        title: "No community finds here",
+        copy: q
+          ? "Nothing in community uploads matches that search."
+          : "Be the first — share a trail photo in the form below.",
+      };
+    }
+    if (activeFilter === "pending") {
+      return {
+        title: "Nothing pending ID",
+        copy: "Unidentified community finds and unlabeled photos will show up here.",
+      };
+    }
+    if (q) {
+      return {
+        title: "No matches for “" + q + "”",
+        copy: "Try a common name, tree, park, or clear search to browse the atlas.",
+      };
+    }
+    return {
+      title: "No finds in this category",
+      copy: "Choose another chip, switch sort, or browse All.",
+    };
+  }
 
   function loadCommunity() {
     try {
@@ -49,6 +268,37 @@
         els.status.classList.add("error");
       }
     }
+  }
+
+  function upsertCommunity(entry) {
+    if (!entry || !entry.id) return;
+    var found = false;
+    community = community.map(function (item) {
+      if (item.id === entry.id) {
+        found = true;
+        return entry;
+      }
+      return item;
+    });
+    if (!found) community.unshift(entry);
+    saveCommunity();
+  }
+
+  function hydrateCommunity() {
+    if (!window.TrailPersist) return;
+    TrailPersist.init()
+      .then(function () {
+        return TrailPersist.loadCommunity();
+      })
+      .then(function (list) {
+        community = list || community;
+        saveCommunity();
+        renderGallery();
+        if (trailMap && mapData) renderMapRegion(activeMapRegion);
+      })
+      .catch(function (err) {
+        console.warn("Community persist hydrate skipped", err);
+      });
   }
 
   function mushroomGroups() {
@@ -70,6 +320,7 @@
       return Object.assign({}, g, { source: "curated", is_group: true });
     });
     community.forEach(function (c) {
+      if (c && c.status === "rejected") return;
       items.push(
         Object.assign({}, c, {
           source: "community",
@@ -109,6 +360,7 @@
 
   function matchesFilter(item, filter) {
     if (filter === "all") return true;
+    if (filter === "favorites") return isFav(item.id);
     if (filter === "community") return item.source === "community";
     if (filter === "pending") {
       return (
@@ -126,6 +378,49 @@
     return allGalleryItems().filter(function (item) {
       return matchesFilter(item, activeFilter) && matchesSearch(item, q);
     });
+  }
+
+  function updateChipCounts() {
+    document.querySelectorAll("#mushroom-filters [data-count-for]").forEach(function (el) {
+      var filter = el.getAttribute("data-count-for");
+      var q = searchQuery.trim().toLowerCase();
+      var n = allGalleryItems().filter(function (item) {
+        return matchesFilter(item, filter) && matchesSearch(item, q);
+      }).length;
+      el.textContent = String(n);
+    });
+  }
+
+  function syncFilterChips() {
+    document.querySelectorAll("#mushroom-filters .chip").forEach(function (c) {
+      c.classList.toggle("is-active", c.getAttribute("data-filter") === activeFilter);
+    });
+    document.querySelectorAll("#map-filters .chip").forEach(function (c) {
+      var f = c.getAttribute("data-filter");
+      var on =
+        f === "wildlife"
+          ? viewMode === "wildlife"
+          : viewMode !== "wildlife" && f === activeFilter;
+      c.classList.toggle("is-active", on);
+    });
+  }
+
+  function setFilter(filter, opts) {
+    opts = opts || {};
+    if (filter === "wildlife") {
+      viewMode = "wildlife";
+      activeFilter = "all";
+    } else {
+      if (viewMode === "wildlife" && filter !== "all" && filter !== "favorites") {
+        viewMode = "mushrooms";
+      }
+      activeFilter = filter || "all";
+    }
+    visibleCount = PAGE_SIZE;
+    updateViewChrome();
+    syncFilterChips();
+    renderGallery();
+    if (!opts.skipMap && trailMap && mapData) renderMapRegion(activeMapRegion);
   }
 
   function escapeHtml(str) {
@@ -207,12 +502,12 @@
     );
   }
 
-  function mainMediaHtml(media) {
-    if (!media || !media.src) return '<img id="detail-main-img" src="" alt="" />';
+  function mainMediaHtml(media, alt) {
+    if (!media || !media.src) return '<img class="detail-main-img" src="" alt="" />';
     if (isVideoMedia(media)) {
       var poster = media.poster ? ' poster="' + escapeHtml(media.poster) + '"' : "";
       return (
-        '<video id="detail-main-video" class="detail-main-video" controls playsinline preload="metadata"' +
+        '<video class="detail-main-video" controls playsinline preload="metadata"' +
         poster +
         ">" +
         '<source src="' +
@@ -223,7 +518,11 @@
       );
     }
     return (
-      '<img id="detail-main-img" src="' + escapeHtml(media.src) + '" alt="" />'
+      '<img class="detail-main-img" src="' +
+      escapeHtml(media.src) +
+      '" alt="' +
+      escapeHtml(alt || "") +
+      '" draggable="false" />'
     );
   }
 
@@ -246,7 +545,7 @@
   }
 
   function renderGallery() {
-    var items = filteredItems();
+    var items = sortItems(filteredItems());
     var noun =
       viewMode === "wildlife"
         ? items.length === 1
@@ -255,25 +554,49 @@
         : items.length === 1
           ? "group"
           : "groups";
+    var extra = [];
+    if (searchQuery) extra.push("matching “" + searchQuery.trim() + "”");
+    if (activeFilter !== "all") extra.push("in " + activeFilter.replace("-", " "));
     els.count.textContent =
       items.length +
       " " +
       noun +
-      (searchQuery || activeFilter !== "all" ? " shown" : " in the atlas");
+      (extra.length ? " " + extra.join(" ") : " in the atlas");
 
     if (els.galleryTitle) {
       els.galleryTitle.textContent =
-        viewMode === "wildlife" ? "Wildlife of the trail" : "Mushroom groups";
+        viewMode === "wildlife"
+          ? "Wildlife of the trail"
+          : activeFilter === "favorites"
+            ? "Saved favorites"
+            : "Mushroom groups";
     }
 
+    updateChipCounts();
+    syncFilterChips();
+
+    if (els.pager) els.pager.hidden = true;
     if (!items.length) {
       els.grid.innerHTML = "";
+      els.grid.setAttribute("aria-busy", "false");
+      els.grid.classList.remove("is-entering");
+      var msg = emptyMessage();
+      if (els.emptyTitle) els.emptyTitle.textContent = msg.title;
+      if (els.emptyCopy) els.emptyCopy.textContent = msg.copy;
       els.empty.hidden = false;
       return;
     }
     els.empty.hidden = true;
+    els.grid.setAttribute("aria-busy", "false");
+    var enter = !galleryHasEntered && !reduceMotion();
+    galleryHasEntered = true;
+    els.grid.classList.toggle("is-entering", enter);
 
-    els.grid.innerHTML = items
+    if (visibleCount > items.length) visibleCount = items.length;
+    if (visibleCount < 1) visibleCount = Math.min(PAGE_SIZE, items.length);
+    var shown = items.slice(0, visibleCount);
+
+    els.grid.innerHTML = shown
       .map(function (item) {
         var loc = primaryLocation(item);
         var pending =
@@ -284,10 +607,11 @@
         if (pending) badges += '<span class="card-badge pending">Pending ID</span>';
         else if (item.source === "community")
           badges += '<span class="card-badge community">Community</span>';
+        if (isFav(item.id)) badges += '<span class="card-badge community saved-flag">Saved</span>';
         var sub =
           item.subcategories && item.subcategories.length
             ? '<p class="card-loc">' +
-              escapeHtml(
+              highlight(
                 item.subcategories
                   .map(function (s) {
                     return s.name;
@@ -296,45 +620,119 @@
               ) +
               "</p>"
             : "";
+        var kind =
+          viewMode === "wildlife" ? "wildlife" : item.is_group ? "group" : "community";
+        var favOn = isFav(item.id);
 
         return (
-          '<button type="button" class="card" data-id="' +
+          '<article class="card" data-id="' +
+          escapeHtml(item.id) +
+          '">' +
+          '<button type="button" class="fav-btn' +
+          (favOn ? " is-on" : "") +
+          '" data-fav-id="' +
+          escapeHtml(item.id) +
+          '" aria-pressed="' +
+          (favOn ? "true" : "false") +
+          '" aria-label="' +
+          (favOn ? "Remove from favorites" : "Save to favorites") +
+          '"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6.7-4.2-9.5-8.1C.4 9.7 1.1 5.8 4.4 4.3 6.4 3.3 8.8 3.9 12 7c3.2-3.1 5.6-3.7 7.6-2.7 3.3 1.5 4 5.4 1.9 8.6C18.7 16.8 12 21 12 21z"/></svg></button>' +
+          '<button type="button" class="card-main" data-id="' +
           escapeHtml(item.id) +
           '" data-kind="' +
-          (viewMode === "wildlife" ? "wildlife" : item.is_group ? "group" : "community") +
+          kind +
           '" aria-label="' +
-          escapeHtml(
-            item.common_name +
-              ". " +
-              galleryCountText(item) +
-              ". Click to open."
-          ) +
+          escapeHtml(item.common_name + ". " + galleryCountText(item) + ". Open details.") +
           '">' +
           cardMediaHtml(item) +
           '<div class="card-body">' +
           '<span class="card-category">' +
-          escapeHtml(item.category || "") +
+          highlight(item.category || "") +
           "</span>" +
           '<h3 class="card-title">' +
-          escapeHtml(item.common_name) +
+          highlight(item.common_name) +
           "</h3>" +
           '<p class="card-sci">' +
-          escapeHtml(item.scientific_name || "") +
+          highlight(item.scientific_name || "") +
           "</p>" +
           sub +
-          (loc && !sub ? '<p class="card-loc">' + escapeHtml(loc) + "</p>" : "") +
+          (loc && !sub ? '<p class="card-loc">' + highlight(loc) + "</p>" : "") +
+          (item.season ? '<p class="card-loc">' + highlight(item.season) + "</p>" : "") +
           (pending ? "" : edibilityBadge(item.edibility)) +
           badges +
-          "</div></button>"
+          "</div></button></article>"
         );
       })
       .join("");
 
-    els.grid.querySelectorAll(".card").forEach(function (btn) {
+    els.grid.querySelectorAll(".card").forEach(function (card, i) {
+      if (enter) card.style.animationDelay = Math.min(i * 40, 420) + "ms";
+    });
+    els.grid.querySelectorAll(".card-main").forEach(function (btn) {
       btn.addEventListener("click", function () {
         openDetail(btn.getAttribute("data-id"), btn.getAttribute("data-kind"));
       });
     });
+    els.grid.querySelectorAll(".fav-btn").forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleFavorite(btn.getAttribute("data-fav-id"));
+      });
+    });
+    markImagesLoaded(els.grid);
+    renderPager(items.length, shown.length);
+  }
+
+  function renderPager(total, shown) {
+    if (!els.pager) return;
+    if (total <= PAGE_SIZE) {
+      els.pager.hidden = true;
+      return;
+    }
+    els.pager.hidden = false;
+    if (els.range) {
+      els.range.textContent = "Showing " + shown + " of " + total;
+    }
+    if (els.loadMore) {
+      els.loadMore.hidden = shown >= total;
+    }
+    if (els.pageButtons) {
+      var pages = Math.ceil(total / PAGE_SIZE);
+      var current = Math.max(1, Math.ceil(shown / PAGE_SIZE));
+      var html = "";
+      for (var p = 1; p <= pages; p++) {
+        html +=
+          '<button type="button" class="page-btn' +
+          (p === current ? " is-active" : "") +
+          '" data-page="' +
+          p +
+          '" aria-label="Page ' +
+          p +
+          '">' +
+          p +
+          "</button>";
+      }
+      els.pageButtons.innerHTML = html;
+      els.pageButtons.querySelectorAll(".page-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var page = parseInt(btn.getAttribute("data-page"), 10) || 1;
+          visibleCount = page * PAGE_SIZE;
+          renderGallery();
+          if (els.grid) els.grid.scrollIntoView({ block: "start", behavior: reduceMotion() ? "auto" : "smooth" });
+        });
+      });
+    }
+  }
+
+  function loadMoreGallery() {
+    if (loadingMore) return;
+    var total = filteredItems().length;
+    if (visibleCount >= total) return;
+    loadingMore = true;
+    visibleCount += PAGE_SIZE;
+    renderGallery();
+    loadingMore = false;
   }
 
   function findItem(id, kind) {
@@ -465,6 +863,143 @@
     );
   }
 
+  function bindCarousel(root, photos, startIdx, onChange) {
+    var viewport = root.querySelector(".carousel-viewport");
+    var track = root.querySelector(".carousel-track");
+    var counter = root.querySelector(".carousel-counter-pos");
+    var slides = root.querySelectorAll(".carousel-slide");
+    if (!viewport || !track || !photos.length) return null;
+
+    var index = startIdx || 0;
+    var dragging = false;
+    var startX = 0;
+    var startY = 0;
+    var dx = 0;
+    var startT = 0;
+    var axis = null;
+    var reduced = reduceMotion();
+
+    function setTransform(pxOffset) {
+      var base = -index * 100;
+      if (pxOffset) {
+        track.style.transform = "translateX(calc(" + base + "% + " + pxOffset + "px))";
+      } else {
+        track.style.transform = "translateX(" + base + "%)";
+      }
+    }
+
+    function goTo(next, instant) {
+      if (!photos.length) return;
+      next = ((next % photos.length) + photos.length) % photos.length;
+      pauseVideos(root);
+      index = next;
+      if (instant || reduced) {
+        track.style.transition = "none";
+        setTransform(0);
+        if (!reduced) {
+          requestAnimationFrame(function () {
+            track.style.transition = "";
+          });
+        }
+      } else {
+        track.style.transition = "";
+        setTransform(0);
+      }
+      slides.forEach(function (slide, i) {
+        var on = i === index;
+        slide.classList.toggle("is-active", on);
+        slide.setAttribute("aria-hidden", on ? "false" : "true");
+      });
+      root.querySelectorAll(".detail-photo-nav button").forEach(function (btn) {
+        btn.classList.toggle("is-active", parseInt(btn.getAttribute("data-photo-idx"), 10) === index);
+      });
+      if (counter) counter.textContent = String(index + 1);
+      if (onChange) onChange(index, photos[index]);
+    }
+
+    goTo(index, true);
+
+    root.querySelectorAll(".carousel-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        goTo(index + (btn.classList.contains("carousel-next") ? 1 : -1));
+      });
+    });
+
+    root.querySelectorAll(".detail-photo-nav button").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        goTo(parseInt(btn.getAttribute("data-photo-idx"), 10));
+      });
+    });
+
+    viewport.addEventListener("pointerdown", function (e) {
+      if (photos.length < 2) return;
+      if (e.pointerType === "mouse" && e.button !== 0) return;
+      if (e.target && e.target.closest && e.target.closest("video, button, a")) return;
+      dragging = true;
+      axis = null;
+      dx = 0;
+      startX = e.clientX;
+      startY = e.clientY;
+      startT = Date.now();
+      track.style.transition = "none";
+      viewport.classList.add("is-dragging");
+      try {
+        viewport.setPointerCapture(e.pointerId);
+      } catch (err) {}
+    });
+    viewport.addEventListener(
+      "pointermove",
+      function (e) {
+        if (!dragging) return;
+        var mx = e.clientX - startX;
+        var my = e.clientY - startY;
+        if (!axis) {
+          if (Math.abs(mx) < 6 && Math.abs(my) < 6) return;
+          axis = Math.abs(mx) > Math.abs(my) ? "x" : "y";
+          if (axis === "y") {
+            dragging = false;
+            viewport.classList.remove("is-dragging");
+            setTransform(0);
+            return;
+          }
+        }
+        if (axis !== "x") return;
+        e.preventDefault();
+        dx = mx;
+        setTransform(dx);
+      },
+      { passive: false }
+    );
+    function endDrag() {
+      if (!dragging) return;
+      dragging = false;
+      viewport.classList.remove("is-dragging");
+      var w = viewport.offsetWidth || 1;
+      var threshold = Math.min(72, w * 0.18);
+      var flick = Math.abs(dx) > 20 && Date.now() - startT < 280;
+      if (dx < -threshold || (flick && dx < 0)) goTo(index + 1);
+      else if (dx > threshold || (flick && dx > 0)) goTo(index - 1);
+      else goTo(index);
+      dx = 0;
+      axis = null;
+    }
+    viewport.addEventListener("pointerup", endDrag);
+    viewport.addEventListener("pointercancel", endDrag);
+
+    return {
+      goTo: goTo,
+      next: function () {
+        goTo(index + 1);
+      },
+      prev: function () {
+        goTo(index - 1);
+      },
+      index: function () {
+        return index;
+      },
+    };
+  }
+
   function openDetail(id, kind) {
     var item = findItem(id, kind);
     if (!item) return;
@@ -490,41 +1025,90 @@
       }
     }
     var activePhoto = photos[startIdx] || photos[0] || {};
+    var many = photos.length > 1;
+    var chevronL =
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+    var chevronR =
+      '<svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>';
 
-    var thumbs =
-      photos.length > 1
-        ? '<p class="detail-thumb-hint">Click any photo to view it · ' +
-          photos.length +
-          (photos.length === 1 ? " image" : " images") +
-          "</p>" +
-          '<div class="detail-photo-nav">' +
-          photos
-            .map(function (p, i) {
-              var label =
-                (p.id_detail && p.id_detail.common_name) ||
-                p.caption ||
-                (isVideoMedia(p) ? "Video " : "Photo ") + (i + 1);
-              var tSrc = thumbSrcFor(p);
-              return (
-                '<button type="button" class="' +
-                (i === startIdx ? "is-active" : "") +
-                (isVideoMedia(p) ? " is-video" : "") +
-                '" data-photo-idx="' +
-                i +
-                '" title="' +
-                escapeHtml(label) +
-                '"><img src="' +
-                escapeHtml(tSrc) +
-                '" alt="' +
-                escapeHtml(label) +
-                '" />' +
-                (isVideoMedia(p) ? '<span class="thumb-video-mark">▶</span>' : "") +
-                "</button>"
-              );
-            })
-            .join("") +
+    var slides = photos
+      .map(function (p, i) {
+        var label =
+          (p.id_detail && p.id_detail.common_name) ||
+          p.caption ||
+          item.common_name ||
+          (isVideoMedia(p) ? "Video " : "Photo ") + (i + 1);
+        return (
+          '<div class="carousel-slide' +
+          (i === startIdx ? " is-active" : "") +
+          '" data-idx="' +
+          i +
+          '" aria-hidden="' +
+          (i === startIdx ? "false" : "true") +
+          '">' +
+          mainMediaHtml(p, label) +
           "</div>"
-        : "";
+        );
+      })
+      .join("");
+
+    var thumbs = many
+      ? '<p class="detail-thumb-hint">Swipe, use arrows, or tap a thumbnail · ' +
+        photos.length +
+        " images</p>" +
+        '<div class="detail-photo-nav">' +
+        photos
+          .map(function (p, i) {
+            var label =
+              (p.id_detail && p.id_detail.common_name) ||
+              p.caption ||
+              (isVideoMedia(p) ? "Video " : "Photo ") + (i + 1);
+            var tSrc = thumbSrcFor(p);
+            return (
+              '<button type="button" class="' +
+              (i === startIdx ? "is-active" : "") +
+              (isVideoMedia(p) ? " is-video" : "") +
+              '" data-photo-idx="' +
+              i +
+              '" title="' +
+              escapeHtml(label) +
+              '"><img src="' +
+              escapeHtml(tSrc) +
+              '" alt="' +
+              escapeHtml(label) +
+              '" />' +
+              (isVideoMedia(p) ? '<span class="thumb-video-mark">▶</span>' : "") +
+              "</button>"
+            );
+          })
+          .join("") +
+        "</div>"
+      : "";
+
+    var carousel =
+      '<div class="carousel' +
+      (many ? "" : " single") +
+      '" aria-roledescription="carousel" aria-label="' +
+      escapeHtml(item.common_name || "Photos") +
+      '">' +
+      '<div class="carousel-viewport" tabindex="0">' +
+      '<div class="carousel-track">' +
+      (slides || "<div class=\"carousel-slide\">" + mainMediaHtml(activePhoto, item.common_name) + "</div>") +
+      "</div></div>" +
+      (many
+        ? '<button type="button" class="carousel-btn carousel-prev" aria-label="Previous photo">' +
+          chevronL +
+          "</button>" +
+          '<button type="button" class="carousel-btn carousel-next" aria-label="Next photo">' +
+          chevronR +
+          "</button>" +
+          '<p class="carousel-counter" aria-live="polite"><span class="carousel-counter-pos">' +
+          (startIdx + 1) +
+          "</span> / " +
+          photos.length +
+          "</p>"
+        : "") +
+      "</div>";
 
     var subs =
       item.subcategories && item.subcategories.length
@@ -546,7 +1130,7 @@
     els.detail.innerHTML =
       '<div class="detail-hero">' +
       '<div class="detail-photos" id="detail-photos-main">' +
-      mainMediaHtml(activePhoto) +
+      carousel +
       thumbs +
       "</div>" +
       '<div id="detail-id-wrap">' +
@@ -554,61 +1138,51 @@
       "</div></div>" +
       subs;
 
+    if (modalCloseTimer) clearTimeout(modalCloseTimer);
+    lastFocus = document.activeElement;
+    els.modal.classList.remove("is-closing");
     els.modal.hidden = false;
+    els.modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("modal-open");
-
-    function setDetailMedia(p) {
-      var host = document.getElementById("detail-photos-main");
-      if (!host || !p) return;
-      // Keep thumbs; replace only the main media element(s)
-      var hint = host.querySelector(".detail-thumb-hint");
-      var nav = host.querySelector(".detail-photo-nav");
-      var navHtml =
-        (hint ? hint.outerHTML : "") + (nav ? nav.outerHTML : "");
-      host.innerHTML = mainMediaHtml(p) + navHtml;
-      // re-bind thumb clicks after replacing nav
-      host.querySelectorAll(".detail-photo-nav button").forEach(function (btn) {
-        btn.addEventListener("click", onThumbClick);
-      });
-    }
-
-    function onThumbClick() {
-      var idx = parseInt(this.getAttribute("data-photo-idx"), 10);
-      var p = photos[idx];
-      // pause any playing video before swap
-      var playing = els.detail.querySelector("video");
-      if (playing) {
-        try {
-          playing.pause();
-        } catch (e) {}
-      }
-      setDetailMedia(p);
-      els.detail.querySelectorAll(".detail-photo-nav button").forEach(function (b) {
-        b.classList.remove("is-active");
-      });
-      var activeBtn = els.detail.querySelector(
-        '.detail-photo-nav button[data-photo-idx="' + idx + '"]'
-      );
-      if (activeBtn) activeBtn.classList.add("is-active");
-      var wrap = document.getElementById("detail-id-wrap");
-      if (wrap) wrap.innerHTML = renderIdPanel(item, p);
-    }
-
-    els.detail.querySelectorAll(".detail-photo-nav button").forEach(function (btn) {
-      btn.addEventListener("click", onThumbClick);
+    requestAnimationFrame(function () {
+      els.modal.classList.add("is-open");
     });
+    var closeBtn = els.modal.querySelector(".modal-close");
+    if (closeBtn) closeBtn.focus();
+
+    var wrap = document.getElementById("detail-id-wrap");
+    detailCarousel = bindCarousel(
+      els.detail,
+      photos.length ? photos : [activePhoto],
+      startIdx,
+      function (idx, photo) {
+        if (wrap) wrap.innerHTML = renderIdPanel(item, photo || {});
+      }
+    );
+    markImagesLoaded(els.detail);
   }
 
   function closeModal() {
-    var playing = els.detail ? els.detail.querySelector("video") : null;
-    if (playing) {
-      try {
-        playing.pause();
-      } catch (e) {}
-    }
-    els.modal.hidden = true;
+    if (!els.modal || els.modal.hidden) return;
+    pauseVideos();
+    detailCarousel = null;
+    els.modal.classList.remove("is-open");
+    els.modal.classList.add("is-closing");
+    els.modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("modal-open");
-    els.detail.innerHTML = "";
+    var wait = reduceMotion() ? 0 : 280;
+    if (modalCloseTimer) clearTimeout(modalCloseTimer);
+    modalCloseTimer = setTimeout(function () {
+      els.modal.hidden = true;
+      els.modal.classList.remove("is-closing");
+      els.detail.innerHTML = "";
+      if (lastFocus && typeof lastFocus.focus === "function") {
+        try {
+          lastFocus.focus();
+        } catch (e) {}
+      }
+      lastFocus = null;
+    }, wait);
   }
 
   function fileToDataUrl(file) {
@@ -746,12 +1320,20 @@
         els.status.classList.add("error");
         return;
       }
-      fileToDataUrl(file)
+      var prepare =
+        window.TrailPersist && TrailPersist.prepareImage
+          ? TrailPersist.prepareImage(file)
+          : fileToDataUrl(file);
+      prepare
         .then(function (dataUrl) {
           var entry = {
-            id: "pending-" + Date.now(),
+            id:
+              window.TrailPersist && TrailPersist.newId
+                ? TrailPersist.newId()
+                : "pending-" + Date.now(),
             source: "community",
             pending_id: true,
+            status: "pending",
             common_name: "Unidentified find",
             scientific_name: "Pending identification",
             category: "Pending ID",
@@ -785,16 +1367,27 @@
             entry.gps = { lat: lat, lon: lon };
             entry.location_source = "exif_gps";
           }
+          if (window.TrailPersist) {
+            return TrailPersist.saveUpload(entry);
+          }
           community.unshift(entry);
           saveCommunity();
+          return { entry: entry, mode: "localStorage", demo: true };
+        })
+        .then(function (result) {
+          var saved = (result && result.entry) || result;
+          upsertCommunity(saved);
           els.form.reset();
           els.preview.hidden = true;
           els.preview.innerHTML = "";
           setMetaStatus("");
-          els.status.textContent =
-            "Uploaded as Pending ID. Filter “Pending ID” to review later.";
+          var demo = result && (result.demo || result.fallback);
+          els.status.textContent = demo
+            ? "Uploaded as Pending ID (saved in this browser for demo). Filter “Pending ID” to review later."
+            : "Uploaded — pending review. You can see it on this device; it appears for everyone after approval.";
           viewMode = "mushrooms";
           activeFilter = "pending";
+          visibleCount = PAGE_SIZE;
           updateViewChrome();
           renderGallery();
           if (trailMap && mapData) renderMapRegion(activeMapRegion);
@@ -835,16 +1428,24 @@
           species_id: item.id,
           common_name: detail.common_name || item.common_name,
           scientific_name: detail.scientific_name || item.scientific_name,
+          category: item.category || "",
           category_slug: item.category_slug,
-          thumb: p.src,
+          thumb: isVideoMedia(p) ? p.poster || p.src : p.src,
           caption: p.caption || "",
           location: p.location || detail.photo_location || item.location || "",
           taken_at: p.taken_at || detail.taken_at || "",
+          season: item.season || "",
           lat: lat,
           lon: lon,
           photo_index: i,
-          pending_id: !!isPending,
-          kind: item.category_slug === "wildlife" ? "wildlife" : "group",
+          pending_id: !!isPending || !!item.pending_id,
+          source: item.source || (item.category_slug === "wildlife" ? "wildlife" : "curated"),
+          kind:
+            item.category_slug === "wildlife"
+              ? "wildlife"
+              : item.source === "community"
+                ? "community"
+                : "group",
         });
       });
     }
@@ -855,12 +1456,49 @@
       pushItem(w, false);
     });
     community.forEach(function (c) {
+      if (c && c.status === "rejected") return;
       pushItem(c, true);
     });
     return finds;
   }
 
+  function matchesSearchFind(f) {
+    var q = searchQuery.trim().toLowerCase();
+    if (!q) return true;
+    return [f.common_name, f.scientific_name, f.location, f.caption, f.category, f.season]
+      .filter(Boolean)
+      .join(" ")
+      .toLowerCase()
+      .indexOf(q) !== -1;
+  }
+
+  function matchesMapFind(f) {
+    if (viewMode === "wildlife") {
+      return f.kind === "wildlife" && matchesSearchFind(f);
+    }
+    if (f.kind === "wildlife") return false;
+    if (activeFilter === "favorites") return isFav(f.species_id) && matchesSearchFind(f);
+    if (activeFilter === "community") return f.kind === "community" && matchesSearchFind(f);
+    if (activeFilter === "pending") return !!f.pending_id && matchesSearchFind(f);
+    if (activeFilter !== "all" && f.category_slug !== activeFilter) return false;
+    return matchesSearchFind(f);
+  }
+
+  function getMapRegion(regionId) {
+    if (regionId === "all") {
+      return {
+        id: "all",
+        name: "All parks",
+        subtitle: "Every geotagged find across the atlas — zoom in to spiderfy clusters",
+        zoom: 8,
+        center: [41.15, -73.9],
+      };
+    }
+    return mapData && mapData.regions[regionId];
+  }
+
   function findsInRegion(regionId, finds) {
+    if (regionId === "all") return finds;
     if (!mapData || !mapData.regions[regionId]) return [];
     var f = mapData.regions[regionId].filter;
     if (!f) return [];
@@ -872,6 +1510,96 @@
         x.lon <= f.lon_max
       );
     });
+  }
+
+  function makeMarkerLayer() {
+    if (typeof L !== "undefined" && typeof L.markerClusterGroup === "function") {
+      return L.markerClusterGroup({
+        showCoverageOnHover: false,
+        maxClusterRadius: 52,
+        spiderfyOnMaxZoom: true,
+        disableClusteringAtZoom: 17,
+        chunkedLoading: true,
+      });
+    }
+    return L.layerGroup();
+  }
+
+  var PARK_ORDER = [
+    "all",
+    "sourland",
+    "baldpate",
+    "delaware-water-gap",
+    "middlesex-fells",
+    "high-point",
+    "cheesequake",
+  ];
+  var PARK_SHORT = {
+    all: "All parks",
+    sourland: "Sourland",
+    baldpate: "Baldpate",
+    "delaware-water-gap": "Water Gap",
+    "middlesex-fells": "Middlesex Fells",
+    "high-point": "High Point",
+    cheesequake: "Cheesequake",
+  };
+
+  function buildMapTabs() {
+    var tabs = document.getElementById("map-tabs");
+    if (!tabs || !mapData) return;
+    var ids = PARK_ORDER.filter(function (id) {
+      return id === "all" || (mapData.regions && mapData.regions[id]);
+    });
+    Object.keys(mapData.regions || {}).forEach(function (id) {
+      if (ids.indexOf(id) === -1) ids.push(id);
+    });
+    tabs.innerHTML = ids
+      .map(function (id) {
+        var name = PARK_SHORT[id] || (mapData.regions[id] && mapData.regions[id].name) || id;
+        var on = id === activeMapRegion;
+        return (
+          '<button type="button" class="map-tab' +
+          (on ? " is-active" : "") +
+          '" role="tab" aria-selected="' +
+          (on ? "true" : "false") +
+          '" data-map="' +
+          escapeHtml(id) +
+          '">' +
+          escapeHtml(name) +
+          "</button>"
+        );
+      })
+      .join("");
+    tabs.querySelectorAll(".map-tab").forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        renderMapRegion(tab.getAttribute("data-map"));
+      });
+    });
+  }
+
+  function popupHtml(f) {
+    return (
+      '<div class="map-popup">' +
+      (f.thumb
+        ? '<img class="popup-thumb" src="' + escapeHtml(f.thumb) + '" alt="' + escapeHtml(f.common_name) + '" />'
+        : "") +
+      (f.category ? '<p class="popup-cat">' + escapeHtml(f.category) + "</p>" : "") +
+      "<strong>" +
+      escapeHtml(f.common_name) +
+      "</strong><em>" +
+      escapeHtml(f.scientific_name || "") +
+      "</em><p class='popup-meta'>" +
+      escapeHtml(
+        [formatTakenAt(f.taken_at), f.location || "", f.pending_id ? "Pending ID" : ""]
+          .filter(Boolean)
+          .join(" · ")
+      ) +
+      '</p><button type="button" data-open-species="' +
+      escapeHtml(f.species_id) +
+      '" data-kind="' +
+      escapeHtml(f.kind) +
+      '">View details</button></div>'
+    );
   }
 
   function pinIcon(pending) {
@@ -933,7 +1661,7 @@
 
   function renderMapRegion(regionId) {
     if (!trailMap || !mapData) return;
-    var region = mapData.regions[regionId];
+    var region = getMapRegion(regionId);
     if (!region) {
       console.error("Unknown map region:", regionId, "known:", Object.keys(mapData.regions || {}));
       var titleEl = document.getElementById("map-region-title");
@@ -948,56 +1676,48 @@
       tab.classList.toggle("is-active", on);
       tab.setAttribute("aria-selected", on ? "true" : "false");
     });
+    syncFilterChips();
     if (mapLayers.markers) trailMap.removeLayer(mapLayers.markers);
-    mapLayers.markers = L.layerGroup().addTo(trailMap);
-    var finds = findsInRegion(regionId, collectFinds());
-    document.getElementById("map-find-count").textContent =
-      finds.length + (finds.length === 1 ? " tagged find" : " tagged finds");
+    mapLayers.markers = makeMarkerLayer().addTo(trailMap);
+    var finds = findsInRegion(regionId, collectFinds()).filter(matchesMapFind);
+    var countEl = document.getElementById("map-find-count");
+    if (countEl) {
+      countEl.textContent =
+        finds.length +
+        (finds.length === 1 ? " tagged find" : " tagged finds") +
+        (activeFilter !== "all" || viewMode === "wildlife" || searchQuery ? " (filtered)" : "");
+    }
 
     var list = document.getElementById("map-find-list");
-    list.innerHTML = finds
-      .map(function (f, idx) {
-        return (
-          '<li><button type="button" data-find-idx="' +
-          idx +
-          '">' +
-          (f.thumb ? '<img src="' + escapeHtml(f.thumb) + '" alt="" loading="lazy" />' : "<span></span>") +
-          "<div><strong>" +
-          escapeHtml(f.common_name) +
-          "</strong><span>" +
-          escapeHtml(
-            [formatTakenAt(f.taken_at), f.caption || f.scientific_name || ""]
-              .filter(Boolean)
-              .join(" · ")
-          ) +
-          "</span></div></button></li>"
-        );
-      })
-      .join("");
+    if (!finds.length) {
+      list.innerHTML =
+        "<li class='map-empty'>No geotagged finds in this park for the current filters. Photos with GPS will appear here automatically.</li>";
+    } else {
+      list.innerHTML = finds
+        .map(function (f, idx) {
+          return (
+            '<li><button type="button" data-find-idx="' +
+            idx +
+            '">' +
+            (f.thumb ? '<img src="' + escapeHtml(f.thumb) + '" alt="" loading="lazy" />' : "<span></span>") +
+            "<div><strong>" +
+            escapeHtml(f.common_name) +
+            "</strong><span>" +
+            escapeHtml(
+              [formatTakenAt(f.taken_at), f.caption || f.scientific_name || ""]
+                .filter(Boolean)
+                .join(" · ")
+            ) +
+            "</span></div></button></li>"
+          );
+        })
+        .join("");
+    }
 
     var markerByIdx = [];
     finds.forEach(function (f, idx) {
-      var marker = L.marker([f.lat, f.lon], { icon: pinIcon(f.pending_id) }).addTo(
-        mapLayers.markers
-      );
-      marker.bindPopup(
-        (f.thumb
-          ? '<img class="popup-thumb" src="' + escapeHtml(f.thumb) + '" alt="" />'
-          : "") +
-          "<strong>" +
-          escapeHtml(f.common_name) +
-          "</strong><em>" +
-          escapeHtml(f.scientific_name || "") +
-          "</em><div style='font-size:0.8rem;color:#6b756e;margin-top:0.25rem'>" +
-          escapeHtml(
-            [formatTakenAt(f.taken_at), f.location || ""].filter(Boolean).join(" · ")
-          ) +
-          '</div><button type="button" data-open-species="' +
-          escapeHtml(f.species_id) +
-          '" data-kind="' +
-          escapeHtml(f.kind) +
-          '">View group</button>'
-      );
+      var marker = L.marker([f.lat, f.lon], { icon: pinIcon(f.pending_id) });
+      marker.bindPopup(popupHtml(f), { maxWidth: 280, className: "map-popup-wrap" });
       marker.on("popupopen", function () {
         var btn = document.querySelector(".leaflet-popup-content [data-open-species]");
         if (btn) {
@@ -1006,6 +1726,7 @@
           };
         }
       });
+      mapLayers.markers.addLayer(marker);
       markerByIdx[idx] = marker;
     });
 
@@ -1014,8 +1735,14 @@
         var idx = parseInt(btn.getAttribute("data-find-idx"), 10);
         var m = markerByIdx[idx];
         if (m) {
-          trailMap.setView(m.getLatLng(), Math.max(trailMap.getZoom(), 15));
-          m.openPopup();
+          if (mapLayers.markers.zoomToShowLayer) {
+            mapLayers.markers.zoomToShowLayer(m, function () {
+              m.openPopup();
+            });
+          } else {
+            trailMap.setView(m.getLatLng(), Math.max(trailMap.getZoom(), 15));
+            m.openPopup();
+          }
         }
       });
     });
@@ -1043,11 +1770,7 @@
         });
         osm.addTo(trailMap);
         L.control.layers({ Streets: osm, Terrain: topo }).addTo(trailMap);
-        document.querySelectorAll(".map-tab").forEach(function (tab) {
-          tab.addEventListener("click", function () {
-            renderMapRegion(tab.getAttribute("data-map"));
-          });
-        });
+        buildMapTabs();
         setTimeout(function () {
           trailMap.invalidateSize();
           renderMapRegion("sourland");
@@ -1086,48 +1809,77 @@
       e.preventDefault();
       var email = document.getElementById("nl-email").value.trim();
       var consent = document.getElementById("nl-consent").checked;
+      var btn = els.newsletterForm.querySelector('button[type="submit"]');
       els.newsletterStatus.classList.remove("error");
       if (!email || !consent) {
         els.newsletterStatus.textContent = "Please enter your email and accept updates.";
         els.newsletterStatus.classList.add("error");
         return;
       }
-      var list = [];
-      try {
-        list = JSON.parse(localStorage.getItem(NEWSLETTER_KEY) || "[]");
-      } catch (err) {
-        list = [];
-      }
-      if (list.indexOf(email.toLowerCase()) === -1) {
-        list.push(email.toLowerCase());
-        localStorage.setItem(NEWSLETTER_KEY, JSON.stringify(list));
-      }
-      els.newsletterForm.reset();
-      els.newsletterStatus.textContent =
-        "You're on the list — thanks! (Demo storage in this browser.)";
+      els.newsletterStatus.textContent = "Signing you up…";
+      if (btn) btn.disabled = true;
+      var submit = window.TrailPersist
+        ? TrailPersist.subscribeNewsletter(email)
+        : Promise.resolve({ demo: true }).then(function (res) {
+            var list = [];
+            try {
+              list = JSON.parse(localStorage.getItem(NEWSLETTER_KEY) || "[]");
+            } catch (err) {
+              list = [];
+            }
+            if (list.indexOf(email.toLowerCase()) === -1) {
+              list.push(email.toLowerCase());
+              localStorage.setItem(NEWSLETTER_KEY, JSON.stringify(list));
+            }
+            return res;
+          });
+      submit
+        .then(function (result) {
+          els.newsletterForm.reset();
+          els.newsletterStatus.textContent =
+            result && result.demo
+              ? "You're on the list — thanks! (Demo storage in this browser.)"
+              : "You're on the list — thanks!";
+        })
+        .catch(function (err) {
+          els.newsletterStatus.textContent = err.message || "Signup failed. Please try again.";
+          els.newsletterStatus.classList.add("error");
+        })
+        .then(function () {
+          if (btn) btn.disabled = false;
+        });
     });
   }
 
   function updateViewChrome() {
     var chipBar = document.getElementById("mushroom-filters");
     var wildlifeNote = document.getElementById("wildlife-note");
-    if (chipBar) chipBar.hidden = viewMode === "wildlife";
+    if (chipBar) {
+      chipBar.querySelectorAll(".chip").forEach(function (c) {
+        var f = c.getAttribute("data-filter");
+        var wildlifeOk = f === "all" || f === "favorites";
+        c.hidden = viewMode === "wildlife" && !wildlifeOk;
+      });
+    }
     if (wildlifeNote) wildlifeNote.hidden = viewMode !== "wildlife";
     document.querySelectorAll("[data-view]").forEach(function (a) {
       a.classList.toggle("is-active-view", a.getAttribute("data-view") === viewMode);
     });
+    syncFilterChips();
   }
 
-  function setView(mode) {
+  function setView(mode, opts) {
+    opts = opts || {};
     viewMode = mode === "wildlife" ? "wildlife" : "mushrooms";
-    activeFilter = "all";
-    document.querySelectorAll(".chip").forEach(function (c) {
-      c.classList.toggle("is-active", c.getAttribute("data-filter") === "all");
-    });
+    if (activeFilter !== "favorites") activeFilter = "all";
+    visibleCount = PAGE_SIZE;
     updateViewChrome();
     renderGallery();
-    var gal = document.getElementById("gallery");
-    if (gal) gal.scrollIntoView({ behavior: "smooth" });
+    if (!opts.skipMap && trailMap && mapData) renderMapRegion(activeMapRegion);
+    if (opts.scroll !== false) {
+      var gal = document.getElementById("gallery");
+      if (gal) gal.scrollIntoView({ behavior: reduceMotion() ? "auto" : "smooth" });
+    }
   }
 
   function setupChrome() {
@@ -1154,29 +1906,76 @@
     els.search.addEventListener("input", function () {
       searchQuery = els.search.value;
       els.clear.hidden = !searchQuery;
+      visibleCount = PAGE_SIZE;
       renderGallery();
+      if (trailMap && mapData) renderMapRegion(activeMapRegion);
     });
     els.clear.addEventListener("click", function () {
       els.search.value = "";
       searchQuery = "";
       els.clear.hidden = true;
+      visibleCount = PAGE_SIZE;
       renderGallery();
+      if (trailMap && mapData) renderMapRegion(activeMapRegion);
     });
 
-    document.querySelectorAll(".chip").forEach(function (chip) {
-      chip.addEventListener("click", function () {
-        activeFilter = chip.getAttribute("data-filter");
-        document.querySelectorAll(".chip").forEach(function (c) {
-          c.classList.toggle("is-active", c === chip);
-        });
-        // mushroom filters imply mushroom view
-        if (viewMode === "wildlife") {
-          viewMode = "mushrooms";
-          updateViewChrome();
-        }
+    if (els.sort) {
+      els.sort.value = sortMode;
+      els.sort.addEventListener("change", function () {
+        sortMode = els.sort.value || "name";
+        visibleCount = PAGE_SIZE;
         renderGallery();
       });
+    }
+
+    if (els.emptyReset) {
+      els.emptyReset.addEventListener("click", function () {
+        searchQuery = "";
+        if (els.search) els.search.value = "";
+        if (els.clear) els.clear.hidden = true;
+        if (els.sort) {
+          els.sort.value = "name";
+          sortMode = "name";
+        }
+        setFilter("all");
+      });
+    }
+
+    if (els.loadMore) {
+      els.loadMore.addEventListener("click", loadMoreGallery);
+    }
+    if (els.sentinel && "IntersectionObserver" in window) {
+      new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (en) {
+            if (!en.isIntersecting) return;
+            if (els.empty && !els.empty.hidden) return;
+            loadMoreGallery();
+          });
+        },
+        { rootMargin: "280px 0px" }
+      ).observe(els.sentinel);
+    }
+
+    document.querySelectorAll("#mushroom-filters .chip").forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        setFilter(chip.getAttribute("data-filter"));
+      });
     });
+    var mapFilters = document.getElementById("map-filters");
+    if (mapFilters) {
+      mapFilters.addEventListener("click", function (e) {
+        var chip = e.target.closest("[data-filter]");
+        if (!chip) return;
+        var f = chip.getAttribute("data-filter");
+        if (f === "wildlife") {
+          setView("wildlife", { scroll: false });
+          return;
+        }
+        if (viewMode === "wildlife") viewMode = "mushrooms";
+        setFilter(f);
+      });
+    }
 
     document.querySelectorAll("[data-view]").forEach(function (el) {
       el.addEventListener("click", function (e) {
@@ -1189,7 +1988,19 @@
       el.addEventListener("click", closeModal);
     });
     document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && !els.modal.hidden) closeModal();
+      if (!els.modal || els.modal.hidden) return;
+      if (e.key === "Escape") {
+        closeModal();
+        return;
+      }
+      if (!detailCarousel) return;
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        detailCarousel.prev();
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        detailCarousel.next();
+      }
     });
   }
 
@@ -1209,6 +2020,7 @@
     .then(function (data) {
       catalog = data;
       loadCommunity();
+      loadFavorites();
       initAbout();
       setupChrome();
       setupUpload();
@@ -1216,9 +2028,11 @@
       setupMaps();
       updateViewChrome();
       renderGallery();
+      hydrateCommunity();
     })
     .catch(function (err) {
       console.error(err);
+      els.grid.setAttribute("aria-busy", "false");
       els.grid.innerHTML =
         '<p class="empty-state">Failed to load atlas. Serve over HTTP (python3 -m http.server).</p>';
     });

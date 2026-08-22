@@ -13,7 +13,11 @@ js/*.bak
 # Admin secrets (use example file instead)
 admin_config.json
 
-# Uploads sandbox
+# Local persistence (emails + unreviewed uploads)
+data/newsletter.json
+data/community-store.json
+
+# Uploads sandbox (pending community photos)
 uploads/*
 !uploads/.gitkeep
 
